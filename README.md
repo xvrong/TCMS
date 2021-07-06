@@ -1,14 +1,129 @@
-## Getting Started
+# 不同Window的功能设计
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## 登录
 
-## Folder Structure
+1. 学生
+2. 老师
+3. 管理员
 
-The workspace contains two folders by default, where:
+## 教师
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+1. 个人信息
 
-## Dependency Management
+   > Teacher.showInfo()实现
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+2. 查询自己课程的所有学生
+
+   > CourseManager中，(TeacherID) -\>ArrayList\<\<name, studentID\>\> 
+
+3. 查询历史课程(功能待定)
+
+   > TeacherManager中
+
+4. 查询单独一个学生的信息，
+
+   > (StudentID) -\> void 打印处学生的信息；对于非自己的学生，返回报错。
+
+## 学生
+
+1. 个人信息
+
+   > Student.showInfo()实现
+
+2. 查询自己的当前课程
+
+   > StudentManager中，(StudentID) -\>ArrayList\<Course> 
+
+3. 查询自己的历史课程
+
+   > StudentManager中，(StudentID) -\>ArrayList\<\<Course, scores\>> 
+
+4. 选课
+
+   > 实现一个小windows，实现增加当前课程的操作
+   >
+   > 1. 根据Education打印所有可选课程
+   >
+   > 2. 根据序号选择课程
+   >
+   > 3. 选择课程后调用Manager方法写入数据库
+
+## 管理员
+
+实现三个不同的功能模块：
+
+- 老师管理
+- 学生管理
+- 课程管理
+- 单独功能：结束本学期
+
+### 学生管理
+
+1. 查询所有学生
+
+   > 学号+姓名
+
+2. 根据课程查询学生
+
+3. 根据老师查询学生
+
+   > 保证老师只能查询自己课程的学生。调用2\.实现
+
+4. 查询单个学生信息详细信息
+
+   > 所有非绝密信息
+
+5. 查询一个学生的当前课程
+
+6. 查询一个学生的历史课程
+
+7. 增加学生
+
+8. 删除学生
+
+   > 分数设置为null，从学生表中删除，上课记录移入历史表，状态未未完成
+
+9. 调整班级
+
+### 老师管理
+
+1. 查询所有老师
+
+2. 根据课程查询任课老师
+
+3. 查询单个老师的详细信息
+
+4. 查询历史任教课程(功能待定)
+
+5. 查询当前未任教的老师
+
+6. 增加老师
+
+7. 删除老师
+
+   > 老师有任教课程时不可删除
+
+8. 调整老师所教课程
+
+   > 输入工号，打印当前状态(空闲or任教课程)
+   >
+   > 打印没有任免老师的课程(最后一项选择未“空闲”)，根据序号选择更改状态
+
+9. 调整老师工资
+
+   
+
+### 课程管理
+
+1. 查询当前所有课程
+
+2. 查询特定课程信息
+
+3. 增加课程
+
+4. 删除课程
+
+   > 不能删除有学生的课程
+
+5. 更改课程价格
+
