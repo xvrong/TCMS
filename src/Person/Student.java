@@ -1,7 +1,6 @@
 package Person;
 
 import Class.ClassAttribute;
-import Tool.ShowInfoInterface;
 
 public class Student extends Person {
     private String studentID; // 学生ID
