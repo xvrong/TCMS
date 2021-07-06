@@ -1,5 +1,4 @@
 package Class;
 
-public abstract class Class {
-    Teacher 
+public abstract class Class { 
 }
