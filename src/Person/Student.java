@@ -4,7 +4,8 @@ import Class.ClassAttribute;
 import Tool.ShowInfoInterface;
 
 public class Student extends Person {
-    private String studentID;
+    private String studentID; // 学生ID
+    private ClassAttribute classAttribute; // 班级基本信息 学历，年级，班级
 
     @Override
     public void showInfo() {
@@ -27,26 +28,6 @@ public class Student extends Person {
     public void setClassAttribute(final ClassAttribute classAttribute) {
         this.classAttribute = classAttribute;
     }
-
-    ClassAttribute classAttribute;
-    // ArrayList<OldClass> oldCourse = new ArrayList<OldClass>();
-    // ArrayList<String> takingCourse = new ArrayList<String>();
-
-    // public ArrayList<OldClass> getOldCourse() {
-    // return oldCourse;
-    // }
-
-    // public void setOldCourse(ArrayList<OldClass> oldCourse) {
-    // this.oldCourse = oldCourse;
-    // }
-
-    // public ArrayList<String> getTakingCourse() {
-    // return takingCourse;
-    // }
-
-    // public void setTakingCourse(ArrayList<String> takingCourse) {
-    // this.takingCourse = takingCourse;
-    // }
 
     public Student(final String name, final String sex, final int age, final String studentID) {
         super(name, sex, age);
