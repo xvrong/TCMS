@@ -1,9 +1,11 @@
 package Person;
 
-public abstract class Person {
-    private String name;
-    private String sex;
-    private int age;
+import Tool.ShowInfoInterface;
+
+public abstract class Person implements ShowInfoInterface {
+    private String name; // 名字
+    private String sex; // 性别
+    private int age; // 年龄
 
     public String getName() {
         return name;
