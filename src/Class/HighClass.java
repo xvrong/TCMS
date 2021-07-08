@@ -5,8 +5,8 @@ public class HighClass extends Class {
     public HighClass() {
     }
 
-    public HighClass(String education, int grade, int classNumber, String classHeader) {
-        super(education, grade, classNumber, classHeader);
+    public HighClass(String education, int grade, String courseName, String classHeader, int year, int maxStudent) {
+        super(education, grade, courseName, classHeader, year, maxStudent);
     }
 
     @Override

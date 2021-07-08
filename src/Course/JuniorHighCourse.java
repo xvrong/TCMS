@@ -5,8 +5,8 @@ public class JuniorHighCourse extends Course {
     public JuniorHighCourse() {
     }
 
-    public JuniorHighCourse(String name, String teacher, double price) {
-        super(name, teacher, price);
+    public JuniorHighCourse(String name, double price) {
+        super(name, price);
     }
-    
+
 }

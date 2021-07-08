@@ -3,12 +3,20 @@ package Class;
 public class ClassAttribute {
     private String education;
     private int grade;
-    private int classNumber;
+    private String courseName;
 
-    public ClassAttribute(String education, int grade, int classNumber) {
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public ClassAttribute(String education, int grade, String courseName) {
         this.education = education;
         this.grade = grade;
-        this.classNumber = classNumber;
+        this.courseName = courseName;
     }
 
     public ClassAttribute() {
@@ -30,11 +38,4 @@ public class ClassAttribute {
         this.grade = grade;
     }
 
-    public int getClassNumber() {
-        return classNumber;
-    }
-
-    public void setClassNumber(int classNumber) {
-        this.classNumber = classNumber;
-    }
 }

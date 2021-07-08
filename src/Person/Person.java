@@ -11,7 +11,7 @@ public abstract class Person implements ShowInfoInterface {
         return name;
     }
 
-    public void setName(final String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -19,7 +19,7 @@ public abstract class Person implements ShowInfoInterface {
         return sex;
     }
 
-    public void setSex(final String sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -27,11 +27,11 @@ public abstract class Person implements ShowInfoInterface {
         return age;
     }
 
-    public void setAge(final int age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public Person(final String name, final String sex, final int age) {
+    public Person(String name, String sex, int age) {
         this.name = name;
         this.sex = sex;
         this.age = age;

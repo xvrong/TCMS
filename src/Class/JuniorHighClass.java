@@ -5,8 +5,9 @@ public class JuniorHighClass extends Class {
     public JuniorHighClass() {
     }
 
-    public JuniorHighClass(String education, int grade, int classNumber, String classHeader) {
-        super(education, grade, classNumber, classHeader);
+    public JuniorHighClass(String education, int grade, String courseName, String classHeader, int year,
+            int maxStudent) {
+        super(education, grade, courseName, classHeader, year, maxStudent);
     }
 
     @Override

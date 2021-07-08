@@ -5,8 +5,8 @@ public class HighCourse extends Course {
     public HighCourse() {
     }
 
-    public HighCourse(String name, String teacher, double price) {
-        super(name, teacher, price);
+    public HighCourse(String name, double price) {
+        super(name, price);
     }
 
 }
