@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:39:04
+ * @LastEditTime: 2021-07-10 21:40:36
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -10,8 +10,6 @@
 package serivice.impl;
 
 import java.util.ArrayList;
-
-import javax.print.attribute.standard.PrinterInfo;
 
 import SQL.Query;
 import SQL.Impl.QueryImpl;
