@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:28:36
+ * @LastEditTime: 2021-07-11 13:58:03
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -87,6 +87,12 @@ public class GetInputImpl implements GetInput {
     public String getInputCourseName(Education education) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public boolean getInputYN() {
+        // TODO Auto-generated method stub
+        return false;
     }
 
 }

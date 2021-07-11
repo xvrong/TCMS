@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:58
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:37:05
+ * @LastEditTime: 2021-07-11 14:38:31
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import entity.Person.Student;
 import entity.Person.Teacher;
+import entity.TClass.TClass;
 import windows.Print;
 
 public class PrintImpl implements Print {
@@ -35,7 +36,7 @@ public class PrintImpl implements Print {
     }
 
     @Override
-    public void printTClassBasicInfomation(ArrayList<String> tClassList) {
+    public void printTClassBasicInfomation(ArrayList<TClass> tClassList) {
         // TODO Auto-generated method stub
 
     }

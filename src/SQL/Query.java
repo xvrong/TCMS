@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 21:16:12
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:30:48
+ * @LastEditTime: 2021-07-11 13:55:07
  * @Description: use Dao method to query datebase
  * @FilePath: \TCMS\src\SQL\Query.java
  */
@@ -99,5 +99,53 @@ public interface Query {
      * @return ArrayList<Course>
      */
     public ArrayList<Student> queryStudent(boolean StudentState);
+
+    /**
+     * @description:If there is a Student exist
+     * @param {int}     studentId
+     * @param {boolean} state
+     * @return boolean
+     */
+    public boolean IsExistStudent(int studentId, boolean state);
+
+    /**
+     * @description:If there is a Course exist
+     * @param {int}     studentId
+     * @param {boolean} state
+     * @return boolean
+     */
+    public boolean IsExistCourse(int courseId, boolean state);
+
+    /**
+     * @description:If there is a Class exist
+     * @param {int}     tClassId
+     * @param {boolean} state
+     * @return boolean
+     */
+    public boolean IsExistTClass(int tClassId, boolean state);
+
+    /**
+     * @description:If there is a Class exist
+     * @param {int}     teacherId
+     * @param {boolean} state
+     * @return boolean
+     */
+    public boolean IsExistTeacher(int teacherId, boolean state);
+
+    /**
+     * @description: queryTClassByTClassId
+     * @param {int}     tClassId
+     * @param {boolean} state
+     * @return TClass
+     */
+    public TClass queryTClassByTClassId(int tClassId, boolean state);
+
+    /**
+     * @description: queryTClassByTClassId
+     * @param {int}     tClassId
+     * @param {boolean} state
+     * @return TClass
+     */
+    public TClass queryTClass(int courseId, int StudentId, boolean state);
 
 }

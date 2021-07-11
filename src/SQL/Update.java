@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 23:01:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:31:39
+ * @LastEditTime: 2021-07-11 13:53:27
  * @Description: use Dao method to Update DateBase
  * @FilePath: \TCMS\src\SQL\Update.java
  */
@@ -21,44 +21,44 @@ public interface Update {
      * @param {int} tClassId
      * @return boolean if can't delete return false
      */
-    Boolean deleteTaking(int studentId, int tClassId);
+    boolean deleteTaking(int studentId, int tClassId);
 
     /**
      * @description: add a taking item
      * @param {Student} studetn
      * @param {TClass}  tClass
-     * @return none
+     * @return boolean
      */
-    void addTaking(Student studetn, TClass tClass);
+    boolean addTaking(int studentId, int tClassId);
 
     /**
      * @description: add a Teacher
      * @param {Teacher} teacher
-     * @return void
+     * @return boolean
      */
-    void addTeacher(Teacher teacher, String password);
+    boolean addTeacher(Teacher teacher, String password);
 
     /**
      * @description: delete a teacher if it has no class
      * @param {int} teacherId
      * @return boolean if can't delete return false
      */
-    Boolean deleteTeacher(int teahcerId);
+    boolean deleteTeacher(int teahcerId);
 
     /**
      * @description: set a teacher salary
      * @param {int} teacherId
      * @param {int} salary
-     * @return none
+     * @return boolean
      */
-    void setTeacherSalary(int teacherId, int salary);
+    boolean setTeacherSalary(int teacherId, int salary);
 
     /**
      * @description: add a Course
      * @param {Course} course
-     * @return none
+     * @return boolean
      */
-    void addCourse(Course course);
+    boolean addCourse(Course course);
 
     /**
      * @description: deleteCourse if there is no class of it.
@@ -71,16 +71,16 @@ public interface Update {
      * @description: setCoursePrice
      * @param {int} courseId
      * @param {int} salary
-     * @return none
+     * @return boolean
      */
-    void setCoursePrice(int courseId, int salary);
+    boolean setCoursePrice(int courseId, int salary);
 
     /**
      * @description: add a Class
      * @param {TClass} tClass
-     * @return {*}
+     * @return boolean
      */
-    void addTClass(TClass tClass);
+    boolean addTClass(TClass tClass);
 
     /**
      * @description: delete class if there is no student of it.
@@ -93,22 +93,22 @@ public interface Update {
      * @description: set teacher of a class
      * @param {int} TClassId
      * @param {int} TeacherId
-     * @return none
+     * @return boolean
      */
-    void setTeahcer(int TClassId, int TeacherId);
+    boolean setTeahcer(int TClassId, int TeacherId);
 
     /**
      * @description: add a Student if the num of student not over the maxnum, class
      *               num + 1,
      * @param {Student} student
-     * @return none
+     * @return boolean
      */
-    void addStudent(Student student, String password);
+    boolean addStudent(Student student, String password);
 
     /**
      * @description: delete a Student , class num - 1
      * @param {int} student
      * @return boolean if can't delete return false
      */
-    Boolean deleteStudent(int studentId);
+    boolean deleteStudent(int studentId);
 }

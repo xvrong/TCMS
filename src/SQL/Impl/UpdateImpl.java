@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:30:13
+ * @LastEditTime: 2021-07-11 13:54:24
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -17,51 +17,39 @@ import entity.TClass.TClass;
 public class UpdateImpl implements Update {
 
     @Override
-    public void addStudent(Student student, String password) {
+    public boolean deleteTaking(int studentId, int tClassId) {
         // TODO Auto-generated method stub
-
+        return false;
     }
 
     @Override
-    public Boolean deleteStudent(int studentId) {
+    public boolean addTaking(int studentId, int tClassId) {
         // TODO Auto-generated method stub
-        return null;
+        return false;
     }
 
     @Override
-    public Boolean deleteTaking(int studentId, int tClassId) {
+    public boolean addTeacher(Teacher teacher, String password) {
         // TODO Auto-generated method stub
-        return null;
+        return false;
     }
 
     @Override
-    public void addTaking(Student studetn, TClass tClass) {
+    public boolean deleteTeacher(int teahcerId) {
         // TODO Auto-generated method stub
-
+        return false;
     }
 
     @Override
-    public void addTeacher(Teacher teacher, String password) {
+    public boolean setTeacherSalary(int teacherId, int salary) {
         // TODO Auto-generated method stub
-
+        return false;
     }
 
     @Override
-    public Boolean deleteTeacher(int teahcerId) {
+    public boolean addCourse(Course course) {
         // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setTeacherSalary(int teacherId, int salary) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void addCourse(Course course) {
-        // TODO Auto-generated method stub
-
+        return false;
     }
 
     @Override
@@ -71,15 +59,15 @@ public class UpdateImpl implements Update {
     }
 
     @Override
-    public void setCoursePrice(int courseId, int salary) {
+    public boolean setCoursePrice(int courseId, int salary) {
         // TODO Auto-generated method stub
-
+        return false;
     }
 
     @Override
-    public void addTClass(TClass tClass) {
+    public boolean addTClass(TClass tClass) {
         // TODO Auto-generated method stub
-
+        return false;
     }
 
     @Override
@@ -89,8 +77,21 @@ public class UpdateImpl implements Update {
     }
 
     @Override
-    public void setTeahcer(int TClassId, int TeacherId) {
+    public boolean setTeahcer(int TClassId, int TeacherId) {
         // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean addStudent(Student student, String password) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean deleteStudent(int studentId) {
+        // TODO Auto-generated method stub
+        return false;
     }
 
 }

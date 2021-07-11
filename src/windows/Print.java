@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 20:40:06
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 11:53:54
+ * @LastEditTime: 2021-07-11 14:38:53
  * @Description: All print method
  * @FilePath: \TCMS\src\windows\Print.java
  */
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import entity.Person.Student;
 import entity.Person.Teacher;
+import entity.TClass.TClass;
 
 public interface Print {
     /**
@@ -42,7 +43,7 @@ public interface Print {
      * @param {ArrayList<String>} classList
      * @return none
      */
-    public void printTClassBasicInfomation(ArrayList<String> tClassList);
+    public void printTClassBasicInfomation(ArrayList<TClass> tClassList);
 
     /**
      * @description:print Student all information No. + Id + name + sex + education

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:30:21
+ * @LastEditTime: 2021-07-11 13:48:32
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -81,6 +81,42 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<Student> queryStudent(boolean StudentState) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean IsExistStudent(int studentId, boolean state) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean IsExistCourse(int courseId, boolean state) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean IsExistTClass(int tClassId, boolean state) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean IsExistTeacher(int teacherId, boolean state) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public TClass queryTClassByTClassId(int tClassId, boolean state) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public TClass queryTClass(int courseId, int StudentId, boolean state) {
         // TODO Auto-generated method stub
         return null;
     }

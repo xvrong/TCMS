@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:24:22
+ * @LastEditTime: 2021-07-11 13:57:55
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -121,5 +121,12 @@ public interface GetInput {
      * @return courseName
      */
     public String getInputCourseName(Education education);
+
+    /**
+     * @description: getInputYN
+     * @param none
+     * @return Boolean
+     */
+    public boolean getInputYN();
 
 }
