@@ -1,7 +1,18 @@
+/*
+ * @Author: xv_rong
+ * @Date: 2021-07-06 20:35:40
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-11 11:34:42
+ * @Description: Student
+ * @FilePath: \TCMS\src\entity\Person\Student.java
+ */
 package entity.Person;
+
+import Tool.Education;
 
 public class Student extends Person {
     private String studentID; // 学生ID
+    private Education edu; // 学历
 
     public String getStudentID() {
         return studentID;
@@ -11,43 +22,15 @@ public class Student extends Person {
         this.studentID = studentID;
     }
 
-    public Student(String name, String sex, int age, String studentID) {
-        super(name, sex, age);
-        this.studentID = studentID;
+    public Education getEdu() {
+        return edu;
+    }
+
+    public void setEdu(Education edu) {
+        this.edu = edu;
     }
 
     public Student() {
     }
 
 }
-
-// class OldClass {
-// private String name;
-// private int point;
-
-// public OldClass(String name, int point) {
-// this.name = name;
-// this.point = point;
-// }
-
-// public OldClass() {
-
-// }
-
-// public String getName() {
-// return name;
-// }
-
-// public void setName(String name) {
-// this.name = name;
-// }
-
-// public int getPoint() {
-// return point;
-// }
-
-// public void setPoint(int point) {
-// this.point = point;
-// }
-
-// }

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 23:01:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:30:37
+ * @LastEditTime: 2021-07-11 11:00:22
  * @Description: use Dao method to Update DateBase
  * @FilePath: \TCMS\src\SQL\Update.java
  */
@@ -14,19 +14,6 @@ import entity.Person.Teacher;
 import entity.TClass.TClass;
 
 public interface Update {
-    /**
-     * @description: add a Student
-     * @param {Student} student
-     * @return none
-     */
-    void addStudent(Student student);
-
-    /**
-     * @description: delete a Student
-     * @param {int} student
-     * @return boolean if can't delete return false
-     */
-    Boolean deleteStudent(int studentId);
 
     /**
      * @description: delete a taking item
@@ -103,10 +90,25 @@ public interface Update {
     boolean deleteTClass(int TClassId);
 
     /**
-     * @description: set teacher in a class
+     * @description: set teacher of a class
      * @param {int} TClassId
      * @param {int} TeacherId
      * @return none
      */
     void setTeahcer(int TClassId, int TeacherId);
+
+    /**
+     * @description: add a Student if the num of student not over the maxnum, class
+     *               num + 1,
+     * @param {Student} student
+     * @return none
+     */
+    void addStudent(Student student);
+
+    /**
+     * @description: delete a Student , class num - 1
+     * @param {int} student
+     * @return boolean if can't delete return false
+     */
+    Boolean deleteStudent(int studentId);
 }

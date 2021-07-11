@@ -1,9 +1,26 @@
+/*
+ * @Author: xv_rong
+ * @Date: 2021-07-06 20:35:40
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-11 11:35:05
+ * @Description: Person
+ * @FilePath: \TCMS\src\entity\Person\Person.java
+ */
 package entity.Person;
 
 public abstract class Person {
     private String name; // 名字
     private String sex; // 性别
     private int age; // 年龄
+    private String birthday; // 生日
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
     public String getName() {
         return name;
@@ -26,12 +43,6 @@ public abstract class Person {
     }
 
     public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Person(String name, String sex, int age) {
-        this.name = name;
-        this.sex = sex;
         this.age = age;
     }
 
