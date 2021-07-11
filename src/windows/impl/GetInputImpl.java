@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:37:37
+ * @LastEditTime: 2021-07-11 12:28:36
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -78,9 +78,9 @@ public class GetInputImpl implements GetInput {
     }
 
     @Override
-    public int getInputPassword() {
+    public String getInputPassword() {
         // TODO Auto-generated method stub
-        return 0;
+        return null;
     }
 
     @Override

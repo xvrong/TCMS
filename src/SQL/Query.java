@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 21:16:12
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:11:34
+ * @LastEditTime: 2021-07-11 12:30:48
  * @Description: use Dao method to query datebase
  * @FilePath: \TCMS\src\SQL\Query.java
  */
@@ -39,7 +39,7 @@ public interface Query {
      * @param {boolean} tClassState
      * @return ArrayList<TClass>
      */
-    public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassstate);
+    public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassState);
 
     /**
      * @description: use class to select student by class
@@ -84,7 +84,7 @@ public interface Query {
      * @param {String}    CourseName
      * @return boolean
      */
-    public boolean IsExistCourse(Education education, String vourseName, boolean courseState);
+    public boolean IsExistCourse(Education education, String courseName, boolean courseState);
 
     /**
      * @description: queryTCourse is or not exist

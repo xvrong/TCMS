@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:35:11
+ * @LastEditTime: 2021-07-11 12:30:13
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -17,7 +17,7 @@ import entity.TClass.TClass;
 public class UpdateImpl implements Update {
 
     @Override
-    public void addStudent(Student student) {
+    public void addStudent(Student student, String password) {
         // TODO Auto-generated method stub
 
     }
@@ -41,7 +41,7 @@ public class UpdateImpl implements Update {
     }
 
     @Override
-    public void addTeacher(Teacher teacher) {
+    public void addTeacher(Teacher teacher, String password) {
         // TODO Auto-generated method stub
 
     }
@@ -91,7 +91,6 @@ public class UpdateImpl implements Update {
     @Override
     public void setTeahcer(int TClassId, int TeacherId) {
         // TODO Auto-generated method stub
-
     }
 
 }

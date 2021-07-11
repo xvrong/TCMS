@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:14:09
+ * @LastEditTime: 2021-07-11 12:30:21
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -68,7 +68,7 @@ public class QueryImpl implements Query {
     }
 
     @Override
-    public boolean IsExistCourse(Education education, String vourseName, boolean courseState) {
+    public boolean IsExistCourse(Education education, String courseName, boolean courseState) {
         // TODO Auto-generated method stub
         return false;
     }

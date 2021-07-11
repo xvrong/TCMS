@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:02:08
+ * @LastEditTime: 2021-07-11 12:24:22
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -113,7 +113,7 @@ public interface GetInput {
      * @param none
      * @return password
      */
-    public int getInputPassword();
+    public String getInputPassword();
 
     /**
      * @description: get CourseName, consider exixs same name Course in database

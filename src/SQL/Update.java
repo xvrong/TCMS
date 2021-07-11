@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 23:01:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 11:00:22
+ * @LastEditTime: 2021-07-11 12:31:06
  * @Description: use Dao method to Update DateBase
  * @FilePath: \TCMS\src\SQL\Update.java
  */
@@ -36,7 +36,7 @@ public interface Update {
      * @param {Teacher} teacher
      * @return void
      */
-    void addTeacher(Teacher teacher);
+    void addTeacher(Teacher teacher, String password);
 
     /**
      * @description: delete a teacher if it has no class
@@ -103,7 +103,7 @@ public interface Update {
      * @param {Student} student
      * @return none
      */
-    void addStudent(Student student);
+    void addStudent(Student student, String password);
 
     /**
      * @description: delete a Student , class num - 1

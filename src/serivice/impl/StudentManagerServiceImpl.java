@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:14:33
+ * @LastEditTime: 2021-07-11 12:25:21
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -12,10 +12,13 @@ package serivice.impl;
 import java.util.ArrayList;
 
 import SQL.Query;
+import SQL.Update;
 import SQL.Impl.QueryImpl;
+import SQL.Impl.UpdateImpl;
 import Tool.Education;
 import entity.Course.Course;
 import entity.Person.Student;
+import entity.Person.Teacher;
 import entity.TClass.TClass;
 import serivice.StudentManagerService;
 import windows.GetInput;
@@ -53,18 +56,38 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         Query qy = new QueryImpl();
         Print pt = new PrintImpl();
         int teacherId = get.getInputId();
-        qy.queryStudentByTeacher(teacherId, true);
+        ArrayList<Student> studentList = qy.queryStudentByTeacher(teacherId, true);
+        pt.printStudentBasicInfomation(studentList);
     }
 
     @Override
     public void showCertainStudent() {
-        // TODO Auto-generated method stub
-
+        GetInput get = new GetInputImpl();
+        Query qy = new QueryImpl();
+        Print pt = new PrintImpl();
+        int studentId = get.getInputId();
+        Student student = qy.queryStudentByStudentID(studentId, true);
+        ArrayList<Student> studentList = new ArrayList<Student>();
+        studentList.add(student);
+        pt.printStudentAllInformation(studentList);
     }
 
     @Override
     public void addStudent() {
-        // TODO Auto-generated method stub
+        Student student = new Student();
+        GetInput get = new GetInputImpl();
+        Update up = new UpdateImpl();
+        Print pt = new PrintImpl();
+        String name = get.getInputName();
+        student.setName(name);
+        Education edu = get.getInputEducation();
+        student.setEdu(edu);
+        String birthday = get.getInputBirthday();
+        student.setBirthday(birthday);
+        String sex = get.getInputSex();
+        student.setSex(sex);
+        String passWord = get.getInputPassword();
+        up.addStudent(student, passWord);
 
     }
 
