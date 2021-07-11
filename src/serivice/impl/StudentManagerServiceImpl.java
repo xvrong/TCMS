@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:40:36
+ * @LastEditTime: 2021-07-11 11:50:14
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -42,7 +42,9 @@ public class StudentManagerServiceImpl implements StudentManagerService {
 
     @Override
     public void showAllStudent() {
-        // TODO Auto-generated method stub
+        Query qy = new QueryImpl();
+        Print pt = new PrintImpl();
+        ArrayList<Student> studentList = qy.query
 
     }
 
