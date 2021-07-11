@@ -8,7 +8,7 @@
  */
 package entity.Person;
 
-public abstract class Person {
+public class Person {
     private String name; // 名字
     private String sex; // 性别
     private int age; // 年龄

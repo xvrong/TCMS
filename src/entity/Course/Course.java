@@ -10,7 +10,7 @@ package entity.Course;
 
 import Tool.Education;
 
-public abstract class Course {
+public class Course {
     private String name; // 课程名
     private double price; // 价格
     private int CourseId; // 课程Id

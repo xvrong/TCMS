@@ -8,12 +8,14 @@
  */
 package entity.TClass;
 
-public abstract class TClass {
+import Tool.Education;
+
+public class TClass {
     private int classID; // 班级ID
     private int courseID; // 课程ID
     private int teacherID; // 老师ID
     private int studentNum; // 学生数
-    private int education; // 学历 （小学 初中 高中）
+    private Education education; // 学历 （小学 初中 高中）
     private int grade; // 年级
     private int startYear; // 开班年份
     private int orderNumber; // 班序号
@@ -60,11 +62,11 @@ public abstract class TClass {
         this.studentNum = studentNum;
     }
 
-    public int getEducation() {
+    public Education getEducation() {
         return education;
     }
 
-    public void setEducation(int education) {
+    public void setEducation(Education education) {
         this.education = education;
     }
 

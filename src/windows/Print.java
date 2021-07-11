@@ -11,6 +11,7 @@ package windows;
 
 import java.util.ArrayList;
 
+import entity.Course.Course;
 import entity.Person.Student;
 import entity.Person.Teacher;
 import entity.TClass.TClass;
@@ -28,14 +29,14 @@ public interface Print {
      * @param {ArrayList<Teacher>} TeacherList
      * @return none
      */
-    public void printTeacherBasicInfomation(ArrayList<Teacher> TeacherList);
+    public void printTeacherBasicInfomation(ArrayList<Teacher> teacherList);
 
     /**
      * @description: print Course basic information No.+ education + name
      * @param {ArrayList<String>} cousrseList
      * @return none
      */
-    public void printCourseBasicInfomation(ArrayList<String> cousrseList);
+    public void printCourseBasicInfomation(ArrayList<Course> courseList);
 
     /**
      * @description:print class basic information No.+ year + education + course +
