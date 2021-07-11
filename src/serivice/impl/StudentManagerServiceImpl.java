@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:00:51
+ * @LastEditTime: 2021-07-11 12:14:33
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -27,7 +27,6 @@ public class StudentManagerServiceImpl implements StudentManagerService {
 
     @Override
     public void showCertainClassStudent() {
-
         GetInput get = new GetInputImpl();
         Query qy = new QueryImpl();
         Print pt = new PrintImpl();
@@ -45,13 +44,16 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         Query qy = new QueryImpl();
         Print pt = new PrintImpl();
         ArrayList<Student> studentList = qy.queryStudent(true);
-
+        pt.printStudentBasicInfomation(studentList);
     }
 
     @Override
     public void showCertainTeacherStudent() {
-        // TODO Auto-generated method stub
-
+        GetInput get = new GetInputImpl();
+        Query qy = new QueryImpl();
+        Print pt = new PrintImpl();
+        int teacherId = get.getInputId();
+        qy.queryStudentByTeacher(teacherId, true);
     }
 
     @Override
