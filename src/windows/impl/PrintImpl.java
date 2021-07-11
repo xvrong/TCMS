@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 20:02:26
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-11 20:37:18
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -11,6 +11,7 @@ package windows.impl;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import Tool.Debug;
 import Tool.Education;
 import entity.Course.Course;
 import entity.Person.Student;
@@ -21,47 +22,7 @@ import windows.Print;
 public class PrintImpl implements Print {
     private static PrintStream jout = System.out; // 全局的输出
 
-    private static Student createStudent(int id, String name, String sex, Education edu, String birthday, int age) {
-        // 生成调试用的学生
-        Student stu = new Student();
-        stu.setStudentID(id);
-        stu.setName(name);
-        stu.setSex(sex);
-        stu.setEdu(edu);
-        stu.setBirthday(birthday);
-        stu.setAge(age);
-        return stu;
-    }
-
-    private static Teacher createTeacher(int id, String name, String sex, String birthday, int age, double salary) {
-        // 生成调试用的老师
-        Teacher tch = new Teacher();
-        tch.setTeacherID(id);
-        tch.setName(name);
-        tch.setSex(sex);
-        tch.setBirthday(birthday);
-        tch.setAge(age);
-        tch.setSalary(salary);
-        return tch;
-    }
-
-    private static Course createCourse(Education edu, String name) {
-        // 生成调试用的课程
-        Course cour = new Course();
-        cour.setEdu(edu);
-        cour.setName(name);
-        return cour;
-    }
-
-    private static TClass createTClass(int year, Education edu, int courseId, int studentNum) {
-        // 生成调试用的班级
-        TClass tcl = new TClass();
-        tcl.setStartYear(year);
-        tcl.setEducation(edu);
-        tcl.setCourseID(courseId);
-        tcl.setStudentNum(studentNum);
-        return tcl;
-    }
+    
 
     @Override
     public void printStudentBasicInfomation(ArrayList<Student> studentList) {
@@ -162,24 +123,24 @@ public class PrintImpl implements Print {
     public static void main(String[] args) {
         PrintImpl Test = new PrintImpl();
         ArrayList<Student> studentList = new ArrayList<Student>();
-        studentList.add(createStudent(001, "松本", "无", Education.HIGH, "2085-11-17", 45));
-        studentList.add(createStudent(002, "vivy", "女", Education.PRIMARY, "2008-06-01", 34));
+        studentList.add(Debug.createStudent(001, "松本", "无", Education.HIGH, "2085-11-17", 45));
+        studentList.add(Debug.createStudent(002, "vivy", "女", Education.PRIMARY, "2008-06-01", 34));
         Test.printStudentBasicInfomation(studentList);
         Test.printStudentAllInformation(studentList);
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-        teacherList.add(createTeacher(001, "奥菲利亚", "女", "2045-11-17", 23, 180000.5));
-        teacherList.add(createTeacher(002, "navy", "女", "2008-06-01", 34, 84521.0));
+        teacherList.add(Debug.createTeacher(001, "奥菲利亚", "女", "2045-11-17", 23, 180000.5));
+        teacherList.add(Debug.createTeacher(002, "navy", "女", "2008-06-01", 34, 84521.0));
         Test.printTeacherBasicInfomation(teacherList);
         Test.printTeacherAllInformation(teacherList);
 
         ArrayList<Course> courseList = new ArrayList<Course>();
-        courseList.add(createCourse(Education.HIGH, "人工智能基础"));
-        courseList.add(createCourse(Education.HIGH, "毛泽东思想与中国特色社会主义理论体系概论"));
+        courseList.add(Debug.createCourse(Education.HIGH, "人工智能基础"));
+        courseList.add(Debug.createCourse(Education.HIGH, "毛泽东思想与中国特色社会主义理论体系概论"));
         Test.printCourseBasicInfomation(courseList);
 
         ArrayList<TClass> tClassList = new ArrayList<TClass>();
-        tClassList.add(createTClass(2021, Education.JUNIOR, 996, 101));
-        tClassList.add(createTClass(1998, Education.PRIMARY, 007, 97));
+        tClassList.add(Debug.createTClass(2021, Education.JUNIOR, 996, 101));
+        tClassList.add(Debug.createTClass(1998, Education.PRIMARY, 007, 97));
         Test.printTClassBasicInfomation(tClassList);
     }
 }
