@@ -11,6 +11,15 @@ package entity.Person;
 public class Teacher extends Person {
     private String teacherID; // 老师ID号
     private double salary; // 工资
+    private boolean state; // 状态
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
 
     public Teacher() {
     }

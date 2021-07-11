@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 21:16:12
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:05:36
+ * @LastEditTime: 2021-07-11 12:11:34
  * @Description: use Dao method to query datebase
  * @FilePath: \TCMS\src\SQL\Query.java
  */
@@ -39,7 +39,7 @@ public interface Query {
      * @param {boolean} tClassState
      * @return ArrayList<TClass>
      */
-    public ArrayList<TClass> queryTClassByStudent(int studentId, boolean state);
+    public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassstate);
 
     /**
      * @description: use class to select student by class
@@ -62,21 +62,21 @@ public interface Query {
      * @param {int} teacherId
      * @return ArrayList<Student>
      */
-    public ArrayList<Student> queryStudentByTeacher(int teacherId);
+    public ArrayList<Student> queryStudentByTeacher(int teacherId, boolean studentState);
 
     /**
      * @description: use studentId to select student
      * @param {int} studentId
      * @return ArrayList<Student>
      */
-    public Student queryStudentByStudentID(int studentId);
+    public Student queryStudentByStudentID(int studentId, boolean studentState);
 
     /**
      * @description: queryTClass where state = state
      * @param {boolean} state
      * @return ArrayList<TClass>
      */
-    public ArrayList<TClass> queryTClass(boolean state);
+    public ArrayList<TClass> queryTClass(boolean tClassState);
 
     /**
      * @description: If there is a Course exist
@@ -84,20 +84,20 @@ public interface Query {
      * @param {String}    CourseName
      * @return boolean
      */
-    public boolean IsExistCourse(Education education, String CourseName);
+    public boolean IsExistCourse(Education education, String vourseName, boolean courseState);
 
     /**
-     * @description: queryTCourse where state = state
+     * @description: queryTCourse is or not exist
      * @param {boolean} state
      * @return ArrayList<Course>
      */
-    public ArrayList<Course> queryCourse(boolean state);
+    public ArrayList<Course> queryCourse(boolean CourseState);
 
     /**
      * @description: queryStudent where state = state
      * @param {boolean} state
      * @return ArrayList<Course>
      */
-    public ArrayList<Student> queryStudent(boolean state);
+    public ArrayList<Student> queryStudent(boolean StudentState);
 
 }

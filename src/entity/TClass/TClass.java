@@ -18,6 +18,15 @@ public abstract class TClass {
     private int startYear; // 开班年份
     private int orderNumber; // 班序号
     private int maxStudentNum; // 最大学生数
+    private boolean state; // 状态
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
 
     public int getClassID() {
         return classID;
