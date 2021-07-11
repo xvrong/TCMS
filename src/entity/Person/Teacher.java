@@ -2,14 +2,14 @@
  * @Author: xv_rong
  * @Date: 2021-07-06 20:35:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 11:24:10
+ * @LastEditTime: 2021-07-11 16:56:27
  * @Description: Teacher
  * @FilePath: \TCMS\src\entity\Person\Teacher.java
  */
 package entity.Person;
 
 public class Teacher extends Person {
-    private String teacherID; // 老师ID号
+    private int teacherID; // 老师ID号
     private double salary; // 工资
     private boolean state; // 状态
 
@@ -24,11 +24,11 @@ public class Teacher extends Person {
     public Teacher() {
     }
 
-    public String getTeacherID() {
+    public int getTeacherID() {
         return teacherID;
     }
 
-    public void setTeacherID(String teacherID) {
+    public void setTeacherID(int teacherID) {
         this.teacherID = teacherID;
     }
 

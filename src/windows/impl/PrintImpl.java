@@ -2,9 +2,9 @@
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 8:38:31
+ * @LastEditTime: 2021-07-11 20:02:26
  * @Description: 
- * @FilePath: \tCMS\src\windows\impl\PrintImpl.java
+ * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
 package windows.impl;
 
@@ -21,7 +21,7 @@ import windows.Print;
 public class PrintImpl implements Print {
     private static PrintStream jout = System.out; // 全局的输出
 
-    private static Student createStudent(String id, String name, String sex, Education edu, String birthday, int age) {
+    private static Student createStudent(int id, String name, String sex, Education edu, String birthday, int age) {
         // 生成调试用的学生
         Student stu = new Student();
         stu.setStudentID(id);
@@ -32,7 +32,8 @@ public class PrintImpl implements Print {
         stu.setAge(age);
         return stu;
     }
-    private static Teacher createTeacher(String id, String name, String sex, String birthday, int age, double salary) {
+
+    private static Teacher createTeacher(int id, String name, String sex, String birthday, int age, double salary) {
         // 生成调试用的老师
         Teacher tch = new Teacher();
         tch.setTeacherID(id);
@@ -43,6 +44,7 @@ public class PrintImpl implements Print {
         tch.setSalary(salary);
         return tch;
     }
+
     private static Course createCourse(Education edu, String name) {
         // 生成调试用的课程
         Course cour = new Course();
@@ -50,6 +52,7 @@ public class PrintImpl implements Print {
         cour.setName(name);
         return cour;
     }
+
     private static TClass createTClass(int year, Education edu, int courseId, int studentNum) {
         // 生成调试用的班级
         TClass tcl = new TClass();
@@ -67,9 +70,8 @@ public class PrintImpl implements Print {
         jout.printf("%-8s\t%-8s\t%-8s\n", "序号", "学生ID", "姓名");
         jout.println("--------------------------------------------------------");
         int number = 0;
-        for(Student stu : studentList) {
-            jout.printf("%-8d\t%-8s\t%-8s\n", 
-                number, stu.getStudentID(), stu.getName());
+        for (Student stu : studentList) {
+            jout.printf("%-8d\t%-8s\t%-8s\n", number, stu.getStudentID(), stu.getName());
             number++;
         }
         jout.println("---------------------------------------------------------");
@@ -82,9 +84,8 @@ public class PrintImpl implements Print {
         jout.printf("%-8s\t%-8s\t%-8s\n", "序号", "老师ID", "姓名");
         jout.println("--------------------------------------------------------------------------------");
         int number = 0;
-        for(Teacher tch : teacherList) {
-            jout.printf("%-8d\t%-8s\t%-8s\n", 
-                number, tch.getTeacherID(), tch.getName());
+        for (Teacher tch : teacherList) {
+            jout.printf("%-8d\t%-8s\t%-8s\n", number, tch.getTeacherID(), tch.getName());
             number++;
         }
         jout.println("--------------------------------------------------------------------------------");
@@ -97,9 +98,8 @@ public class PrintImpl implements Print {
         jout.printf("%-8s\t%-8s\t%-8s\n", "序号", "学历", "课程名称");
         jout.println("--------------------------------------------------------------------------------");
         int number = 0;
-        for(Course cour : courseList) {
-            jout.printf("%-8d\t%-8s\t%-8s\n",
-                number, cour.getEdu(), cour.getName());
+        for (Course cour : courseList) {
+            jout.printf("%-8d\t%-8s\t%-8s\n", number, cour.getEdu(), cour.getName());
             number++;
         }
         jout.println("--------------------------------------------------------------------------------");
@@ -113,9 +113,9 @@ public class PrintImpl implements Print {
         jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "开始时间", "学历", "课程ID", "学生人数");
         jout.println("--------------------------------------------------------------------------------");
         int number = 0;
-        for(TClass tcs : tClassList) {
-            jout.printf("%-8d\t%-8d\t%-8s\t%-8d\t%-8d\n",
-                number, tcs.getStartYear(), tcs.getEducation(), tcs.getCourseID(), tcs.getStudentNum());
+        for (TClass tcs : tClassList) {
+            jout.printf("%-8d\t%-8d\t%-8s\t%-8d\t%-8d\n", number, tcs.getStartYear(), tcs.getEducation(),
+                    tcs.getCourseID(), tcs.getStudentNum());
             number++;
         }
         jout.println("--------------------------------------------------------------------------------");
@@ -125,43 +125,50 @@ public class PrintImpl implements Print {
     @Override
     public void printStudentAllInformation(ArrayList<Student> studentList) {
         jout.println("学生的详细信息：");
-        jout.println("--------------------------------------------------------------------------------------------------------------");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------------");
         jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "学生ID", "姓名", "性别", "学历", "生日", "年龄");
-        jout.println("--------------------------------------------------------------------------------------------------------------");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------------");
         int number = 0;
-        for(Student stu : studentList) {
-            jout.printf("%-8d\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8d\n",
-                number, stu.getStudentID(), stu.getName(), stu.getSex(), stu.getEdu(), stu.getBirthday(), stu.getAge());
+        for (Student stu : studentList) {
+            jout.printf("%-8d\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8d\n", number, stu.getStudentID(), stu.getName(),
+                    stu.getSex(), stu.getEdu(), stu.getBirthday(), stu.getAge());
             number++;
         }
-        jout.println("--------------------------------------------------------------------------------------------------------------");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------------");
     }
 
     @Override
     public void printTeacherAllInformation(ArrayList<Teacher> teacherList) {
         jout.println("老师的详细信息：");
-        jout.println("--------------------------------------------------------------------------------------------------------------");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------------");
         jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "老师ID", "姓名", "性别", "生日", "年龄", "工资");
-        jout.println("--------------------------------------------------------------------------------------------------------------");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------------");
         int number = 0;
-        for(Teacher tch : teacherList) {
-            jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8d\t%-8.2f\n",
-                number, tch.getTeacherID(), tch.getName(), tch.getSex(), tch.getBirthday(), tch.getAge(), tch.getSalary());
+        for (Teacher tch : teacherList) {
+            jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8d\t%-8.2f\n", number, tch.getTeacherID(), tch.getName(),
+                    tch.getSex(), tch.getBirthday(), tch.getAge(), tch.getSalary());
             number++;
         }
-        jout.println("--------------------------------------------------------------------------------------------------------------");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------------");
 
     }
+
     public static void main(String[] args) {
         PrintImpl Test = new PrintImpl();
         ArrayList<Student> studentList = new ArrayList<Student>();
-        studentList.add(createStudent("001", "松本", "无", Education.HIGH, "2085-11-17", 45));
-        studentList.add(createStudent("002", "vivy", "女", Education.PRIMARY, "2008-06-01", 34));
+        studentList.add(createStudent(001, "松本", "无", Education.HIGH, "2085-11-17", 45));
+        studentList.add(createStudent(002, "vivy", "女", Education.PRIMARY, "2008-06-01", 34));
         Test.printStudentBasicInfomation(studentList);
         Test.printStudentAllInformation(studentList);
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-        teacherList.add(createTeacher("001", "奥菲利亚", "女", "2045-11-17", 23, 180000.5));
-        teacherList.add(createTeacher("002", "navy", "女", "2008-06-01", 34, 84521.0));
+        teacherList.add(createTeacher(001, "奥菲利亚", "女", "2045-11-17", 23, 180000.5));
+        teacherList.add(createTeacher(002, "navy", "女", "2008-06-01", 34, 84521.0));
         Test.printTeacherBasicInfomation(teacherList);
         Test.printTeacherAllInformation(teacherList);
 

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-06 20:35:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 12:12:53
+ * @LastEditTime: 2021-07-11 16:56:43
  * @Description: Student
  * @FilePath: \TCMS\src\entity\Person\Student.java
  */
@@ -11,7 +11,7 @@ package entity.Person;
 import Tool.Education;
 
 public class Student extends Person {
-    private String studentID; // 学生ID
+    private int studentID; // 学生ID
     private Education edu; // 学历
     private boolean state; // 状态
 
@@ -23,11 +23,11 @@ public class Student extends Person {
         this.state = state;
     }
 
-    public String getStudentID() {
+    public int getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(String studentID) {
+    public void setStudentID(int studentID) {
         this.studentID = studentID;
     }
 

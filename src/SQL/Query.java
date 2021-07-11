@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 21:16:12
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 13:55:07
+ * @LastEditTime: 2021-07-11 16:56:59
  * @Description: use Dao method to query datebase
  * @FilePath: \TCMS\src\SQL\Query.java
  */
@@ -56,6 +56,13 @@ public interface Query {
      * @return Teacher
      */
     public Teacher queryTeacher(int tClassId, boolean teacherState);
+
+    /**
+     * @description: select teacher state = state
+     * @param {boolean} teacherState
+     * @return ArrayList<Teacher>
+     */
+    public ArrayList<Teacher> queryTeacher(boolean teacherState);
 
     /**
      * @description: use teacherId to select student
@@ -141,11 +148,28 @@ public interface Query {
     public TClass queryTClassByTClassId(int tClassId, boolean state);
 
     /**
-     * @description: queryTClassByTClassId
-     * @param {int}     tClassId
+     * @description: queryTClass
+     * @param {int}     courseId
+     * @param {int}     StudentId
      * @param {boolean} state
      * @return TClass
      */
     public TClass queryTClass(int courseId, int StudentId, boolean state);
+
+    /**
+     * @description: queryTeacherByTeacherId
+     * @param {int}     TeacherId
+     * @param {boolean} state
+     * @return TClass
+     */
+    public Teacher queryTeacherByTeacherId(int teacherId, boolean state);
+
+    /**
+     * @description: queryTeacherByTeacherId
+     * @param {int}     teacherId
+     * @param {boolean} state
+     * @return TClass
+     */
+    public ArrayList<TClass> queryTClassByTeacherId(int teacherId, boolean stete);
 
 }

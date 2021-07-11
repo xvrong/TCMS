@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 13:54:24
+ * @LastEditTime: 2021-07-11 19:38:56
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -36,12 +36,6 @@ public class UpdateImpl implements Update {
 
     @Override
     public boolean deleteTeacher(int teahcerId) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean setTeacherSalary(int teacherId, int salary) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -90,6 +84,12 @@ public class UpdateImpl implements Update {
 
     @Override
     public boolean deleteStudent(int studentId) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean setTeacherSalary(int teacherId, double salary) {
         // TODO Auto-generated method stub
         return false;
     }

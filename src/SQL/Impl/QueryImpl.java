@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 13:48:32
+ * @LastEditTime: 2021-07-11 16:55:56
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -32,7 +32,7 @@ public class QueryImpl implements Query {
     }
 
     @Override
-    public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassstate) {
+    public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassState) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -45,6 +45,12 @@ public class QueryImpl implements Query {
 
     @Override
     public Teacher queryTeacher(int tClassId, boolean teacherState) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public ArrayList<Teacher> queryTeacher(boolean teacherState) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -117,6 +123,18 @@ public class QueryImpl implements Query {
 
     @Override
     public TClass queryTClass(int courseId, int StudentId, boolean state) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Teacher queryTeacherByTeacherId(int TeacherId, boolean state) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public ArrayList<TClass> queryTClassByTeacherId(int TeacherId, boolean state) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 23:01:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 13:53:27
+ * @LastEditTime: 2021-07-11 19:38:45
  * @Description: use Dao method to Update DateBase
  * @FilePath: \TCMS\src\SQL\Update.java
  */
@@ -51,7 +51,7 @@ public interface Update {
      * @param {int} salary
      * @return boolean
      */
-    boolean setTeacherSalary(int teacherId, int salary);
+    boolean setTeacherSalary(int teacherId, double salary);
 
     /**
      * @description: add a Course
