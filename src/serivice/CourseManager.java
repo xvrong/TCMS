@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 20:50:34
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:18:36
+ * @LastEditTime: 2021-07-11 20:15:00
  * @Description: CourseManager
  * @FilePath: \TCMS\src\serivice\CourseManager.java
  */
@@ -29,6 +29,13 @@ public interface CourseManager {
      * @return none
      */
     void addCourse();
+
+    /**
+     * @description: add a Course
+     * @param none
+     * @return none
+     */
+    void deleteCourse();
 
     /**
      * @description: setCoursePrice

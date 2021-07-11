@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 20:03:46
+ * @LastEditTime: 2021-07-11 20:20:34
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
@@ -138,11 +138,16 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
             ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
             teacherList.add(teacher);
             pt.printTeacherAllInformation(teacherList);
-            if (get.getInputYN()) {
-                if (up.deleteTeacher(teacherId))
-                    System.out.println("删除成功");
-                else
-                    System.out.println("删除失败");
+            ArrayList<TClass> tClassList = qy.queryTClassByTeacherId(teacherId, true);
+            if (tClassList.size() == 0) {
+                if (get.getInputYN()) {
+                    if (up.deleteTeacher(teacherId))
+                        System.out.println("删除成功");
+                    else
+                        System.out.println("删除失败");
+                }
+            } else {
+                System.out.println("此老师正在授课，无法删除");
             }
         } else {
             System.out.println("无此老师");
