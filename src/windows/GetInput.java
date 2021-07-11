@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 13:57:55
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-11 20:43:29
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
