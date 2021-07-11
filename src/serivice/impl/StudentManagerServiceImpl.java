@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 11:50:14
+ * @LastEditTime: 2021-07-11 12:00:51
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -44,7 +44,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
     public void showAllStudent() {
         Query qy = new QueryImpl();
         Print pt = new PrintImpl();
-        ArrayList<Student> studentList = qy.query
+        ArrayList<Student> studentList = qy.queryStudent(true);
 
     }
 

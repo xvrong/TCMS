@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 20:40:06
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 20:52:24
+ * @LastEditTime: 2021-07-11 11:53:54
  * @Description: All print method
  * @FilePath: \TCMS\src\windows\Print.java
  */
@@ -48,7 +48,7 @@ public interface Print {
      * @description:print Student all information No. + Id + name + sex + education
      *                    + birthday + age
      * @param {ArrayList<Student>} studentList
-     * @return {*}
+     * @return none
      */
     public void printStudentAllInformation(ArrayList<Student> studentList);
 
@@ -56,7 +56,7 @@ public interface Print {
      * @description:print Teacher all information No.+ Id + name + sex + birthday +
      *                    age + salary
      * @param {ArrayList<Teacher>} teacherList
-     * @return {*}
+     * @return none
      */
     public void printTeacherAllInformation(ArrayList<Teacher> teacherList);
 }

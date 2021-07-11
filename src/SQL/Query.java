@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 21:16:12
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:22:17
+ * @LastEditTime: 2021-07-11 12:05:36
  * @Description: use Dao method to query datebase
  * @FilePath: \TCMS\src\SQL\Query.java
  */
@@ -39,7 +39,7 @@ public interface Query {
      * @param {boolean} tClassState
      * @return ArrayList<TClass>
      */
-    public ArrayList<TClass> queryStudentTClass(int studentId, boolean state);
+    public ArrayList<TClass> queryTClassByStudent(int studentId, boolean state);
 
     /**
      * @description: use class to select student by class
@@ -73,8 +73,8 @@ public interface Query {
 
     /**
      * @description: queryTClass where state = state
-     * @param none
-     * @return none
+     * @param {boolean} state
+     * @return ArrayList<TClass>
      */
     public ArrayList<TClass> queryTClass(boolean state);
 
@@ -88,9 +88,16 @@ public interface Query {
 
     /**
      * @description: queryTCourse where state = state
-     * @param none
-     * @return none
+     * @param {boolean} state
+     * @return ArrayList<Course>
      */
     public ArrayList<Course> queryCourse(boolean state);
+
+    /**
+     * @description: queryStudent where state = state
+     * @param {boolean} state
+     * @return ArrayList<Course>
+     */
+    public ArrayList<Student> queryStudent(boolean state);
 
 }
