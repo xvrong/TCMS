@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 08:47:50
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-12 10:24:36
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import Tool.Education;
 import entity.Course.Course;
+import entity.Person.Student;
 import entity.Person.Teacher;
 import entity.TClass.TClass;
 
@@ -123,4 +124,19 @@ public interface GetInput {
      */
     public boolean getInputYN();
 
+    /**
+     * @description: get a Num > 0
+     * @param none
+     * @return boolean
+     */
+    public boolean getInputClassMaxNum();
+
+    /**
+     * @description: get studentId, check input > 0, until input right year, provid
+     *               a method to input -1 to back to menu without right input(return
+     *               -1)
+     * @param {ArrayList<Student>} studentList
+     * @return int
+     */
+    public int getInputStudent(ArrayList<Student> studentList);
 }

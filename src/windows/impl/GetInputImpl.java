@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 10:05:46
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-12 10:24:51
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -17,13 +17,14 @@ import java.util.regex.Pattern;
 
 import Tool.Education;
 import entity.Course.Course;
+import entity.Person.Student;
 import entity.Person.Teacher;
 import entity.TClass.TClass;
 import windows.GetInput;
 
 public class GetInputImpl implements GetInput {
     static final PrintStream jout = System.out;
-    static  Scanner input = null;
+    static Scanner input = null;
     static final PrintImpl PT = new PrintImpl();
 
     /**
@@ -58,14 +59,14 @@ public class GetInputImpl implements GetInput {
         }
 
         switch (chos) {
-        case 0:
-            return Education.PRIMARY;
-        case 1:
-            return Education.JUNIOR;
-        case 2:
-            return Education.HIGH;
-        default:
-            return Education.HIGH; // 不会执行,为了去除报错
+            case 0:
+                return Education.PRIMARY;
+            case 1:
+                return Education.JUNIOR;
+            case 2:
+                return Education.HIGH;
+            default:
+                return Education.HIGH; // 不会执行,为了去除报错
         }
     }
 
@@ -163,14 +164,13 @@ public class GetInputImpl implements GetInput {
                     throw new Exception("日期必须由数字组成");
                 }
 
-                SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
                 sd.setLenient(false);
                 sd.parse(birthday);
                 break;
             } catch (ParseException e) {
                 jout.println("输入日期不合法!");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 jout.println(e.getMessage());
             }
         }
@@ -325,8 +325,10 @@ public class GetInputImpl implements GetInput {
         // jout.println("输入成功, 课程ID: " + courseId);
 
         // ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-        // teacherList.add(Debug.createTeacher(001, "奥菲利亚", "女", "2045-11-17", 23, 180000.5));
-        // teacherList.add(Debug.createTeacher(002, "navy", "女", "2008-06-01", 34, 84521.0));
+        // teacherList.add(Debug.createTeacher(001, "奥菲利亚", "女", "2045-11-17", 23,
+        // 180000.5));
+        // teacherList.add(Debug.createTeacher(002, "navy", "女", "2008-06-01", 34,
+        // 84521.0));
         // int teacherId = Test.getInputTeacher(teacherList);
         // jout.println("输入成功, 老师ID: " + teacherId);
 
@@ -344,6 +346,18 @@ public class GetInputImpl implements GetInput {
 
         // String birthday = Test.getInputBirthday();
         // jout.println("输入的日期为: " + birthday);
+    }
+
+    @Override
+    public boolean getInputClassMaxNum() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public int getInputStudent(ArrayList<Student> studentList) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
 }
