@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 11:22:00
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 20:11:29
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -193,7 +193,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         System.out.println("8.删除一个学生");
         System.out.println("9.更改学生班级");
         System.out.println("0.退出");
-        int func = 0;
+        int func = -1;
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {

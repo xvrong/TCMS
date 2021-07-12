@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:02
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 17:04:35
+ * @LastEditTime: 2021-07-12 20:11:40
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\CourseManagerServiceImpl.java
  */
@@ -117,7 +117,7 @@ public class CourseManagerServiceImpl implements CourseManagerService {
         System.out.println("4.删除一门课程");
         System.out.println("5.设置一门课程的价格");
         System.out.println("0.退出");
-        int func = 0;
+        int func = -1;
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {

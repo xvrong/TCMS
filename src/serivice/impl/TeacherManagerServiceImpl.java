@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 12:31:50
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 20:12:07
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
@@ -189,7 +189,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
         System.out.println("7.删除一个老师");
         System.out.println("8.设置一个老师的工资");
         System.out.println("0.退出");
-        int func = 0;
+        int func = -1;
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {

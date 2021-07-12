@@ -3,7 +3,7 @@
  * @Date: 2021-07-12 16:58:57
  * @Description: 
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 18:06:29
+ * @LastEditTime: 2021-07-12 20:11:10
  * @FilePath: \TCMS\src\serivice\impl\StudentServiceImpl.java
  */
 package serivice.impl;
@@ -13,14 +13,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 
-import com.mysql.cj.jdbc.result.UpdatableResultSet;
-
 import SQL.Impl.QueryImpl;
 import SQL.Impl.UpdateImpl;
 import entity.Course.Course;
 import entity.Person.Student;
 import entity.TClass.TClass;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import serivice.StudentService;
 import windows.impl.GetInputImpl;
 import windows.impl.PrintImpl;
@@ -56,7 +53,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void selectCourse() {
-        // TODO Auto-generated method stub
         // 得到学生合法的选课列表
         QueryImpl qy = new QueryImpl();
         ArrayList<Course> allCourseList = qy.queryCourse(student.getEdu(), true);
@@ -72,7 +68,7 @@ public class StudentServiceImpl implements StudentService {
         for (Course cour : allCourseList) {
             boolean canChose = false;
             ArrayList<TClass> courseTclassList = qy.queryTClass(cour.getCourseId(), true);
-            int tClassNum;
+            int tClassNum = -1;
             for (TClass tcl : courseTclassList) { // 课程有一年级开课班级、且班级有剩余空间
                 if (tcl.getGrade() == 1 && tcl.getStudentNum() < tcl.getMaxStudentNum()) {
                     canChose = true;
@@ -123,7 +119,7 @@ public class StudentServiceImpl implements StudentService {
         jout.println("3.查询历史班级");
         jout.println("4.进行选课");
 
-        int func = 0;
+        int func = -1;
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {
@@ -133,20 +129,21 @@ public class StudentServiceImpl implements StudentService {
                 }
             } while (func < 0 || func > 4);
             switch (func) {
-                case 1:
-                    showPersonalInfo();
-                    break;
-                case 2:
-                    showPersonalTClass();
-                    break;
-                case 3:
-                    showHistoryTClass();
-                    break;
-                case 4:
-                    selectCourse();
-                    break;
-                default:
-                    break;
+            case 1:
+                showPersonalInfo();
+                break;
+            case 2:
+                showPersonalTClass();
+                break;
+            case 3:
+                showHistoryTClass();
+                break;
+            case 4:
+                selectCourse();
+                break;
+            default:
+                break;
             }
+        }
     }
 }

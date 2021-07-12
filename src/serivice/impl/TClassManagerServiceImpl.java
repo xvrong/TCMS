@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 21:48:17
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 12:25:37
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 20:12:00
  * @Description: TClassManagerServiceImpl
  * @FilePath: \TCMS\src\serivice\impl\TClassManagerServiceImpl.java
  */
@@ -210,7 +210,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         System.out.println("7.在一个班级里删除一个学生");
         System.out.println("8.在一个班级里增加一个学生");
         System.out.println("0.退出");
-        int func = 0;
+        int func = -1;
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {
