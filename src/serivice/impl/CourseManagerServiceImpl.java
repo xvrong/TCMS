@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:02
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 10:50:20
+ * @LastEditTime: 2021-07-12 11:12:24
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\CourseManagerServiceImpl.java
  */
@@ -122,14 +122,31 @@ public class CourseManagerServiceImpl implements CourseManager {
         int func = 0;
         Scanner input = new Scanner(System.in);
         while (func != 0) {
-        do { 
-            func = input.nextInt();
-            if (func < 0 || func > 5) {
-                System.out.print("输入错误，请重新输入:");
+            do {
+                func = input.nextInt();
+                if (func < 0 || func > 5) {
+                    System.out.print("输入错误，请重新输入:");
+                }
+            } while (func < 0 || func > 5);
+            switch (func) {
+                case 1:
+                    showAllTCourse();
+                    break;
+                case 2:
+                    showAllTClassCertainCourse();
+                    break;
+                case 3:
+                    addCourse();
+                    break;
+                case 4:
+                    deleteCourse();
+                    break;
+                case 5:
+                    setCoursePrice();
+                    break;
+                default:
+                    break;
             }
-        } while (func < 0 || func > 5);
-            switch (func):
         }
     }
-
 }

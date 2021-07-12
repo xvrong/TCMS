@@ -2,13 +2,14 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 10:29:10
+ * @LastEditTime: 2021-07-12 12:31:50
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
 package serivice.impl;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import SQL.Query;
 import SQL.Update;
@@ -178,7 +179,56 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void run() {
-        // TODO Auto-generated method stub
+        System.out.println("-----------------教师管理----------------");
+        System.out.println("1.查询当前存在的所有老师");
+        System.out.println("2.查询某个班级的所有老师");
+        System.out.println("3.查询一个老师的详细信息");
+        System.out.println("4.查询一个老师所教的现存班级");
+        System.out.println("5.查询一个老师所教的历史班级");
+        System.out.println("6.增加一个老师");
+        System.out.println("7.删除一个老师");
+        System.out.println("8.设置一个老师的工资");
+        System.out.println("0.退出");
+        int func = 0;
+        Scanner input = new Scanner(System.in);
+        while (func != 0) {
+            do {
+                func = input.nextInt();
+                if (func < 0 || func > 9) {
+                    System.out.print("输入错误，请重新输入:");
+                }
+            } while (func < 0 || func > 9);
+            switch (func) {
+                case 1:
+                    showAllTeacher();
+                    break;
+                case 2:
+                    showCertainClassTeacher();
+                    break;
+                case 3:
+                    showCertainTeacher();
+                    ;
+                    break;
+                case 4:
+                    showTeacherNowClass();
+                    ;
+                    break;
+                case 5:
+                    showTeacherHistoryClass();
+                    break;
+                case 6:
+                    addTeacher();
+                    break;
+                case 7:
+                    deleteTeacher();
+                    break;
+                case 8:
+                    setSalary();
+                    break;
+                default:
+                    break;
+            }
+        }
 
     }
 

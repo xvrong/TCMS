@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:48:17
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 09:42:22
+ * @LastEditTime: 2021-07-12 12:25:37
  * @Description: TClassManagerServiceImpl
  * @FilePath: \TCMS\src\serivice\impl\TClassManagerServiceImpl.java
  */
@@ -10,6 +10,7 @@ package serivice.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Scanner;
 
 import SQL.Query;
 import SQL.Update;
@@ -170,8 +171,83 @@ public class TClassManagerServiceImpl implements TClassManagerService {
     }
 
     @Override
-    public void run() {
-        // TODO Auto-generated method stub
-
+    public void deleteTClass() {
+        GetInput get = new GetInputImpl();
+        Query qy = new QueryImpl();
+        Update up = new UpdateImpl();
+        Education edu = get.getInputEducation();
+        ArrayList<Course> courseList = qy.queryCourse(edu, true);
+        int courseId = get.getInputCourse(courseList);
+        ArrayList<TClass> classList = qy.queryTClass(courseId, true);
+        int tClassId = get.getInputClass(classList);
+        boolean flag = false;
+        for (TClass tClass : classList) {
+            if (tClassId == tClass.getClassID()) {
+                if (tClass.getStudentNum() == 0)
+                    flag = true;
+            }
+        }
+        if (flag) {
+            flag = up.deleteTClass(tClassId);
+            if (flag) {
+                System.out.println("删除课程成功");
+            } else {
+                System.out.println("删除课程失败");
+            }
+        } else {
+            System.out.println("此班级中有学生存在，不能删除");
+        }
     }
+
+    public void run() {
+        System.out.println("-----------------班级管理----------------");
+        System.out.println("1.查询当前存在的所有班级");
+        System.out.println("2.查询某个班级的所有学生");
+        System.out.println("3.查询一个班级的老师");
+        System.out.println("4.增加一个班级");
+        System.out.println("5.删除一个班级");
+        System.out.println("6.更改一个班级的老师");
+        System.out.println("7.在一个班级里删除一个学生");
+        System.out.println("8.在一个班级里增加一个学生");
+        System.out.println("0.退出");
+        int func = 0;
+        Scanner input = new Scanner(System.in);
+        while (func != 0) {
+            do {
+                func = input.nextInt();
+                if (func < 0 || func > 9) {
+                    System.out.print("输入错误，请重新输入:");
+                }
+            } while (func < 0 || func > 9);
+            switch (func) {
+                case 1:
+                    showAllTClass();
+                    break;
+                case 2:
+                    showCertainTClassStudent();
+                    break;
+                case 3:
+                    showCertainTClassTeacher();
+                    break;
+                case 4:
+                    addTClass();
+                    break;
+                case 5:
+                    deleteTClass();
+                    break;
+                case 6:
+                    ChangeTeacher();
+                    break;
+                case 7:
+                    addStudent();
+                    break;
+                case 8:
+                    deleteStudent();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
 }

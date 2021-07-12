@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-11 20:55:32
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-12 11:22:00
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -10,6 +10,7 @@
 package serivice.impl;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import SQL.Query;
 import SQL.Update;
@@ -181,7 +182,57 @@ public class StudentManagerServiceImpl implements StudentManagerService {
 
     @Override
     public void run() {
-        // TODO Auto-generated method stub
-
+        System.out.println("-----------------学生管理----------------");
+        System.out.println("1.显示当前存在的所有学生");
+        System.out.println("2.显示某门班级的所有学生");
+        System.out.println("3.显示一个老师的所有学生");
+        System.out.println("4.显示一个学生的详细信息");
+        System.out.println("5.显示一个学生的当前班级");
+        System.out.println("6.显示一个学生的历史班级");
+        System.out.println("7.添加一个学生");
+        System.out.println("8.删除一个学生");
+        System.out.println("9.更改学生班级");
+        System.out.println("0.退出");
+        int func = 0;
+        Scanner input = new Scanner(System.in);
+        while (func != 0) {
+            do {
+                func = input.nextInt();
+                if (func < 0 || func > 9) {
+                    System.out.print("输入错误，请重新输入:");
+                }
+            } while (func < 0 || func > 9);
+            switch (func) {
+                case 1:
+                    showAllStudent();
+                    break;
+                case 2:
+                    showCertainClassStudent();
+                    break;
+                case 3:
+                    showCertainTeacherStudent();
+                    break;
+                case 4:
+                    showCertainStudent();
+                    break;
+                case 5:
+                    showCertainStudentNowClass();
+                    break;
+                case 6:
+                    showCertainStudentHistoryClass();
+                    break;
+                case 7:
+                    addStudent();
+                    break;
+                case 8:
+                    deleteStudent();
+                    break;
+                case 9:
+                    changeStudentClass();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-06 15:12:03
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 10:33:57
+ * @LastEditTime: 2021-07-12 11:33:39
  * @Description: TClassManagerService
  * @FilePath: \TCMS\src\serivice\TClassManagerService.java
  */
@@ -36,6 +36,13 @@ public interface TClassManagerService {
      * @return none
      */
     void addTClass();
+
+    /**
+     * @description:delete a class
+     * @param none
+     * @return none
+     */
+    void deleteTClass();
 
     /**
      * @description:change teacher of a Class
