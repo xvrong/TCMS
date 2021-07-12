@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 09:46:37
+ * @LastEditTime: 2021-07-12 15:07:04
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -73,6 +73,9 @@ public class UpdateImpl implements Update {
     @Override
     public boolean addStudent(Student student, String password) {
         // TODO Auto-generated method stub
+        String sql="insert into student\n" + "values(?,?,?,?,?,?,?)";
+        Object arr[]=new Object[7];
+        arr[0]=
         return false;
     }
 

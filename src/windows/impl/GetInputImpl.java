@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 10:43:56
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-12 15:26:53
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -292,7 +292,9 @@ public class GetInputImpl implements GetInput {
                 jout.print("请输入密码: ");
                 password = input.next();
                 if (password.length() < 6) {
-                    throw new Exception("密码长度必须大于6!");
+                    throw new Exception("密码长度必须大于5!");
+                } else if (password.length() > 12) {
+                    throw new Exception("密码长度必须小于13!");
                 }
                 String regex1 = ".*[a-zA-z].*";
                 boolean result1 = password.matches(regex1); // 包含字母

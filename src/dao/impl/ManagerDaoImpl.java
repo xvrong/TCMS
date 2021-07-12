@@ -1,10 +1,10 @@
 /*
  * @Author: xv_rong
- * @Date: 2021-07-09 19:48:10
+ * @Date: 2021-07-12 15:40:29
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 15:04:39
+ * @LastEditTime: 2021-07-12 15:47:11
  * @Description: 
- * @FilePath: \TCMS\src\dao\impl\StudentDaoImpl.java
+ * @FilePath: \TCMS\src\dao\impl\ManagerDaoImpl.java
  */
 package dao.impl;
 
@@ -14,25 +14,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Tool.Education;
 import dao.BaseDao;
-import dao.StudentDao;
-import entity.Person.Student;
+import dao.ManagerDao;
+import entity.Manager;
 
-public class StudentDaoImpl extends BaseDao implements StudentDao {
+public class ManagerDaoImpl extends BaseDao implements ManagerDao {
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
 
     @Override
-    public int updateStudent(String sql, Object[] param) {
+    public int updateManager(String sql, Object[] param) {
         int count = executeSQL(sql, param);
         return count;
     }
 
     @Override
-    public ArrayList<Student> selectStudent(String sql, Object[] param) {
-        ArrayList<Student> studentList = new ArrayList<Student>();
+    public ArrayList<Manager> selectManager(String sql, Object[] param) {
+        ArrayList<Manager> managerList = new ArrayList<Manager>();
         try {
             conn = getConn();
             pstmt = conn.prepareStatement(sql);
@@ -43,18 +42,10 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
             }
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                Student temp = new Student();
-                temp.setName(rs.getString(2));
-                temp.setSex(rs.getString(5));
-                // temp.setAge(rs.getInt(3));
-                // TODO: Student age
-                temp.setAge();
-                temp.setBirthday(rs.getString(4));
-                temp.setStudentID(rs.getInt(1));
-                // TODO:int convert to Education
-                temp.setEdu((Education) rs.getObject(3));
-                temp.setState(rs.getBoolean(6));
-                studentList.add(temp);
+                Manager tmp = new Manager();
+                tmp.setUsername(rs.getString(1));
+                tmp.setPassword(rs.getString(2));
+                managerList.add(tmp);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,6 +54,6 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         } finally {
             this.closeAll(conn, pstmt, rs);
         }
-        return studentList;
+        return managerList;
     }
 }

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 21:16:12
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 16:56:59
+ * @LastEditTime: 2021-07-12 15:53:52
  * @Description: use Dao method to query datebase
  * @FilePath: \TCMS\src\SQL\Query.java
  */
@@ -171,5 +171,31 @@ public interface Query {
      * @return TClass
      */
     public ArrayList<TClass> queryTClassByTeacherId(int teacherId, boolean stete);
+
+    /**
+     * @description: student login
+     * @param {int}     id
+     * @param {String}  password
+     * @param {boolean} state
+     * @return boolean
+     */
+    public boolean isExistStudent(int studentId, String password, boolean state);
+
+    /**
+     * @description: teacher login
+     * @param {int}     id
+     * @param {String}  password
+     * @param {boolean} state
+     * @return boolean
+     */
+    public boolean isExistTeacher(int teacherId, String password, boolean state);
+
+    /**
+     * @description: manager login
+     * @param {int}    id
+     * @param {String} password
+     * @return boolean
+     */
+    public boolean isExistManager(String managerId, String password);
 
 }

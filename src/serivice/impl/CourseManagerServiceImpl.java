@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:02
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 11:12:24
+ * @LastEditTime: 2021-07-12 16:30:15
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\CourseManagerServiceImpl.java
  */
@@ -18,13 +18,13 @@ import SQL.Impl.UpdateImpl;
 import Tool.Education;
 import entity.Course.Course;
 import entity.TClass.TClass;
-import serivice.CourseManager;
+import serivice.CourseManagerService;
 import windows.GetInput;
 import windows.Print;
 import windows.impl.GetInputImpl;
 import windows.impl.PrintImpl;
 
-public class CourseManagerServiceImpl implements CourseManager {
+public class CourseManagerServiceImpl implements CourseManagerService {
 
     @Override
     public void showAllTCourse() {

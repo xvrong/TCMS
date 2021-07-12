@@ -1,3 +1,11 @@
+/*
+ * @Author: xv_rong
+ * @Date: 2021-07-09 20:01:38
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-12 15:05:11
+ * @Description: 
+ * @FilePath: \TCMS\src\dao\impl\TeacherDaoImpl.java
+ */
 package dao.impl;
 
 import java.sql.Connection;
@@ -5,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import dao.BaseDao;
 import dao.TeacherDao;
@@ -23,8 +30,8 @@ public class TeacherDaoImpl extends BaseDao implements TeacherDao {
     }
 
     @Override
-    public List<Teacher> selectTeacher(String sql, Object[] param) {
-        List<Teacher> teacherList = new ArrayList<Teacher>();
+    public ArrayList<Teacher> selectTeacher(String sql, Object[] param) {
+        ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
         try {
             conn = getConn();
             pstmt = conn.prepareStatement(sql);
@@ -35,7 +42,16 @@ public class TeacherDaoImpl extends BaseDao implements TeacherDao {
             }
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                // TODO receive data
+                Teacher temp = new Teacher();
+                temp.setName(rs.getString(1));
+                temp.setSex(rs.getString(2));
+                // TODO: Teacher age
+                temp.setAge(rs.getInt(3));
+                temp.setBirthday(rs.getString(4));
+                temp.setTeacherID(rs.getInt(5));
+                temp.setSalary(rs.getDouble(6));
+                temp.setState(rs.getBoolean(7));
+                teacherList.add(temp);
             }
         } catch (SQLException e) {
             e.printStackTrace();

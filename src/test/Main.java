@@ -1,6 +1,25 @@
+/*
+ * @Author: xv_rong
+ * @Date: 2021-07-12 10:53:28
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-12 16:40:06
+ * @Description: 
+ * @FilePath: \TCMS\src\test\Main.java
+ */
 package test;
 
 import java.util.Scanner;
+
+import SQL.Query;
+import SQL.Impl.QueryImpl;
+import serivice.ManagerService;
+import serivice.StudentService;
+import serivice.TeacherService;
+import serivice.impl.ManagerServiceImpl;
+import serivice.impl.StudentServiceImpl;
+import serivice.impl.TeacherServiceImpl;
+import windows.GetInput;
+import windows.impl.GetInputImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,18 +39,77 @@ public class Main {
             }
         } while (model < 0 || model > 3);
         switch (model) {
-            case 1: {
-
-            }
-            case 2: {
-
-            }
-            case 3: {
-
-            }
-            default: {
-
-            }
+            case 1:
+                studentLogin();
+                break;
+            case 2:
+                teacherLogin();
+                break;
+            case 3:
+                managerLogin();
+                break;
+            default:
+                break;
         }
+    }
+
+    static void studentLogin() {
+        Query qy = new QueryImpl();
+        Scanner input = new Scanner(System.in);
+        do {
+            System.out.println("请输入学生Id");
+            int studentId = input.nextInt();
+            System.out.println("请输入密码");
+            String password = input.next();
+            if (qy.isExistStudent(studentId, password, true)) {
+                System.out.println("登录成功");
+                StudentService studentService = new StudentServiceImpl();
+                studentService.run();
+                break;
+            } else {
+                System.out.println("登录失败，用户Id或密码错误");
+                System.out.println("请重新输入");
+            }
+        } while (true);
+    }
+
+    static void teacherLogin() {
+        Query qy = new QueryImpl();
+        Scanner input = new Scanner(System.in);
+        do {
+            System.out.println("请输入老师Id");
+            int teacherId = input.nextInt();
+            System.out.println("请输入密码");
+            String password = input.next();
+            if (qy.isExistTeacher(teacherId, password, true)) {
+                System.out.println("登录成功");
+                TeacherService teacherService = new TeacherServiceImpl();
+                teacherService.run();
+                break;
+            } else {
+                System.out.println("登录失败，用户Id或密码错误");
+                System.out.println("请重新输入");
+            }
+        } while (true);
+    }
+
+    static void managerLogin() {
+        Query qy = new QueryImpl();
+        Scanner input = new Scanner(System.in);
+        do {
+            System.out.println("请输入管理员Id");
+            String managerId = input.next();
+            System.out.println("请输入密码");
+            String password = input.next();
+            if (qy.isExistManager(managerId, password)) {
+                System.out.println("登录成功");
+                ManagerService managerService = new ManagerServiceImpl();
+                managerService.run();
+                break;
+            } else {
+                System.out.println("登录失败，用户Id或密码错误");
+                System.out.println("请重新输入");
+            }
+        } while (true);
     }
 }

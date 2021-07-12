@@ -2,13 +2,13 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 20:50:34
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 10:33:45
+ * @LastEditTime: 2021-07-12 16:30:28
  * @Description: CourseManager
- * @FilePath: \TCMS\src\serivice\CourseManager.java
+ * @FilePath: \TCMS\src\serivice\CourseManagerService.java
  */
 package serivice;
 
-public interface CourseManager {
+public interface CourseManagerService {
     /**
      * @description: showAllCourse
      * @param none
