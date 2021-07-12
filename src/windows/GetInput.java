@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-11 20:43:29
+ * @LastEditTime: 2021-07-12 08:47:50
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import Tool.Education;
 import entity.Course.Course;
+import entity.Person.Teacher;
 import entity.TClass.TClass;
 
 public interface GetInput {
@@ -52,7 +53,7 @@ public interface GetInput {
      * @param none
      * @return classId
      */
-    public int getInputTeacher();
+    public int getInputTeacher(ArrayList<Teacher> teacherList);
 
     /**
      * @description: get studentName, check input, until input right name, provid a
@@ -114,13 +115,6 @@ public interface GetInput {
      * @return password
      */
     public String getInputPassword();
-
-    /**
-     * @description: get CourseName, consider exixs same name Course in database
-     * @param none
-     * @return courseName
-     */
-    public String getInputCourseName(Education education);
 
     /**
      * @description: getInputYN

@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 14:44:05
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-11 20:55:32
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -35,8 +35,8 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
-        ArrayList<TClass> classList = qy.queryTClass(courseId, true);
-        int tClassId = get.getInputClass(classList);
+        ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
+        int tClassId = get.getInputClass(tClassList);
         ArrayList<Student> studentList = qy.queryStudent(tClassId, true);
         pt.printStudentBasicInfomation(studentList);
     }

@@ -1,8 +1,13 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
+<<<<<<< Updated upstream
  * @LastEditors: xv_rong
  * @LastEditTime: 2021-07-11 20:20:34
+=======
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-11 20:55:23
+>>>>>>> Stashed changes
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
@@ -42,8 +47,8 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
-        ArrayList<TClass> classList = qy.queryTClass(courseId, true);
-        int tClassId = get.getInputClass(classList);
+        ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
+        int tClassId = get.getInputClass(tClassList);
         Teacher teacher = qy.queryTeacher(tClassId, true);
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
         teacherList.add(teacher);
