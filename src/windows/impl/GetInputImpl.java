@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 10:24:51
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 10:43:56
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -44,6 +44,7 @@ public class GetInputImpl implements GetInput {
     public Education getInputEducation() {
         int chos = -1;
         while (true) {
+            input = new Scanner(System.in);
             jout.print("请输入学历(0:PRIMARY, 1:JUNIOR, 2:HIGH): ");
             String str = input.next();
             if (isNumeric(str) == false) {
@@ -75,6 +76,7 @@ public class GetInputImpl implements GetInput {
         PT.printCourseBasicInfomation(courseList);
         int chos = -1;
         while (true) {
+            input = new Scanner(System.in);
             jout.print("请输入选择课程的序号: ");
             String str = input.next();
             if (isNumeric(str) == false) {
@@ -96,6 +98,7 @@ public class GetInputImpl implements GetInput {
         PT.printTClassBasicInfomation(tClassList);
         int chos = -1;
         while (true) {
+            input = new Scanner(System.in);
             jout.print("请输入选择班级的序号: ");
             String str = input.next();
             if (isNumeric(str) == false) {
@@ -113,10 +116,33 @@ public class GetInputImpl implements GetInput {
     }
 
     @Override
+    public int getInputStudent(ArrayList<Student> studentList) {
+        PT.printStudentBasicInfomation(studentList);
+        int chos = -1;
+        while (true) {
+            input = new Scanner(System.in);
+            jout.print("请输入选择班级的序号: ");
+            String str = input.next();
+            if (isNumeric(str) == false) {
+                jout.println(String.format("输入'%s'不是数字, 请重新输入", str));
+                continue;
+            }
+            chos = Integer.parseInt(str);
+            if (chos < 0 || chos > studentList.size()) {
+                jout.println("没有该选项, 请重新输入");
+                continue;
+            }
+            break;
+        }
+        return studentList.get(chos).getStudentID();
+    }
+    
+    @Override
     public int getInputTeacher(ArrayList<Teacher> teacherList) {
         PT.printTeacherBasicInfomation(teacherList);
         int chos = -1;
         while (true) {
+            input = new Scanner(System.in);
             jout.print("请输入选择老师的序号: ");
             String str = input.next();
             if (isNumeric(str) == false) {
@@ -137,6 +163,7 @@ public class GetInputImpl implements GetInput {
     public String getInputName() {
         String str = null;
         while (true) {
+            input = new Scanner(System.in);
             jout.print("请输入姓名: ");
             str = input.next();
             if (str.length() > 12) {
@@ -306,7 +333,31 @@ public class GetInputImpl implements GetInput {
         }
         return chos;
     }
-
+    
+    @Override
+    public int getInputClassMaxNum() {
+        int maxNum =-1;
+        while(true)
+        {
+            input = new Scanner(System.in);
+            try {
+                String str = input.next();
+                if(isNumeric(str) == false) {
+                    throw new Exception(String.format("输入'%s'不是数字", str));
+                }
+                maxNum = Integer.parseInt(str);
+                if(maxNum < 0) {
+                    maxNum = -1;
+                    throw new Exception("maxNum必须大于0");
+                }
+                break;
+            } catch (Exception e) {
+                jout.println("输入不合法!" + e.getMessage());
+            }
+        }
+        return maxNum;
+    }
+    
     public static void main(String[] args) {
         GetInputImpl Test = new GetInputImpl();
         // Education edu = Test.getInputEducation();
@@ -348,16 +399,5 @@ public class GetInputImpl implements GetInput {
         // jout.println("输入的日期为: " + birthday);
     }
 
-    @Override
-    public boolean getInputClassMaxNum() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public int getInputStudent(ArrayList<Student> studentList) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
 
 }

@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 10:24:36
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 10:35:48
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -129,7 +129,7 @@ public interface GetInput {
      * @param none
      * @return boolean
      */
-    public boolean getInputClassMaxNum();
+    public int getInputClassMaxNum();
 
     /**
      * @description: get studentId, check input > 0, until input right year, provid
