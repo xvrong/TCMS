@@ -168,4 +168,10 @@ public class TClassManagerServiceImpl implements TClassManagerService {
             System.out.println("此学生不存在");
         }
     }
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+
+    }
 }

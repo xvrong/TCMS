@@ -136,7 +136,7 @@ public class GetInputImpl implements GetInput {
         }
         return studentList.get(chos).getStudentID();
     }
-    
+
     @Override
     public int getInputTeacher(ArrayList<Teacher> teacherList) {
         PT.printTeacherBasicInfomation(teacherList);
@@ -333,20 +333,19 @@ public class GetInputImpl implements GetInput {
         }
         return chos;
     }
-    
+
     @Override
     public int getInputClassMaxNum() {
-        int maxNum =-1;
-        while(true)
-        {
+        int maxNum = -1;
+        while (true) {
             input = new Scanner(System.in);
             try {
                 String str = input.next();
-                if(isNumeric(str) == false) {
+                if (isNumeric(str) == false) {
                     throw new Exception(String.format("输入'%s'不是数字", str));
                 }
                 maxNum = Integer.parseInt(str);
-                if(maxNum < 0) {
+                if (maxNum < 0) {
                     maxNum = -1;
                     throw new Exception("maxNum必须大于0");
                 }
@@ -357,9 +356,9 @@ public class GetInputImpl implements GetInput {
         }
         return maxNum;
     }
-    
+
     public static void main(String[] args) {
-        GetInputImpl Test = new GetInputImpl();
+        // GetInputImpl Test = new GetInputImpl();
         // Education edu = Test.getInputEducation();
         // jout.println("输入成功: " + edu);
 
@@ -398,6 +397,5 @@ public class GetInputImpl implements GetInput {
         // String birthday = Test.getInputBirthday();
         // jout.println("输入的日期为: " + birthday);
     }
-
 
 }

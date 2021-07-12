@@ -1,13 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
-<<<<<<< Updated upstream
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 20:20:34
-=======
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-11 20:55:23
->>>>>>> Stashed changes
+ * @LastEditTime: 2021-07-12 10:29:10
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
@@ -163,7 +158,6 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
     public void setSalary() {
         GetInput get = new GetInputImpl();
         Update up = new UpdateImpl();
-        Print pt = new PrintImpl();
         Query qy = new QueryImpl();
         int teacherId = get.getInputId();
         if (qy.IsExistTeacher(teacherId, true)) {
@@ -179,6 +173,12 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
         } else {
             System.out.println("无此老师");
         }
+
+    }
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
 
     }
 

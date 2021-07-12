@@ -64,4 +64,11 @@ public interface TeacherManagerService {
      * @return none
      */
     void setSalary();
+
+    /**
+     * @description: run
+     * @param none
+     * @return none
+     */
+    void run();
 }

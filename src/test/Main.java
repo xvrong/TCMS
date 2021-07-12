@@ -20,7 +20,18 @@ public class Main {
             }
         } while (model < 0 || model > 3);
         switch (model) {
+            case 1: {
 
+            }
+            case 2: {
+
+            }
+            case 3: {
+
+            }
+            default: {
+
+            }
         }
     }
 }

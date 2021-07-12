@@ -2,13 +2,14 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:02
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 20:49:38
+ * @LastEditTime: 2021-07-12 10:50:20
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\CourseManagerServiceImpl.java
  */
 package serivice.impl;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import SQL.Query;
 import SQL.Update;
@@ -107,6 +108,28 @@ public class CourseManagerServiceImpl implements CourseManager {
             System.out.println("此课程不存在");
         }
 
+    }
+
+    @Override
+    public void run() {
+        System.out.println("-----------------课程管理----------------");
+        System.out.println("1.显示当前存在的所有课程");
+        System.out.println("2.显示某一课程的所有班级");
+        System.out.println("3.增加一门课程");
+        System.out.println("4.删除一门课程");
+        System.out.println("5.设置一门课程的价格");
+        System.out.println("0.退出");
+        int func = 0;
+        Scanner input = new Scanner(System.in);
+        while (func != 0) {
+        do { 
+            func = input.nextInt();
+            if (func < 0 || func > 5) {
+                System.out.print("输入错误，请重新输入:");
+            }
+        } while (func < 0 || func > 5);
+            switch (func):
+        }
     }
 
 }

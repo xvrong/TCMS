@@ -74,4 +74,11 @@ public interface StudentManagerService {
      * @return none
      */
     void showCertainStudentHistoryClass();
+
+    /**
+     * @description: run
+     * @param none
+     * @return none
+     */
+    void run();
 }

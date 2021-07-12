@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-06 15:12:03
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 21:31:56
+ * @LastEditTime: 2021-07-12 10:33:57
  * @Description: TClassManagerService
  * @FilePath: \TCMS\src\serivice\TClassManagerService.java
  */
@@ -57,4 +57,11 @@ public interface TClassManagerService {
      * @return none
      */
     void addStudent();
+
+    /**
+     * @description: run
+     * @param none
+     * @return none
+     */
+    void run();
 }

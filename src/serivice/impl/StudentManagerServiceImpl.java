@@ -178,4 +178,10 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, false);
         pt.printTClassBasicInfomation(tClassList);
     }
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+
+    }
 }

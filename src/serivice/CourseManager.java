@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 20:50:34
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 20:15:00
+ * @LastEditTime: 2021-07-12 10:33:45
  * @Description: CourseManager
  * @FilePath: \TCMS\src\serivice\CourseManager.java
  */
@@ -43,4 +43,11 @@ public interface CourseManager {
      * @return none
      */
     void setCoursePrice();
+
+    /**
+     * @description: run
+     * @param none
+     * @return none
+     */
+    void run();
 }
