@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 15:07:04
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 17:00:10
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -75,7 +75,7 @@ public class UpdateImpl implements Update {
         // TODO Auto-generated method stub
         String sql="insert into student\n" + "values(?,?,?,?,?,?,?)";
         Object arr[]=new Object[7];
-        arr[0]=
+        // arr[0] ;
         return false;
     }
 

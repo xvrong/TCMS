@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 19:48:10
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 15:04:39
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 17:00:29
  * @Description: 
  * @FilePath: \TCMS\src\dao\impl\StudentDaoImpl.java
  */
@@ -48,7 +48,7 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
                 temp.setSex(rs.getString(5));
                 // temp.setAge(rs.getInt(3));
                 // TODO: Student age
-                temp.setAge();
+                // temp.setAge();
                 temp.setBirthday(rs.getString(4));
                 temp.setStudentID(rs.getInt(1));
                 // TODO:int convert to Education

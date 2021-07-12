@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-12 10:53:28
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 16:40:06
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 18:07:35
  * @Description: 
  * @FilePath: \TCMS\src\test\Main.java
  */
@@ -64,7 +64,7 @@ public class Main {
             if (qy.isExistStudent(studentId, password, true)) {
                 System.out.println("登录成功");
                 StudentService studentService = new StudentServiceImpl();
-                studentService.run();
+                studentService.run(studentId);
                 break;
             } else {
                 System.out.println("登录失败，用户Id或密码错误");

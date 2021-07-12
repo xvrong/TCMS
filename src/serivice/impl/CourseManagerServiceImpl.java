@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:02
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 16:30:15
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-12 17:04:35
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\CourseManagerServiceImpl.java
  */
@@ -41,11 +41,9 @@ public class CourseManagerServiceImpl implements CourseManagerService {
         Print pt = new PrintImpl();
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
-        pt.printCourseBasicInfomation(courseList);
         int courseId = get.getInputCourse(courseList);
         ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
         pt.printTClassBasicInfomation(tClassList);
-
     }
 
     @Override
