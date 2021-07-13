@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-12 10:53:28
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 18:07:35
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-12 20:16:53
  * @Description: 
  * @FilePath: \TCMS\src\test\Main.java
  */
@@ -18,8 +18,6 @@ import serivice.TeacherService;
 import serivice.impl.ManagerServiceImpl;
 import serivice.impl.StudentServiceImpl;
 import serivice.impl.TeacherServiceImpl;
-import windows.GetInput;
-import windows.impl.GetInputImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -84,7 +82,7 @@ public class Main {
             if (qy.isExistTeacher(teacherId, password, true)) {
                 System.out.println("登录成功");
                 TeacherService teacherService = new TeacherServiceImpl();
-                teacherService.run();
+                teacherService.run(teacherId);
                 break;
             } else {
                 System.out.println("登录失败，用户Id或密码错误");

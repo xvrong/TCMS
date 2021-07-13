@@ -22,8 +22,6 @@ import windows.Print;
 public class PrintImpl implements Print {
     private static PrintStream jout = System.out; // 全局的输出
 
-    
-
     @Override
     public void printStudentBasicInfomation(ArrayList<Student> studentList) {
         jout.println("学生的基本信息：");

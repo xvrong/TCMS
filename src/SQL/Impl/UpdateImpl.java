@@ -73,8 +73,8 @@ public class UpdateImpl implements Update {
     @Override
     public boolean addStudent(Student student, String password) {
         // TODO Auto-generated method stub
-        String sql="insert into student\n" + "values(?,?,?,?,?,?,?)";
-        Object arr[]=new Object[7];
+        String sql = "insert into student\n" + "values(?,?,?,?,?,?,?)";
+        Object arr[] = new Object[7];
         // arr[0] ;
         return false;
     }

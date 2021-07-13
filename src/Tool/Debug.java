@@ -14,7 +14,7 @@ import entity.Person.Teacher;
 import entity.TClass.TClass;
 
 public class Debug {
-    
+
     public static Student createStudent(int id, String name, String sex, Education edu, String birthday, int age) {
         // 生成调试用的学生
         Student stu = new Student();

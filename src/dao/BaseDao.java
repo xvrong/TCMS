@@ -9,11 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * 
- * 
- */
-
 public class BaseDao {
     public static String DRIVER;
     public static String URL;
@@ -25,7 +20,7 @@ public class BaseDao {
 
     public static void init() {
         Properties params = new Properties();
-        String config = "database.properties";
+        String config = "datebase.properties";
         InputStream is = BaseDao.class.getClassLoader().getResourceAsStream(config);
         try {
             params.load(is);

@@ -129,20 +129,20 @@ public class StudentServiceImpl implements StudentService {
                 }
             } while (func < 0 || func > 4);
             switch (func) {
-            case 1:
-                showPersonalInfo();
-                break;
-            case 2:
-                showPersonalTClass();
-                break;
-            case 3:
-                showHistoryTClass();
-                break;
-            case 4:
-                selectCourse();
-                break;
-            default:
-                break;
+                case 1:
+                    showPersonalInfo();
+                    break;
+                case 2:
+                    showPersonalTClass();
+                    break;
+                case 3:
+                    showHistoryTClass();
+                    break;
+                case 4:
+                    selectCourse();
+                    break;
+                default:
+                    break;
             }
         }
     }

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 15:56:03
+ * @LastEditTime: 2021-07-13 08:34:18
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import SQL.Query;
 import Tool.Education;
 import dao.impl.CourseDaoImpl;
+import dao.impl.ManagerDaoImpl;
 import dao.impl.StudentDaoImpl;
 import dao.impl.TClassDaoImpl;
 import dao.impl.TeacherDaoImpl;
@@ -191,47 +192,6 @@ public class QueryImpl implements Query {
     public ArrayList<TClass> queryTClassByTeacherId(int TeacherId, boolean state) {
         // TODO Auto-generated method stub
         return null;
-    }
-
-    @Override
-    public boolean isExistStudent(int studentId, String password, boolean state) {
-        String sql = "select * from student where id=? and password=? and state=?";
-        Object arr[] = new Object[3];
-        arr[0] = studentId;
-        arr[1] = password;
-        arr[2] = state;
-        CourseDaoImpl tmp = new CourseDaoImpl();
-        if (tmp.selectCourse(sql, arr).isEmpty())
-            return false;
-        else
-            return true;
-    }
-
-    @Override
-    public boolean isExistTeacher(int teacherId, String password, boolean state) {
-        String sql = "select * from student where id=? and password=? and state=?";
-        Object arr[] = new Object[3];
-        arr[0] = teacherId;
-        arr[1] = password;
-        arr[2] = state;
-        CourseDaoImpl tmp = new CourseDaoImpl();
-        if (tmp.selectCourse(sql, arr).isEmpty())
-            return false;
-        else
-            return true;
-    }
-
-    @Override
-    public boolean isExistManager(String managerId, String password) {
-        String sql = "select * from manager where managerID=? and password=?";
-        Object arr[] = new Object[2];
-        arr[0] = managerId;
-        arr[1] = password;
-        CourseDaoImpl tmp = new CourseDaoImpl();
-        if (tmp.selectCourse(sql, arr).isEmpty())
-            return false;
-        else
-            return true;
     }
 
 }
