@@ -26,8 +26,7 @@ public class TClassDaoImpl extends BaseDao implements TClassDao {
 
     @Override
     public int updateTClass(String sql, Object[] param) {
-        int count = executeSQL(sql, param);
-        return count;
+        return executeSQL(sql, param);
     }
 
     @Override
@@ -52,14 +51,12 @@ public class TClassDaoImpl extends BaseDao implements TClassDao {
                 temp.setEducation((Education) rs.getObject(5));
                 temp.setGrade(rs.getInt(6));
                 temp.setStartYear(rs.getInt(7));
-                temp.setOrderNumber(rs.getInt(8));
-                temp.setMaxStudentNum(rs.getInt(9));
-                temp.setState(rs.getBoolean(10));
+                temp.setState(rs.getBoolean(8));
+                temp.setOrderNumber(rs.getInt(9));
+                temp.setMaxStudentNum(rs.getInt(10));
                 tClassList.add(temp);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             this.closeAll(conn, pstmt, rs);

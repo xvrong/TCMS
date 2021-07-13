@@ -26,8 +26,7 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
 
     @Override
     public int updateCourse(String sql, Object[] param) {
-        int count = executeSQL(sql, param);
-        return count;
+        return executeSQL(sql, param);
     }
 
     @Override

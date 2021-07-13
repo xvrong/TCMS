@@ -25,8 +25,7 @@ public class ManagerDaoImpl extends BaseDao implements ManagerDao {
 
     @Override
     public int updateManager(String sql, Object[] param) {
-        int count = executeSQL(sql, param);
-        return count;
+        return executeSQL(sql, param);
     }
 
     @Override
@@ -47,9 +46,7 @@ public class ManagerDaoImpl extends BaseDao implements ManagerDao {
                 tmp.setPassword(rs.getString(2));
                 managerList.add(tmp);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             this.closeAll(conn, pstmt, rs);

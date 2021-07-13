@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 23:01:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 08:19:02
+ * @LastEditTime: 2021-07-11 20:39:35
  * @Description: use Dao method to Update DateBase
  * @FilePath: \TCMS\src\SQL\Update.java
  */
@@ -98,7 +98,8 @@ public interface Update {
     boolean setTeahcer(int TClassId, int TeacherId);
 
     /**
-     * @description: add a Student if the num of student not over the maxnum, \
+     * @description: add a Student if the num of student not over the maxnum, class
+     *               num + 1,
      * @param {Student} student
      * @return boolean
      */

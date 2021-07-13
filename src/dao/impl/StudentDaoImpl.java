@@ -12,12 +12,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import Tool.Education;
 import dao.BaseDao;
 import dao.StudentDao;
 import entity.Person.Student;
+import Tool.calAge;
 
 public class StudentDaoImpl extends BaseDao implements StudentDao {
     private Connection conn = null;
@@ -26,8 +28,7 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
 
     @Override
     public int updateStudent(String sql, Object[] param) {
-        int count = executeSQL(sql, param);
-        return count;
+        return executeSQL(sql, param);
     }
 
     @Override
@@ -47,18 +48,17 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
                 temp.setName(rs.getString(2));
                 temp.setSex(rs.getString(5));
                 // temp.setAge(rs.getInt(3));
-                // TODO: Student age
+
                 // temp.setAge();
                 temp.setBirthday(rs.getString(4));
                 temp.setStudentID(rs.getInt(1));
                 // TODO:int convert to Education
                 temp.setEdu((Education) rs.getObject(3));
                 temp.setState(rs.getBoolean(6));
+                temp.setAge(calAge.getAge(temp.getBirthday()));
                 studentList.add(temp);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ParseException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             this.closeAll(conn, pstmt, rs);
