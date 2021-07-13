@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 08:56:56
+ * @LastEditTime: 2021-07-13 10:28:49
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -25,11 +25,13 @@ import entity.TClass.TClass;
 public class QueryImpl implements Query {
 
     @Override
+
+    // ok
     public ArrayList<Course> queryCourse(Education edu, boolean courseState) {
         String sql = "select * from course where education=? and state=?";
         CourseDaoImpl tmp = new CourseDaoImpl();
         Object arr[] = new Object[2];
-        arr[0] = edu;
+        arr[0] = edu.ordinal();
         arr[1] = courseState;
         return tmp.selectCourse(sql, arr);
     }
@@ -46,17 +48,18 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassState) {
-        String sql = "select * from class where courseID in (select distinct classID from taking nature join student as t where t.studentID=?) and class.state=?";
+        String sql = "SELECT*FROM class t WHERE t.classID IN ( SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND class.state=? AND student.studentID=?)";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[2];
-        arr[0] = studentId;
-        arr[1] = tClassState;
+        arr[0] = tClassState;
+        arr[1] = studentId;
         return tmp.selectTClass(sql, arr);
     }
 
+    // 149
     @Override
     public ArrayList<Student> queryStudent(int tClassId, boolean studentState) {
-        String sql = "select * from student where student.studentID in (select distinct t.studentID from student nature join taking as t where classID=?) and student.state=?";
+        String sql = "select * from student t where t.studentID in (SELECT studentID FROM student natural JOIN taking WHERE classID =? and state = ?)";
         Object arr[] = new Object[2];
         arr[0] = tClassId;
         arr[1] = studentState;
@@ -118,7 +121,7 @@ public class QueryImpl implements Query {
     public boolean IsExistCourse(Education education, String courseName, boolean courseState) {
         String sql = "select * from course where education=? and coursename=? and state=?";
         Object arr[] = new Object[3];
-        arr[0] = education;
+        arr[0] = education.ordinal();
         arr[1] = courseName;
         arr[2] = courseState;
         CourseDaoImpl tmp = new CourseDaoImpl();
