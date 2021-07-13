@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 11:58:03
+ * @LastEditTime: 2021-07-13 17:14:53
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -24,7 +24,7 @@ public class UpdateImpl implements Update {
     @Override
     public boolean deleteTaking(int studentId, int tClassId) {
         BaseDao tmp = new BaseDao();
-        String sql = "update taking set state=false where studentID=? and classID=?";
+        String sql = "update taking set state=false where studentID=? and classID=? and state = true";
         Object arr[] = new Object[2];
         arr[0] = studentId;
         arr[1] = tClassId;

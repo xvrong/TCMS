@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 10:41:58
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 17:08:57
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -287,6 +287,16 @@ public class QueryImpl implements Query {
             return false;
         else
             return true;
+    }
+
+    @Override
+    public ArrayList<Course> queryCourseByStudentId(int studnetId, boolean courseState) {
+        String sql = "select * from course where courseID in (select courseID from course natural join student where studentID = ?) and state = ?";
+        Object arr[] = new Object[2];
+        arr[0] = studnetId;
+        arr[1] = courseState;
+        CourseDaoImpl tmp = new CourseDaoImpl();
+        return tmp.selectCourse(sql, arr);
     }
 
 }

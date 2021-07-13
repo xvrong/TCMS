@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 16:17:34
+ * @LastEditTime: 2021-07-13 16:32:27
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -210,12 +210,12 @@ public class GetInputImpl implements GetInput {
         String str = null;
         while (true) {
             input = new Scanner(System.in);
-            jout.print("请输入性别(男/女): ");
+            jout.print("请输入性别(男/女/Hide): ");
             str = input.next();
-            if (str.equals("男") || str.equals("女")) {
+            if (str.equals("男") || str.equals("女") || str.equals("Hide")) {
                 break;
             }
-            jout.println("不能选择性别: " + str + ", 请重新输入");
+            jout.println("不能选择的性别选项: " + str + ", 请重新输入");
         }
         return str;
     }
