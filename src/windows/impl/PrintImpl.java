@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 18:05:55
+ * @LastEditTime: 2021-07-13 20:03:50
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -19,6 +19,7 @@ import entity.Person.Teacher;
 import entity.TClass.TClass;
 import windows.Print;
 
+// TODO:调整输出顺序
 public class PrintImpl implements Print {
     private static PrintStream jout = System.out; // 全局的输出
 
@@ -51,22 +52,24 @@ public class PrintImpl implements Print {
     }
 
     @Override
-    public void printCourseBasicInfomation(ArrayList<Course> courseList) {
+    public void printCourseInfomation(ArrayList<Course> courseList) {
         jout.println("课程的基本信息：");
-        jout.println("--------------------------------------------------------------------------------");
-        jout.printf("%-8s\t%-8s\t%-8s\n", "序号", "学历", "课程名称");
-        jout.println("--------------------------------------------------------------------------------");
+        jout.println("--------------------------------------------------------------------------------------------");
+        jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "课程ID", "学历", "课程名称", "价格");
+        jout.println("--------------------------------------------------------------------------------------------");
         int number = 0;
         for (Course cour : courseList) {
-            jout.printf("%-8d\t%-8s\t%-8s\n", number, cour.getEdu(), cour.getName());
+            jout.printf("%-8d\t%-8d\t%-8s\t%-8s\t%-8.2f\n", number, cour.getCourseId(), cour.getEdu(), cour.getName(),
+                    cour.getPrice());
             number++;
         }
-        jout.println("--------------------------------------------------------------------------------");
+        jout.println("--------------------------------------------------------------------------------------------");
 
     }
 
     @Override
-    public void printTClassBasicInfomation(ArrayList<TClass> tClassList) {
+    // TODO 班级老师
+    public void printTClassInfomation(ArrayList<TClass> tClassList) {
         jout.println("班级的基本信息：");
         jout.println(
                 "--------------------------------------------------------------------------------------------------------");
@@ -147,6 +150,6 @@ public class PrintImpl implements Print {
         ArrayList<TClass> tClassList = new ArrayList<TClass>();
         tClassList.add(Debug.createTClass(1, 2021, Education.JUNIOR, 996, 101));
         tClassList.add(Debug.createTClass(2, 1998, Education.PRIMARY, 007, 97));
-        Test.printTClassBasicInfomation(tClassList);
+        Test.printTClassInfomation(tClassList);
     }
 }

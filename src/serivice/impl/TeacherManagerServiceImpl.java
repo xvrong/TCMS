@@ -71,7 +71,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
             if (tClassList.isEmpty()) {
                 System.out.println("此老师暂无班级");
             } else {
-                pt.printTClassBasicInfomation(tClassList);
+                pt.printTClassInfomation(tClassList);
             }
         } else {
             System.out.println("此ID无对应老师");
@@ -86,7 +86,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
             if (tClassList.isEmpty()) {
                 System.out.println("此老师暂无班级");
             } else {
-                pt.printTClassBasicInfomation(tClassList);
+                pt.printTClassInfomation(tClassList);
             }
         } else {
             System.out.println("此ID无对应老师");

@@ -30,7 +30,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void showTeachingClass() {
         ArrayList<TClass> courseList = qy.queryTClassByTeacherId(teacher.getTeacherID(), true);
-        pt.printTClassBasicInfomation(courseList);
+        pt.printTClassInfomation(courseList);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void showHistoryTeachingClass() {
         ArrayList<TClass> courseList = qy.queryTClassByTeacherId(teacher.getTeacherID(), false);
-        pt.printTClassBasicInfomation(courseList);
+        pt.printTClassInfomation(courseList);
     }
 
     @Override

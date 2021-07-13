@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 18:44:38
+ * @LastEditTime: 2021-07-13 19:58:54
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -83,7 +83,7 @@ public class GetInputImpl implements GetInput {
 
     @Override
     public int getInputCourse(ArrayList<Course> courseList) {
-        PT.printCourseBasicInfomation(courseList);
+        PT.printCourseInfomation(courseList);
         int chos = -1;
         while (true) {
             input = new Scanner(System.in);
@@ -94,7 +94,7 @@ public class GetInputImpl implements GetInput {
                 continue;
             }
             chos = Integer.parseInt(str);
-            if (chos < 0 || chos > courseList.size()) {
+            if (chos < 0 || chos >= courseList.size()) {
                 jout.println("没有该选项, 请重新输入");
                 continue;
             }
@@ -105,7 +105,7 @@ public class GetInputImpl implements GetInput {
 
     @Override
     public int getInputClass(ArrayList<TClass> tClassList) {
-        PT.printTClassBasicInfomation(tClassList);
+        PT.printTClassInfomation(tClassList);
         int chos = -1;
         while (true) {
             input = new Scanner(System.in);
@@ -116,7 +116,7 @@ public class GetInputImpl implements GetInput {
                 continue;
             }
             chos = Integer.parseInt(str);
-            if (chos < 0 || chos > tClassList.size()) {
+            if (chos < 0 || chos >= tClassList.size()) {
                 jout.println("没有该选项, 请重新输入");
                 continue;
             }
@@ -138,7 +138,7 @@ public class GetInputImpl implements GetInput {
                 continue;
             }
             chos = Integer.parseInt(str);
-            if (chos < 0 || chos > studentList.size()) {
+            if (chos < 0 || chos >= studentList.size()) {
                 jout.println("没有该选项, 请重新输入");
                 continue;
             }
@@ -160,7 +160,7 @@ public class GetInputImpl implements GetInput {
                 continue;
             }
             chos = Integer.parseInt(str);
-            if (chos < 0 || chos > teacherList.size()) {
+            if (chos < 0 || chos >= teacherList.size()) {
                 jout.println("没有该选项, 请重新输入");
                 continue;
             }

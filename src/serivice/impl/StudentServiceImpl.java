@@ -30,13 +30,13 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void showPersonalTClass() {
         ArrayList<TClass> tClassList = qy.queryTClassByStudent(student.getStudentID(), true);
-        pt.printTClassBasicInfomation(tClassList);
+        pt.printTClassInfomation(tClassList);
     }
 
     @Override
     public void showHistoryTClass() {
         ArrayList<TClass> tClassList = qy.queryTClassByStudent(student.getStudentID(), false);
-        pt.printTClassBasicInfomation(tClassList);
+        pt.printTClassInfomation(tClassList);
 
     }
 

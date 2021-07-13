@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:02
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 18:46:51
+ * @LastEditTime: 2021-07-13 19:01:35
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\CourseManagerServiceImpl.java
  */
@@ -19,32 +19,53 @@ public class CourseManagerServiceImpl implements CourseManagerService {
     @Override
     public void showAllTCourse() {
         ArrayList<Course> courseList = qy.queryCourse(true);
-        pt.printCourseBasicInfomation(courseList);
+        if (courseList.isEmpty()) {
+            System.out.println("本补习班暂无课程");
+            return;
+        }
+        pt.printCourseInfomation(courseList);
     }
 
     @Override
     public void showAllTClassCertainCourse() {
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
+        if (courseList.isEmpty()) {
+            System.out.println("本学历暂无课程");
+            return;
+        }
         int courseId = get.getInputCourse(courseList);
         ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
-        pt.printTClassBasicInfomation(tClassList);
+        if (tClassList.isEmpty()) {
+            System.out.println("本课程暂无班级");
+            return;
+        }
+        pt.printTClassInfomation(tClassList);
     }
 
     @Override
     public void addCourse() {
         Course course = new Course();
-        String courseName = get.getInputName();
+        String courseName = get.getInputString("请输入课程名: ");
         course.setName(courseName);
         Education edu = get.getInputEducation();
         course.setEdu(edu);
         qy.IsExistCourse(edu, courseName, true);
         double price = get.getInputSalary();
         course.setPrice(price);
+        course.setState(true);
         ArrayList<Course> courseList = new ArrayList<Course>();
-        pt.printCourseBasicInfomation(courseList);
-        if (get.getInputYN())
-            up.addCourse(course);
+        courseList.add(course);
+        // TODO: ID显示不正确
+        pt.printCourseInfomation(courseList);
+        if (get.getInputYN()) {
+            if (up.addCourse(course)) {
+                System.out.println("增加课程成功");
+            } else {
+                System.out.println("增加课程失败");
+            }
+        }
+
     }
 
     @Override
@@ -52,14 +73,12 @@ public class CourseManagerServiceImpl implements CourseManagerService {
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
-        if (qy.IsExistCourse(courseId, true)) {
-            double price = get.getInputSalary();
-            up.setCoursePrice(courseId, price);
+        double price = get.getInputSalary();
+        if (up.setCoursePrice(courseId, price)) {
             System.out.println("修改成功");
         } else {
-            System.out.println("此课程不存在");
+            System.out.println("修改失败");
         }
-
     }
 
     @Override
@@ -80,7 +99,6 @@ public class CourseManagerServiceImpl implements CourseManagerService {
         } else {
             System.out.println("此课程不存在");
         }
-
     }
 
     @Override

@@ -36,7 +36,7 @@ public interface Print {
      * @param {ArrayList<String>} cousrseList
      * @return none
      */
-    public void printCourseBasicInfomation(ArrayList<Course> courseList);
+    public void printCourseInfomation(ArrayList<Course> courseList);
 
     /**
      * @description:print class basic information No.+ year + education + course +
@@ -44,7 +44,7 @@ public interface Print {
      * @param {ArrayList<String>} classList
      * @return none
      */
-    public void printTClassBasicInfomation(ArrayList<TClass> tClassList);
+    public void printTClassInfomation(ArrayList<TClass> tClassList);
 
     /**
      * @description:print Student all information No. + Id + name + sex + education

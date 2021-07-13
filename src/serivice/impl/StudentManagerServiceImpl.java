@@ -171,7 +171,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         if (qy.IsExistStudent(studentId, true)) {
             ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, true);
             if (tClassList.size() != 0) {
-                pt.printTClassBasicInfomation(tClassList);
+                pt.printTClassInfomation(tClassList);
             } else {
                 System.out.println("此学生暂无班级");
             }
@@ -186,7 +186,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         if (qy.IsExistStudent(studentId, true)) {
             ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, false);
             if (tClassList.size() != 0) {
-                pt.printTClassBasicInfomation(tClassList);
+                pt.printTClassInfomation(tClassList);
             } else {
                 System.out.println("此学生暂无历史班级");
             }
