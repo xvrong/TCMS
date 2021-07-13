@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 17:06:53
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 17:54:19
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -132,7 +132,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
                 ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
                 ArrayList<TClass> legalTClassList = new ArrayList<TClass>(); // 人数未满的班级列表
                 for (TClass tcl : tClassList) {
-                    if (tcl.getStudentNum() < tcl.getMaxStudentNum()){
+                    if (tcl.getStudentNum() < tcl.getMaxStudentNum()) {
                         legalTClassList.add(tcl);
                     }
                 }
@@ -163,34 +163,6 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         } else {
             System.out.println("补课班无此学生");
         }
-        // System.out.println("学生");
-        // int studentId = get.getInputInt("请选择ID: ", -1, -1);
-        // if (qy.IsExistStudent(studentId, true)) {
-        //     int tClassId = get.getInputInt("请输入选择的班级ID: ", -1, -1);
-        //     TClass newTClass = qy.queryTClassByTClassId(tClassId, true);
-        //     if (newTClass != null) {
-        //         if (newTClass.getStudentNum() < newTClass.getMaxStudentNum()) {
-        //             TClass oldTClass = qy.queryTClass(newTClass.getCourseID(), studentId, true);
-        //             if (up.deleteTaking(studentId, oldTClass.getClassID())) {
-        //                 if (up.addTaking(studentId, tClassId)) {
-        //                     System.out.println("调整成功");
-        //                 } else {
-        //                     System.out.println("调整失败");
-        //                     up.addTaking(studentId, oldTClass.getClassID());
-        //                 }
-        //             } else {
-        //                 System.out.println("调整失败");
-        //             }
-        //         } else {
-        //             System.out.println("此班级已满，无法调入");
-        //         }
-        //     } else {
-        //         System.out.println("此ID无对应班级");
-        //     }
-        // } else {
-        //     System.out.println("此ID无对应学生");
-        // }
-
     }
 
     @Override
@@ -241,44 +213,44 @@ public class StudentManagerServiceImpl implements StudentManagerService {
             System.out.println("0.退出");
             func = get.getInputInt("请选择序号: ", 0, 9);
             switch (func) {
-            case 1:
-                showAllStudent();
-                get.getInputEnter();
-                break;
-            case 2:
-                showCertainClassStudent();
-                get.getInputEnter();
-                break;
-            case 3:
-                showCertainTeacherStudent();
-                get.getInputEnter();
-                break;
-            case 4:
-                showCertainStudent();
-                get.getInputEnter();
-                break;
-            case 5:
-                showCertainStudentNowClass();
-                get.getInputEnter();
-                break;
-            case 6:
-                showCertainStudentHistoryClass();
-                get.getInputEnter();
-                break;
-            case 7:
-                addStudent();
-                get.getInputEnter();
-                break;
-            case 8:
-                deleteStudent();
-                get.getInputEnter();
-                break;
-            case 9:
-                changeStudentClass();
-                get.getInputEnter();
-                break;
-            default:
-                break;
+                case 1:
+                    showAllStudent();
+                    get.getInputEnter();
+                    break;
+                case 2:
+                    showCertainClassStudent();
+                    get.getInputEnter();
+                    break;
+                case 3:
+                    showCertainTeacherStudent();
+                    get.getInputEnter();
+                    break;
+                case 4:
+                    showCertainStudent();
+                    get.getInputEnter();
+                    break;
+                case 5:
+                    showCertainStudentNowClass();
+                    get.getInputEnter();
+                    break;
+                case 6:
+                    showCertainStudentHistoryClass();
+                    get.getInputEnter();
+                    break;
+                case 7:
+                    addStudent();
+                    get.getInputEnter();
+                    break;
+                case 8:
+                    deleteStudent();
+                    get.getInputEnter();
+                    break;
+                case 9:
+                    changeStudentClass();
+                    get.getInputEnter();
+                    break;
+                default:
+                    break;
             }
         }
     }

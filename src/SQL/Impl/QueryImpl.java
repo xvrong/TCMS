@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 17:08:57
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 17:43:07
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -48,7 +48,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassState) {
-        String sql = "SELECT * FROM class t WHERE t.classID IN (SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking.studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND class.state=? AND student.studentID=?)";
+        String sql = "SELECT * FROM class t WHERE t.classID IN (SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking.studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND taking.state=TRUE AND class.state=? AND student.studentID=?)";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[2];
         arr[0] = tClassState;
@@ -59,7 +59,7 @@ public class QueryImpl implements Query {
     // 149
     @Override
     public ArrayList<Student> queryStudent(int tClassId, boolean studentState) {
-        String sql = "select * from student t where t.studentID in (SELECT studentID FROM student natural JOIN taking WHERE classID =? and state = ?)";
+        String sql = "select * from student t where t.studentID in (SELECT studentID FROM student natural JOIN taking WHERE classID=? and state=?)";
         Object arr[] = new Object[2];
         arr[0] = tClassId;
         arr[1] = studentState;

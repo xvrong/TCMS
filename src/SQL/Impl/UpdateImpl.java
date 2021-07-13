@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 17:14:53
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 17:58:14
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -24,14 +24,14 @@ public class UpdateImpl implements Update {
     @Override
     public boolean deleteTaking(int studentId, int tClassId) {
         BaseDao tmp = new BaseDao();
-        String sql = "update taking set state=false where studentID=? and classID=? and state = true";
+        String sql = "update taking set state=false where studentID=? and classID=? and state=true";
         Object arr[] = new Object[2];
         arr[0] = studentId;
         arr[1] = tClassId;
         Object brr[] = new Object[1];
         brr[0] = arr[1];
         if (tmp.updateTaking(sql, arr) > 0) {
-            String sql2 = "update class set studentnum=studentnum-1 where classID=?)";
+            String sql2 = "update class set studentnum=studentnum-1 where classID=?";
             new TClassDaoImpl().updateTClass(sql2, brr);
             return true;
         } else
@@ -41,7 +41,7 @@ public class UpdateImpl implements Update {
     @Override
     public boolean addTaking(int studentId, int tClassId) {
         BaseDao tmp = new BaseDao();
-        String sql = "insert into taking values(?,?,true)";
+        String sql = "insert into taking values(0,?,?,true)";
         Object arr[] = new Object[2];
         arr[0] = tClassId;
         arr[1] = studentId;

@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 16:22:49
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 18:05:55
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -68,17 +68,20 @@ public class PrintImpl implements Print {
     @Override
     public void printTClassBasicInfomation(ArrayList<TClass> tClassList) {
         jout.println("班级的基本信息：");
-        jout.println("--------------------------------------------------------------------------------------------");
-        // TODO :   增加数据库查询输出课程名称
-        jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "班号", "开始时间", "学历", "课程ID", "学生人数");
-        jout.println("--------------------------------------------------------------------------------------------");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------");
+        // TODO : 增加数据库查询输出课程名称
+        jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "年级", "班号", "开始时间", "学历", "课程ID", "学生人数");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------");
         int number = 0;
         for (TClass tcs : tClassList) {
-            jout.printf("%-8d\t%-8s\t%-8d\t%-8s\t%-8d\t%-8d\n", number, tcs.getOrderNumber(), tcs.getStartYear(),
-                    tcs.getEducation(), tcs.getCourseID(), tcs.getStudentNum());
+            jout.printf("%-8d\t%-8d\t%-8s\t%-8d\t%-8s\t%-8d\t%-8d\n", number, tcs.getGrade(), tcs.getOrderNumber(),
+                    tcs.getStartYear(), tcs.getEducation(), tcs.getCourseID(), tcs.getStudentNum());
             number++;
         }
-        jout.println("--------------------------------------------------------------------------------------------");
+        jout.println(
+                "--------------------------------------------------------------------------------------------------------");
 
     }
 
