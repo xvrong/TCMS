@@ -111,6 +111,7 @@ public class BaseDao {
         }
         return num;
     }
+
     public int updateTaking(String sql, Object[] param) {
         return executeSQL(sql, param);
     }

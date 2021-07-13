@@ -43,8 +43,8 @@ public class UpdateImpl implements Update {
         BaseDao tmp = new BaseDao();
         String sql = "insert into taking values(?,?,true)";
         Object arr[] = new Object[2];
-        arr[1] = studentId;
         arr[0] = tClassId;
+        arr[1] = studentId;
         if (tmp.updateTaking(sql, arr) > 0) {
             Object brr[] = new Object[1];
             brr[0] = arr[0];
