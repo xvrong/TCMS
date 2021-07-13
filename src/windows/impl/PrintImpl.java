@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 10:47:21
+ * @LastEditTime: 2021-07-13 16:22:49
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -69,11 +69,12 @@ public class PrintImpl implements Print {
     public void printTClassBasicInfomation(ArrayList<TClass> tClassList) {
         jout.println("班级的基本信息：");
         jout.println("--------------------------------------------------------------------------------------------");
+        // TODO :   增加数据库查询输出课程名称
         jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "班号", "开始时间", "学历", "课程ID", "学生人数");
         jout.println("--------------------------------------------------------------------------------------------");
         int number = 0;
         for (TClass tcs : tClassList) {
-            jout.printf("%-8d%-8s\t\t%-8d\t%-8s\t%-8d\t%-8d\n", number, tcs.getClassID(), tcs.getStartYear(),
+            jout.printf("%-8d\t%-8s\t%-8d\t%-8s\t%-8d\t%-8d\n", number, tcs.getOrderNumber(), tcs.getStartYear(),
                     tcs.getEducation(), tcs.getCourseID(), tcs.getStudentNum());
             number++;
         }

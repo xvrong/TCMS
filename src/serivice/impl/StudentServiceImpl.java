@@ -105,7 +105,7 @@ public class StudentServiceImpl implements StudentService {
             jout.println("3.查询历史班级");
             jout.println("4.进行选课");
             jout.println("0.退出登录");
-            func = get.getInputFunction(4);
+            func = get.getInputInt("请选择序号: ", 0, 4);
             switch (func) {
                 case 1:
                     showPersonalInfo();

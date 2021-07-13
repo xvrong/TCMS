@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 14:24:25
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 16:17:57
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -85,14 +85,6 @@ public interface GetInput {
     public String getInputSex();
 
     /**
-     * @description: get Id, check input > 0, until input right Id, provid a method
-     *               to input -1 to back to menu without right input(return -1)
-     * @param none
-     * @return id
-     */
-    public int getInputId();
-
-    /**
      * @description: get yeaer, check input > 0, until input right year, provid a
      *               method to input -1 to back to menu without right input(return
      *               -1)
@@ -141,16 +133,25 @@ public interface GetInput {
     public int getInputStudent(ArrayList<Student> studentList);
 
     /**
-     * @description: get functionNum else print 0 return
-     * @param {int>} functioNnum
-     * @return int
-     */
-    public int getInputFunction(int functioNnum);
-
-    /**
      * @description: get Enter to return
      * @param none
      * @return none
      */
     public void getInputEnter();
+
+    /**
+     * @description: 根据提示信息获得一个int输入
+     * @param {String} message
+     * @param {int} minn
+     * @param {int} maxx
+     * @return {*}
+     */    
+    public int getInputInt(String message, int minn, int maxx);
+
+    /**
+     * @description: 根据提示输入一个字符串
+     * @param {String} message
+     * @return {*}
+     */    
+    public String getInputString(String message);
 }

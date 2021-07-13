@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 14:37:34
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 16:17:34
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -221,27 +221,6 @@ public class GetInputImpl implements GetInput {
     }
 
     @Override
-    public int getInputId() {
-        int id = -1;
-        while (true) {
-            input = new Scanner(System.in);
-            jout.print("请输入ID");
-            String str = input.next();
-            if (isNumeric(str) == false) {
-                jout.println(String.format("输入'%s'不是数字, 请重新输入", str));
-                continue;
-            }
-            id = Integer.parseInt(str);
-            if (id < 0 || id > 2) {
-                jout.println("没有该选项, 请重新输入");
-                continue;
-            }
-            break;
-        }
-        return id;
-    }
-
-    @Override
     public int getInputYear() {
         int year = -1;
         while (true) {
@@ -359,20 +338,6 @@ public class GetInputImpl implements GetInput {
         return maxNum;
     }
 
-    @Override
-    public int getInputFunction(int functionNum) {
-        int func = -1;
-        input = new Scanner(System.in);
-        do {
-            jout.print("请输入选择: ");
-            func = input.nextInt();
-            if (func < 0 || func > functionNum) {
-                System.out.print("输入错误!");
-            }
-        } while (func < 0 || func > functionNum);
-        return func;
-    }
-
     public static void main(String[] args) {
         // GetInputImpl Test = new GetInputImpl();
         // Education edu = Test.getInputEducation();
@@ -418,5 +383,35 @@ public class GetInputImpl implements GetInput {
     public void getInputEnter() {
         input = new Scanner(System.in);
         input.nextLine();
+    }
+
+    @Override
+    public int getInputInt(String message, int minn, int maxn) {
+        int id = -1;
+        while (true) {
+            input = new Scanner(System.in);
+            jout.print(message);
+            String str = input.next();
+            if (isNumeric(str) == false) {
+                jout.println(String.format("输入'%s'不是数字, 请重新输入", str));
+                continue;
+            }
+            id = Integer.parseInt(str);
+            if(minn != -1 && id < minn || maxn!=-1 && id > maxn) {
+                jout.println("输入范围不合法！");
+                continue;
+            }
+            break;
+        }
+        return id;
+    }
+
+    @Override
+    public String getInputString(String message) {
+        String rtStr = null;
+        input = new Scanner(System.in);
+        jout.print(message);
+        rtStr = input.next();
+        return rtStr;
     }
 }

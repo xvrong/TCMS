@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-12 16:21:58
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 14:29:52
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 16:20:41
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\ManagerServiceImpl.java
  */
@@ -22,8 +22,7 @@ public class ManagerServiceImpl implements ManagerService {
             System.out.println("3.班级管理");
             System.out.println("4.课程管理");
             System.out.println("0.退出");
-            System.out.print("请输入序号:");
-            model = get.getInputFunction(4);
+            model = get.getInputInt("请选择序号: ", 0, 4);
             switch (model) {
                 case 1:
                     studentManager.run();

@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 16:04:51
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 16:27:42
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -52,7 +52,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
 
     @Override
     public void showCertainTeacherStudent() {
-        int teacherId = get.getInputId();
+        int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistTeacher(teacherId, true)) {
             ArrayList<Student> studentList = qy.queryStudentByTeacher(teacherId, true);
             if (studentList.size() != 0) {
@@ -67,7 +67,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
 
     @Override
     public void showCertainStudent() {
-        int studentId = get.getInputId();
+        int studentId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistStudent(studentId, true)) {
             Student student = qy.queryStudentByStudentID(studentId, true);
             ArrayList<Student> studentList = new ArrayList<Student>();
@@ -105,7 +105,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
 
     @Override
     public void deleteStudent() {
-        int studentId = get.getInputId();
+        int studentId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistStudent(studentId, true)) {
             Student student = qy.queryStudentByStudentID(studentId, true);
             ArrayList<Student> studentList = new ArrayList<Student>();
@@ -125,10 +125,9 @@ public class StudentManagerServiceImpl implements StudentManagerService {
     @Override
     public void changeStudentClass() {
         System.out.println("学生");
-        int studentId = get.getInputId();
+        int studentId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistStudent(studentId, true)) {
-            System.out.println("要调换的班级");
-            int tClassId = get.getInputId();
+            int tClassId = get.getInputInt("请输入选择的班级ID: ", -1, -1);
             TClass newTClass = qy.queryTClassByTClassId(tClassId, true);
             if (newTClass != null) {
                 if (newTClass.getStudentNum() < newTClass.getMaxStudentNum()) {
@@ -157,7 +156,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
 
     @Override
     public void showCertainStudentNowClass() {
-        int studentId = get.getInputId();
+        int studentId = get.getInputInt("请输入学生ID: ", -1, -1);
         if (qy.IsExistStudent(studentId, true)) {
             ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, true);
             if (tClassList.size() != 0) {
@@ -172,7 +171,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
 
     @Override
     public void showCertainStudentHistoryClass() {
-        int studentId = get.getInputId();
+        int studentId = get.getInputInt("请输入学生ID: ", -1, -1);
         if (qy.IsExistStudent(studentId, true)) {
             ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, false);
             if (tClassList.size() != 0) {
@@ -201,7 +200,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
             System.out.println("8.删除一个学生");
             System.out.println("9.更改学生班级");
             System.out.println("0.退出");
-            func = get.getInputFunction(9);
+            func = get.getInputInt("请选择序号: ", 0, 9);
             switch (func) {
                 case 1:
                     showAllStudent();

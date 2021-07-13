@@ -39,7 +39,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void showCertainTeacher() {
-        int teacherId = get.getInputId();
+        int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
             Teacher teacher = qy.queryTeacherByTeacherId(teacherId, true);
@@ -54,7 +54,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void showTeacherNowClass() {
-        int teacherId = get.getInputId();
+        int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
             ArrayList<TClass> tClassList = qy.queryTClassByTeacherId(teacherId, true);
@@ -67,7 +67,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void showTeacherHistoryClass() {
-        int teacherId = get.getInputId();
+        int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
             ArrayList<TClass> tClassList = qy.queryTClassByTeacherId(teacherId, false);
@@ -103,7 +103,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void deleteTeacher() {
-        int teacherId = get.getInputId();
+        int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistTeacher(teacherId, true)) {
             Teacher teacher = qy.queryTeacherByTeacherId(teacherId, true);
             ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
@@ -127,7 +127,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void setSalary() {
-        int teacherId = get.getInputId();
+        int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistTeacher(teacherId, true)) {
             Teacher teacher = qy.queryTeacherByTeacherId(teacherId, true);
             System.out.println("原来的工资为：" + teacher.getSalary());
@@ -159,7 +159,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
             System.out.println("7.删除一个老师");
             System.out.println("8.设置一个老师的工资");
             System.out.println("0.退出");
-            func = get.getInputFunction(8);
+            func = get.getInputInt("请选择序号: ", 0, 8);
             switch (func) {
                 case 1:
                     showAllTeacher();

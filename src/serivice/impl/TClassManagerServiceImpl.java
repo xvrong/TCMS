@@ -64,7 +64,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         int num = tClassList.size() + 1;
         tClass.setOrderNumber(num);
         System.out.println("选择对应老师");
-        int teacherId = get.getInputId();
+        int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         get.getInputClassMaxNum();
         tClass.setTeacherID(teacherId);
         int year = cal.get(Calendar.YEAR);
@@ -88,7 +88,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         qy.queryTClassByTClassId(tClassId, true);
         pt.printTClassBasicInfomation(tClassList);
         System.out.println("选择老师");
-        int teacherId = get.getInputId();
+        int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistTeacher(teacherId, true)) {
             boolean flag = up.setTeahcer(tClassId, teacherId);
             if (flag) {
@@ -125,7 +125,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         int courseId = get.getInputCourse(courseList);
         ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
         int tClassId = get.getInputClass(tClassList);
-        int studentId = get.getInputId();
+        int studentId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistStudent(studentId, true)) {
             boolean flag = up.addTaking(studentId, tClassId);
             if (flag) {
@@ -177,7 +177,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
             System.out.println("7.在一个班级里删除一个学生");
             System.out.println("8.在一个班级里增加一个学生");
             System.out.println("0.退出");
-            func = get.getInputFunction(8);
+            func = get.getInputInt("请选择序号: ", 0, 8);
             switch (func) {
                 case 1:
                     showAllTClass();

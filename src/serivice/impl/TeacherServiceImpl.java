@@ -72,7 +72,7 @@ public class TeacherServiceImpl implements TeacherService {
             jout.println("4.查询自己所教的所有学生");
             jout.println("5.查询自己所教某位学生的详细信息");
             jout.println("0.退出登录");
-            func = get.getInputFunction(5);
+            func = get.getInputInt("请选择序号: ", 0, 5);
             switch (func) {
                 case 1:
                     showPersonalInfo();

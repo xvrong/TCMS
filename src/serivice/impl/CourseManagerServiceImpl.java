@@ -64,7 +64,7 @@ public class CourseManagerServiceImpl implements CourseManagerService {
 
     @Override
     public void deleteCourse() {
-        int courseId = get.getInputId();
+        int courseId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistCourse(courseId, true)) {
             ArrayList<TClass> tClssList = qy.queryTClass(courseId, true);
             if (tClssList.size() == 0) {
@@ -94,7 +94,7 @@ public class CourseManagerServiceImpl implements CourseManagerService {
             System.out.println("4.删除一门课程");
             System.out.println("5.设置一门课程的价格");
             System.out.println("0.退出");
-            func = get.getInputFunction(5);
+            func = get.getInputInt("请选择序号: ", 0, 5);
             switch (func) {
                 case 1:
                     showAllTCourse();
