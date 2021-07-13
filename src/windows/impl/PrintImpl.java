@@ -73,8 +73,8 @@ public class PrintImpl implements Print {
         jout.println("--------------------------------------------------------------------------------------------");
         int number = 0;
         for (TClass tcs : tClassList) {
-            jout.printf("%-8d%-8s\t\t%-8d\t%-8s\t%-8d\t%-8d\n", number, tcs.getClassID(), tcs.getStartYear(), tcs.getEducation(),
-                    tcs.getCourseID(), tcs.getStudentNum());
+            jout.printf("%-8d%-8s\t\t%-8d\t%-8s\t%-8d\t%-8d\n", number, tcs.getClassID(), tcs.getStartYear(),
+                    tcs.getEducation(), tcs.getCourseID(), tcs.getStudentNum());
             number++;
         }
         jout.println("--------------------------------------------------------------------------------------------");
@@ -121,13 +121,17 @@ public class PrintImpl implements Print {
     public static void main(String[] args) {
         PrintImpl Test = new PrintImpl();
         // ArrayList<Student> studentList = new ArrayList<Student>();
-        // studentList.add(Debug.createStudent(001, "松本", "无", Education.HIGH, "2085-11-17", 45));
-        // studentList.add(Debug.createStudent(002, "vivy", "女", Education.PRIMARY, "2008-06-01", 34));
+        // studentList.add(Debug.createStudent(001, "松本", "无", Education.HIGH,
+        // "2085-11-17", 45));
+        // studentList.add(Debug.createStudent(002, "vivy", "女", Education.PRIMARY,
+        // "2008-06-01", 34));
         // Test.printStudentBasicInfomation(studentList);
         // Test.printStudentAllInformation(studentList);
         // ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-        // teacherList.add(Debug.createTeacher(001, "奥菲利亚", "女", "2045-11-17", 23, 180000.5));
-        // teacherList.add(Debug.createTeacher(002, "navy", "女", "2008-06-01", 34, 84521.0));
+        // teacherList.add(Debug.createTeacher(001, "奥菲利亚", "女", "2045-11-17", 23,
+        // 180000.5));
+        // teacherList.add(Debug.createTeacher(002, "navy", "女", "2008-06-01", 34,
+        // 84521.0));
         // Test.printTeacherBasicInfomation(teacherList);
         // Test.printTeacherAllInformation(teacherList);
 

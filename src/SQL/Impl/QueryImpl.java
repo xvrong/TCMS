@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 10:28:49
+ * @LastEditTime: 2021-07-13 10:41:58
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -48,7 +48,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassState) {
-        String sql = "SELECT*FROM class t WHERE t.classID IN ( SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND class.state=? AND student.studentID=?)";
+        String sql = "SELECT * FROM class t WHERE t.classID IN (SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking.studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND class.state=? AND student.studentID=?)";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[2];
         arr[0] = tClassState;
