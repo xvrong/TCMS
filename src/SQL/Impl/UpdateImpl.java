@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 10:33:51
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 11:58:03
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -47,8 +47,8 @@ public class UpdateImpl implements Update {
         arr[0] = tClassId;
         if (tmp.updateTaking(sql, arr) > 0) {
             Object brr[] = new Object[1];
-            brr[0] = arr[1];
-            String sql2 = "update class set studentnum=studentnum+1 where classID=?)";
+            brr[0] = arr[0];
+            String sql2 = "update class set studentnum=studentnum+1 where classID=?";
             new TClassDaoImpl().updateTClass(sql2, brr);
             return true;
         } else

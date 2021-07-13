@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-12 16:21:58
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 16:38:53
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 12:17:05
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\ManagerServiceImpl.java
  */
@@ -29,7 +29,7 @@ public class ManagerServiceImpl implements ManagerService {
             do {
                 model = input.nextInt();
                 if (model < 0 || model > 4) {
-                    System.out.print("输入错误，请重新输入:");
+                    System.out.print("输入错误!");
                 }
             } while (model < 0 || model > 4);
             switch (model) {

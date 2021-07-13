@@ -124,7 +124,7 @@ public class CourseManagerServiceImpl implements CourseManagerService {
                 System.out.print("请输入选择: ");
                 func = input.nextInt();
                 if (func < 0 || func > 5) {
-                    System.out.print("输入错误，请重新输入:");
+                    System.out.print("输入错误!");
                 }
             } while (func < 0 || func > 5);
             switch (func) {

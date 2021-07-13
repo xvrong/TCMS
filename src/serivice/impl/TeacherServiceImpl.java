@@ -3,7 +3,7 @@
  * @Date: 2021-07-12 16:58:57
  * @Description: 
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 11:04:48
+ * @LastEditTime: 2021-07-13 12:16:24
  * @FilePath: \TCMS\src\serivice\impl\TeacherServiceImpl.java
  */
 package serivice.impl;
@@ -87,7 +87,7 @@ public class TeacherServiceImpl implements TeacherService {
                 jout.print("请输入选择: ");
                 func = input.nextInt();
                 if (func < 0 || func > 5) {
-                    System.out.print("输入错误，请重新输入:");
+                    System.out.print("输入错误!");
                 }
             } while (func < 0 || func > 5);
             switch (func) {

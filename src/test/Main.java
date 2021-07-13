@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-12 10:53:28
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 20:16:53
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 11:10:37
  * @Description: 
  * @FilePath: \TCMS\src\test\Main.java
  */
@@ -22,6 +22,8 @@ import serivice.impl.TeacherServiceImpl;
 public class Main {
     public static void main(String[] args) {
         System.out.println("-----------------课外辅导管理系统启动----------------");
+        while(true)
+        {
         System.out.println("--------------------请选择登录模式-------------------");
         System.out.println("1.学生登录");
         System.out.println("2.老师登录");
@@ -47,8 +49,9 @@ public class Main {
                 managerLogin();
                 break;
             default:
-                break;
+                return; // 程序退出
         }
+    }
     }
 
     static void studentLogin() {

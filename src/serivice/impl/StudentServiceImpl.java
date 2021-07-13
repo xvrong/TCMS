@@ -3,7 +3,7 @@
  * @Date: 2021-07-12 16:58:57
  * @Description: 
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 11:04:58
+ * @LastEditTime: 2021-07-13 12:16:56
  * @FilePath: \TCMS\src\serivice\impl\StudentServiceImpl.java
  */
 package serivice.impl;
@@ -58,7 +58,7 @@ public class StudentServiceImpl implements StudentService {
         ArrayList<Course> allCourseList = qy.queryCourse(student.getEdu(), true);
         ArrayList<TClass> nowTClassList = qy.queryTClassByStudent(student.getStudentID(), true); // 学生已经在修的课程班级
         ArrayList<Course> LegalCourseList = new ArrayList<Course>(); // 合法的课程列表
-        ArrayList<Integer> LegalCourseTclassNumList = new ArrayList<Integer>(); // 可发课程对应的班级列表
+        ArrayList<TClass> LegalCourseTclassList = new ArrayList<TClass>(); // 合法课程对应的班级列表
         HashSet<Integer> nowTCassSet = new HashSet<Integer>(); // 学生已经在修的课程ID集合
         for (TClass tcl : nowTClassList) {
             nowTCassSet.add(tcl.getCourseID());
@@ -68,17 +68,17 @@ public class StudentServiceImpl implements StudentService {
         for (Course cour : allCourseList) {
             boolean canChose = false;
             ArrayList<TClass> courseTclassList = qy.queryTClass(cour.getCourseId(), true);
-            int tClassNum = -1;
+            TClass tClass = null;
             for (TClass tcl : courseTclassList) { // 课程有一年级开课班级、且班级有剩余空间
                 if (tcl.getGrade() == 1 && tcl.getStudentNum() < tcl.getMaxStudentNum()) {
                     canChose = true;
-                    tClassNum = tcl.getStudentNum();
+                    tClass = tcl;
                     break;
                 }
             }
             if (nowTCassSet.contains(cour.getCourseId()) == false && canChose == true) {
                 LegalCourseList.add(cour);
-                LegalCourseTclassNumList.add(tClassNum);
+                LegalCourseTclassList.add(tClass);
             }
         }
 
@@ -96,7 +96,7 @@ public class StudentServiceImpl implements StudentService {
                     break;
             }
             UpdateImpl up = new UpdateImpl();
-            Boolean success = up.addTaking(student.getStudentID(), LegalCourseTclassNumList.get(index));
+            Boolean success = up.addTaking(student.getStudentID(), LegalCourseTclassList.get(index).getClassID());
             if (success == true) {
                 jout.println("选课成功");
             } else {
@@ -127,7 +127,7 @@ public class StudentServiceImpl implements StudentService {
                 jout.print("请输入选择: ");
                 func = input.nextInt();
                 if (func < 0 || func > 4) {
-                    System.out.print("输入错误，请重新输入:");
+                    System.out.print("输入错误!");
                 }
             } while (func < 0 || func > 4);
             switch (func) {

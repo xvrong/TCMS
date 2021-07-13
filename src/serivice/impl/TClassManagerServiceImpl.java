@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:48:17
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 20:12:00
+ * @LastEditTime: 2021-07-13 12:16:47
  * @Description: TClassManagerServiceImpl
  * @FilePath: \TCMS\src\serivice\impl\TClassManagerServiceImpl.java
  */
@@ -217,7 +217,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
                 System.out.print("请输入选择: ");
                 func = input.nextInt();
                 if (func < 0 || func > 9) {
-                    System.out.print("输入错误，请重新输入:");
+                    System.out.print("输入错误!");
                 }
             } while (func < 0 || func > 9);
             switch (func) {
