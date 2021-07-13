@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 14:48:17
+ * @LastEditTime: 2021-07-13 18:32:53
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
@@ -21,15 +21,27 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
     @Override
     public void showAllTeacher() {
         ArrayList<Teacher> TeacherList = qy.queryTeacher(true);
-        pt.printTeacherBasicInfomation(TeacherList);
+        if (TeacherList.isEmpty()) {
+            System.out.println("本补习班没有老师");
+        } else {
+            pt.printTeacherBasicInfomation(TeacherList);
+        }
     }
 
     @Override
     public void showCertainClassTeacher() {
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
+        if (courseList.isEmpty()) {
+            System.out.println("本学历暂无课程");
+            return;
+        }
         int courseId = get.getInputCourse(courseList);
         ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
+        if (tClassList.isEmpty()) {
+            System.out.println("本课程暂无班级");
+            return;
+        }
         int tClassId = get.getInputClass(tClassList);
         Teacher teacher = qy.queryTeacher(tClassId, true);
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
@@ -40,14 +52,13 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
     @Override
     public void showCertainTeacher() {
         int teacherId = get.getInputInt("请选择ID: ", -1, -1);
-        qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
             Teacher teacher = qy.queryTeacherByTeacherId(teacherId, true);
             ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
             teacherList.add(teacher);
             pt.printTeacherAllInformation(teacherList);
         } else {
-            System.out.println("不存在此老师");
+            System.out.println("此ID无对应老师");
         }
 
     }
@@ -55,25 +66,30 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
     @Override
     public void showTeacherNowClass() {
         int teacherId = get.getInputInt("请选择ID: ", -1, -1);
-        qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
             ArrayList<TClass> tClassList = qy.queryTClassByTeacherId(teacherId, true);
-            pt.printTClassBasicInfomation(tClassList);
+            if (tClassList.isEmpty()) {
+                System.out.println("此老师暂无班级");
+            } else {
+                pt.printTClassBasicInfomation(tClassList);
+            }
         } else {
-            System.out.println("不存在此老师");
+            System.out.println("此ID无对应老师");
         }
-
     }
 
     @Override
     public void showTeacherHistoryClass() {
         int teacherId = get.getInputInt("请选择ID: ", -1, -1);
-        qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
             ArrayList<TClass> tClassList = qy.queryTClassByTeacherId(teacherId, false);
-            pt.printTClassBasicInfomation(tClassList);
+            if (tClassList.isEmpty()) {
+                System.out.println("此老师暂无班级");
+            } else {
+                pt.printTClassBasicInfomation(tClassList);
+            }
         } else {
-            System.out.println("不存在此老师");
+            System.out.println("此ID无对应老师");
         }
     }
 
@@ -88,7 +104,9 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
         teacher.setSex(sex);
         double salary = get.getInputSalary();
         teacher.setSalary(salary);
+        teacher.setState(true);
         String password = get.getInputPassword();
+        // TODO:ID不能正确显示
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
         teacherList.add(teacher);
         pt.printTeacherAllInformation(teacherList);
@@ -98,19 +116,18 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
             else
                 System.out.println("添加失败");
         }
-
     }
 
     @Override
     public void deleteTeacher() {
         int teacherId = get.getInputInt("请选择ID: ", -1, -1);
         if (qy.IsExistTeacher(teacherId, true)) {
-            Teacher teacher = qy.queryTeacherByTeacherId(teacherId, true);
-            ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-            teacherList.add(teacher);
-            pt.printTeacherAllInformation(teacherList);
             ArrayList<TClass> tClassList = qy.queryTClassByTeacherId(teacherId, true);
             if (tClassList.size() == 0) {
+                Teacher teacher = qy.queryTeacherByTeacherId(teacherId, true);
+                ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+                teacherList.add(teacher);
+                pt.printTeacherAllInformation(teacherList);
                 if (get.getInputYN()) {
                     if (up.deleteTeacher(teacherId))
                         System.out.println("删除成功");
@@ -121,7 +138,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
                 System.out.println("此老师正在授课，无法删除");
             }
         } else {
-            System.out.println("无此老师");
+            System.out.println("此ID无对应老师");
         }
     }
 
@@ -139,7 +156,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
                 System.out.println("设置失败");
             }
         } else {
-            System.out.println("无此老师");
+            System.out.println("此ID无对应老师");
         }
 
     }
@@ -151,7 +168,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
         while (func != 0) {
             System.out.println("-----------------教师管理----------------");
             System.out.println("1.查询当前存在的所有老师");
-            System.out.println("2.查询某个班级的所有老师");
+            System.out.println("2.查询某个班级的老师");
             System.out.println("3.查询一个老师的详细信息");
             System.out.println("4.查询一个老师所教的现存班级");
             System.out.println("5.查询一个老师所教的历史班级");

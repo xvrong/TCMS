@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:47:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 17:58:14
+ * @LastEditTime: 2021-07-13 18:43:11
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\UpdateImpl.java
  */
@@ -60,11 +60,11 @@ public class UpdateImpl implements Update {
         String sql = "insert into teacher values(?,?,?,?,?,?,?)";
         Object arr[] = new Object[7];
         arr[0] = teacher.getTeacherID();
-        arr[1] = teacher.getBirthday();
-        arr[2] = teacher.getName();
-        arr[3] = teacher.getSex();
-        arr[4] = teacher.getSalary();
-        arr[5] = teacher.getClass();
+        arr[1] = teacher.getName();
+        arr[2] = teacher.getSalary();
+        arr[3] = teacher.getState();
+        arr[4] = teacher.getSex();
+        arr[5] = teacher.getBirthday();
         arr[6] = password;
         TeacherDaoImpl tmp = new TeacherDaoImpl();
         if (tmp.updateTeacher(sql, arr) > 0)

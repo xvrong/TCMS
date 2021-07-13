@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 16:32:27
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 18:44:38
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -35,9 +35,19 @@ public class GetInputImpl implements GetInput {
     private static boolean isNumeric(String str) {
         Pattern pattern = Pattern.compile("[0-9]*");
         if (str.substring(0, 1).equals("-")) {
-            return pattern.matcher(str.substring(1)).matches();
+            str = str.substring(1);
         }
-        return pattern.matcher(str).matches();
+        String[] strsplit = str.split("\\.");
+        boolean check = true;
+        if (strsplit.length > 2)
+            check = false;
+        for (String ite_str : strsplit) {
+            if (pattern.matcher(ite_str).matches() == false) {
+                check = false;
+                break;
+            }
+        }
+        return check;
     }
 
     @Override
@@ -242,8 +252,8 @@ public class GetInputImpl implements GetInput {
     }
 
     @Override
-    public int getInputSalary() {
-        int salary = -1;
+    public double getInputSalary() {
+        double salary = -1;
         while (true) {
             input = new Scanner(System.in);
             jout.print("请输入金额: ");
@@ -252,7 +262,7 @@ public class GetInputImpl implements GetInput {
                 jout.println(String.format("输入'%s'不是数字, 请重新输入", str));
                 continue;
             }
-            salary = Integer.parseInt(str);
+            salary = Double.parseDouble(str);
             if (salary < 0) {
                 jout.println("金额不能为负数, 请重新输入");
                 continue;
@@ -377,6 +387,11 @@ public class GetInputImpl implements GetInput {
 
         // String birthday = Test.getInputBirthday();
         // jout.println("输入的日期为: " + birthday);
+        jout.println(isNumeric("1.2"));
+        jout.println(isNumeric("-1.2"));
+        jout.println(isNumeric("1200"));
+        jout.println(isNumeric("12.4.1"));
+        jout.println(isNumeric("-1-2"));
     }
 
     @Override
@@ -397,7 +412,7 @@ public class GetInputImpl implements GetInput {
                 continue;
             }
             id = Integer.parseInt(str);
-            if(minn != -1 && id < minn || maxn!=-1 && id > maxn) {
+            if (minn != -1 && id < minn || maxn != -1 && id > maxn) {
                 jout.println("输入范围不合法！");
                 continue;
             }

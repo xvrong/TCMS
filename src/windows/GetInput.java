@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 16:17:57
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 18:17:17
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -100,7 +100,7 @@ public interface GetInput {
      * @param none
      * @return salary
      */
-    public int getInputSalary();
+    public double getInputSalary();
 
     /**
      * @description: get Password
@@ -142,16 +142,16 @@ public interface GetInput {
     /**
      * @description: 根据提示信息获得一个int输入
      * @param {String} message
-     * @param {int} minn
-     * @param {int} maxx
+     * @param {int}    minn
+     * @param {int}    maxx
      * @return {*}
-     */    
+     */
     public int getInputInt(String message, int minn, int maxx);
 
     /**
      * @description: 根据提示输入一个字符串
      * @param {String} message
      * @return {*}
-     */    
+     */
     public String getInputString(String message);
 }

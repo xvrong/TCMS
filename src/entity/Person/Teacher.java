@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-06 20:35:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 16:56:27
+ * @LastEditTime: 2021-07-13 18:42:27
  * @Description: Teacher
  * @FilePath: \TCMS\src\entity\Person\Teacher.java
  */
@@ -13,7 +13,7 @@ public class Teacher extends Person {
     private double salary; // 工资
     private boolean state; // 状态
 
-    public boolean isState() {
+    public boolean getState() {
         return state;
     }
 
