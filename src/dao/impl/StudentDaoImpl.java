@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 19:48:10
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 17:00:29
+ * @LastEditTime: 2021-07-13 09:27:13
  * @Description: 
  * @FilePath: \TCMS\src\dao\impl\StudentDaoImpl.java
  */
@@ -25,6 +25,7 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
+    Education[] invert = new Education[]{Education.PRIMARY, Education.JUNIOR, Education.HIGH};
 
     @Override
     public int updateStudent(String sql, Object[] param) {
@@ -53,7 +54,7 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
                 temp.setBirthday(rs.getString(4));
                 temp.setStudentID(rs.getInt(1));
                 // TODO:int convert to Education
-                temp.setEdu((Education) rs.getObject(3));
+                temp.setEdu(invert[rs.getInt(3)]);
                 temp.setState(rs.getBoolean(6));
                 temp.setAge(calAge.getAge(temp.getBirthday()));
                 studentList.add(temp);

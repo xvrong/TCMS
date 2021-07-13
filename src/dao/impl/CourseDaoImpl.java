@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 20:08:50
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 15:05:03
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 09:26:54
  * @Description: 
  * @FilePath: \TCMS\src\dao\impl\CourseDaoImpl.java
  */
@@ -23,6 +23,7 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
+    static Education[] invert = new Education[]{Education.PRIMARY, Education.JUNIOR, Education.HIGH};
 
     @Override
     public int updateCourse(String sql, Object[] param) {
@@ -46,7 +47,7 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
                 temp.setName(rs.getString(2));
                 temp.setPrice(rs.getDouble(4));
                 temp.setCourseId(rs.getInt(1));
-                temp.setEdu((Education) rs.getObject(3));
+                temp.setEdu(invert[rs.getInt(3)]);
                 temp.setState(rs.getBoolean(5));
                 courseList.add(temp);
             }

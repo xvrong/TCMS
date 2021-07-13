@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 20:06:45
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 15:04:22
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 09:27:25
  * @Description: 
  * @FilePath: \TCMS\src\dao\impl\TClassDaoImpl.java
  */
@@ -23,6 +23,7 @@ public class TClassDaoImpl extends BaseDao implements TClassDao {
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
+    static Education[] invert = new Education[]{Education.PRIMARY, Education.JUNIOR, Education.HIGH};
 
     @Override
     public int updateTClass(String sql, Object[] param) {
@@ -48,7 +49,7 @@ public class TClassDaoImpl extends BaseDao implements TClassDao {
                 temp.setTeacherID(rs.getInt(3));
                 temp.setStudentNum(rs.getInt(4));
                 // TODO: int convert to Education
-                temp.setEducation((Education) rs.getObject(5));
+                temp.setEducation(invert[rs.getInt(5)]);
                 temp.setGrade(rs.getInt(6));
                 temp.setStartYear(rs.getInt(7));
                 temp.setState(rs.getBoolean(8));
