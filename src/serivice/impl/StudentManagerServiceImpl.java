@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 14:46:26
+ * @LastEditTime: 2021-07-13 16:04:51
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -17,22 +17,37 @@ import entity.TClass.TClass;
 import serivice.StudentManagerService;
 
 public class StudentManagerServiceImpl implements StudentManagerService {
-
     @Override
     public void showCertainClassStudent() {
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
-        int courseId = get.getInputCourse(courseList);
-        ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
-        int tClassId = get.getInputClass(tClassList);
-        ArrayList<Student> studentList = qy.queryStudent(tClassId, true);
-        pt.printStudentBasicInfomation(studentList);
+        if (courseList.size() != 0) {
+            int courseId = get.getInputCourse(courseList);
+            ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
+            if (tClassList.size() != 0) {
+                int tClassId = get.getInputClass(tClassList);
+                ArrayList<Student> studentList = qy.queryStudent(tClassId, true);
+                if (studentList.size() != 0) {
+                    pt.printStudentBasicInfomation(studentList);
+                } else {
+                    System.out.println("此班级暂无学生");
+                }
+            } else {
+                System.out.println("此课程暂无学生");
+            }
+        } else {
+            System.out.println("此学历下暂无课程");
+        }
     }
 
     @Override
     public void showAllStudent() {
         ArrayList<Student> studentList = qy.queryStudent(true);
-        pt.printStudentBasicInfomation(studentList);
+        if (studentList.size() != 0) {
+            pt.printStudentBasicInfomation(studentList);
+        } else {
+            System.out.println("本补课班无学生");
+        }
     }
 
     @Override
@@ -40,9 +55,13 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         int teacherId = get.getInputId();
         if (qy.IsExistTeacher(teacherId, true)) {
             ArrayList<Student> studentList = qy.queryStudentByTeacher(teacherId, true);
-            pt.printStudentBasicInfomation(studentList);
+            if (studentList.size() != 0) {
+                pt.printStudentBasicInfomation(studentList);
+            } else {
+                System.out.println("此老师暂无学生");
+            }
         } else {
-            System.out.println("无此老师");
+            System.out.println("此ID无对应老师");
         }
     }
 
@@ -55,7 +74,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
             studentList.add(student);
             pt.printStudentAllInformation(studentList);
         } else {
-            System.out.println("无此学生");
+            System.out.println("此ID无对应学生");
         }
     }
 
@@ -70,9 +89,11 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         student.setBirthday(birthday);
         String sex = get.getInputSex();
         student.setSex(sex);
+        student.setState(true);
         String password = get.getInputPassword();
         ArrayList<Student> studentList = new ArrayList<Student>();
         studentList.add(student);
+        // TODO: 无法正确显示ID
         pt.printStudentAllInformation(studentList);
         if (get.getInputYN()) {
             if (up.addStudent(student, password))
@@ -97,7 +118,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
                     System.out.println("删除失败");
             }
         } else {
-            System.out.println("无此学生");
+            System.out.println("此ID无对应学生");
         }
     }
 
@@ -108,23 +129,28 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         if (qy.IsExistStudent(studentId, true)) {
             System.out.println("要调换的班级");
             int tClassId = get.getInputId();
-            if (qy.IsExistTClass(tClassId, true)) {
-                TClass newTClass = qy.queryTClassByTClassId(tClassId, true);
-                TClass oldTClass = qy.queryTClass(newTClass.getCourseID(), studentId, true);
-                if (up.deleteTaking(studentId, oldTClass.getClassID())) {
-                    if (up.addTaking(studentId, tClassId)) {
-                        System.out.println("调整成功");
+            TClass newTClass = qy.queryTClassByTClassId(tClassId, true);
+            if (newTClass != null) {
+                if (newTClass.getStudentNum() < newTClass.getMaxStudentNum()) {
+                    TClass oldTClass = qy.queryTClass(newTClass.getCourseID(), studentId, true);
+                    if (up.deleteTaking(studentId, oldTClass.getClassID())) {
+                        if (up.addTaking(studentId, tClassId)) {
+                            System.out.println("调整成功");
+                        } else {
+                            System.out.println("调整失败");
+                            up.addTaking(studentId, oldTClass.getClassID());
+                        }
                     } else {
                         System.out.println("调整失败");
                     }
                 } else {
-                    System.out.println("调整失败");
+                    System.out.println("此班级已满，无法调入");
                 }
             } else {
-                System.out.println("无此班级");
+                System.out.println("此ID无对应班级");
             }
         } else {
-            System.out.println("无此学生");
+            System.out.println("此ID无对应学生");
         }
 
     }
@@ -132,15 +158,32 @@ public class StudentManagerServiceImpl implements StudentManagerService {
     @Override
     public void showCertainStudentNowClass() {
         int studentId = get.getInputId();
-        ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, true);
-        pt.printTClassBasicInfomation(tClassList);
+        if (qy.IsExistStudent(studentId, true)) {
+            ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, true);
+            if (tClassList.size() != 0) {
+                pt.printTClassBasicInfomation(tClassList);
+            } else {
+                System.out.println("此学生暂无班级");
+            }
+        } else {
+            System.out.println("补课班无此学生");
+        }
     }
 
     @Override
     public void showCertainStudentHistoryClass() {
         int studentId = get.getInputId();
-        ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, false);
-        pt.printTClassBasicInfomation(tClassList);
+        if (qy.IsExistStudent(studentId, true)) {
+            ArrayList<TClass> tClassList = qy.queryTClassByStudent(studentId, false);
+            if (tClassList.size() != 0) {
+                pt.printTClassBasicInfomation(tClassList);
+            } else {
+                System.out.println("此学生暂无历史班级");
+            }
+        } else {
+            System.out.println("补课班无此学生");
+        }
+
     }
 
     @Override
