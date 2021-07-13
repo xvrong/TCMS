@@ -2,8 +2,8 @@
  * @Author: LinXuan
  * @Date: 2021-07-12 16:58:57
  * @Description: 
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 12:16:56
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 14:44:30
  * @FilePath: \TCMS\src\serivice\impl\StudentServiceImpl.java
  */
 package serivice.impl;
@@ -11,16 +11,10 @@ package serivice.impl;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Scanner;
-
-import SQL.Impl.QueryImpl;
-import SQL.Impl.UpdateImpl;
 import entity.Course.Course;
 import entity.Person.Student;
 import entity.TClass.TClass;
 import serivice.StudentService;
-import windows.impl.GetInputImpl;
-import windows.impl.PrintImpl;
 
 public class StudentServiceImpl implements StudentService {
     final static PrintStream jout = System.out;
@@ -30,23 +24,18 @@ public class StudentServiceImpl implements StudentService {
     public void showPersonalInfo() {
         ArrayList<Student> studentList = new ArrayList<Student>();
         studentList.add(student);
-        PrintImpl pt = new PrintImpl();
         pt.printStudentAllInformation(studentList);
     }
 
     @Override
     public void showPersonalTClass() {
-        QueryImpl qy = new QueryImpl();
         ArrayList<TClass> tClassList = qy.queryTClassByStudent(student.getStudentID(), true);
-        PrintImpl pt = new PrintImpl();
         pt.printTClassBasicInfomation(tClassList);
     }
 
     @Override
     public void showHistoryTClass() {
-        QueryImpl qy = new QueryImpl();
         ArrayList<TClass> tClassList = qy.queryTClassByStudent(student.getStudentID(), false);
-        PrintImpl pt = new PrintImpl();
         pt.printTClassBasicInfomation(tClassList);
 
     }
@@ -54,7 +43,6 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void selectCourse() {
         // 得到学生合法的选课列表
-        QueryImpl qy = new QueryImpl();
         ArrayList<Course> allCourseList = qy.queryCourse(student.getEdu(), true);
         ArrayList<TClass> nowTClassList = qy.queryTClassByStudent(student.getStudentID(), true); // 学生已经在修的课程班级
         ArrayList<Course> LegalCourseList = new ArrayList<Course>(); // 合法的课程列表
@@ -86,8 +74,7 @@ public class StudentServiceImpl implements StudentService {
         if (LegalCourseList.size() == 0) { // 当前没有可选班级
             jout.println("当前没有可选课程, 请联系管理员了解详情");
         } else {
-            GetInputImpl gt = new GetInputImpl();
-            int courseID = gt.getInputCourse(LegalCourseList);
+            int courseID = get.getInputCourse(LegalCourseList);
             int index = 0;
             for (Course cour : LegalCourseList) {
                 if (cour.getCourseId() != courseID)
@@ -95,7 +82,6 @@ public class StudentServiceImpl implements StudentService {
                 else
                     break;
             }
-            UpdateImpl up = new UpdateImpl();
             Boolean success = up.addTaking(student.getStudentID(), LegalCourseTclassList.get(index).getClassID());
             if (success == true) {
                 jout.println("选课成功");
@@ -109,42 +95,34 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void run(int studentID) {
         // 初始化学生
-        QueryImpl qy = new QueryImpl();
         student = qy.queryStudentByStudentID(studentID, true);
-
-        // 界面部分
-        jout.println("-----------------学生界面----------------");
-        jout.println("1.查看个人信息");
-        jout.println("2.查询自己的班级");
-        jout.println("3.查询历史班级");
-        jout.println("4.进行选课");
-        jout.println("0.退出登录");
-
         int func = -1;
-        Scanner input = new Scanner(System.in);
         while (func != 0) {
-            do {
-                jout.print("请输入选择: ");
-                func = input.nextInt();
-                if (func < 0 || func > 4) {
-                    System.out.print("输入错误!");
-                }
-            } while (func < 0 || func > 4);
+            // 界面部分
+            jout.println("-----------------学生界面----------------");
+            jout.println("1.查看个人信息");
+            jout.println("2.查询自己的班级");
+            jout.println("3.查询历史班级");
+            jout.println("4.进行选课");
+            jout.println("0.退出登录");
+            func = get.getInputFunction(4);
             switch (func) {
                 case 1:
                     showPersonalInfo();
+                    get.getInputEnter();
                     break;
                 case 2:
                     showPersonalTClass();
+                    get.getInputEnter();
                     break;
                 case 3:
                     showHistoryTClass();
+                    get.getInputEnter();
                     break;
                 case 4:
                     selectCourse();
+                    get.getInputEnter();
                     break;
-                case 0:
-                    return;
                 default:
                     break;
             }

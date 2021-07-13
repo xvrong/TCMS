@@ -1,45 +1,31 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 12:16:36
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 14:48:17
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
 package serivice.impl;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import SQL.Query;
-import SQL.Update;
-import SQL.Impl.QueryImpl;
-import SQL.Impl.UpdateImpl;
 import Tool.Education;
 import entity.Course.Course;
 import entity.Person.Teacher;
 import entity.TClass.TClass;
 import serivice.TeacherManagerService;
-import windows.GetInput;
-import windows.Print;
-import windows.impl.GetInputImpl;
-import windows.impl.PrintImpl;
 
 public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void showAllTeacher() {
-        Query qy = new QueryImpl();
-        Print pt = new PrintImpl();
         ArrayList<Teacher> TeacherList = qy.queryTeacher(true);
         pt.printTeacherBasicInfomation(TeacherList);
     }
 
     @Override
     public void showCertainClassTeacher() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Print pt = new PrintImpl();
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
@@ -53,9 +39,6 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void showCertainTeacher() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Print pt = new PrintImpl();
         int teacherId = get.getInputId();
         qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
@@ -71,9 +54,6 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void showTeacherNowClass() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Print pt = new PrintImpl();
         int teacherId = get.getInputId();
         qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
@@ -87,9 +67,6 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void showTeacherHistoryClass() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Print pt = new PrintImpl();
         int teacherId = get.getInputId();
         qy.queryTeacherByTeacherId(teacherId, true);
         if (qy.IsExistTeacher(teacherId, true)) {
@@ -103,9 +80,6 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
     @Override
     public void addTeacher() {
         Teacher teacher = new Teacher();
-        GetInput get = new GetInputImpl();
-        Update up = new UpdateImpl();
-        Print pt = new PrintImpl();
         String name = get.getInputName();
         teacher.setName(name);
         String birthday = get.getInputBirthday();
@@ -129,10 +103,6 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void deleteTeacher() {
-        GetInput get = new GetInputImpl();
-        Update up = new UpdateImpl();
-        Print pt = new PrintImpl();
-        Query qy = new QueryImpl();
         int teacherId = get.getInputId();
         if (qy.IsExistTeacher(teacherId, true)) {
             Teacher teacher = qy.queryTeacherByTeacherId(teacherId, true);
@@ -157,9 +127,6 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void setSalary() {
-        GetInput get = new GetInputImpl();
-        Update up = new UpdateImpl();
-        Query qy = new QueryImpl();
         int teacherId = get.getInputId();
         if (qy.IsExistTeacher(teacherId, true)) {
             Teacher teacher = qy.queryTeacherByTeacherId(teacherId, true);
@@ -179,52 +146,52 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
 
     @Override
     public void run() {
-        System.out.println("-----------------教师管理----------------");
-        System.out.println("1.查询当前存在的所有老师");
-        System.out.println("2.查询某个班级的所有老师");
-        System.out.println("3.查询一个老师的详细信息");
-        System.out.println("4.查询一个老师所教的现存班级");
-        System.out.println("5.查询一个老师所教的历史班级");
-        System.out.println("6.增加一个老师");
-        System.out.println("7.删除一个老师");
-        System.out.println("8.设置一个老师的工资");
-        System.out.println("0.退出");
+
         int func = -1;
-        Scanner input = new Scanner(System.in);
         while (func != 0) {
-            do {
-                System.out.print("请输入选择: ");
-                func = input.nextInt();
-                if (func < 0 || func > 9) {
-                    System.out.print("输入错误!");
-                }
-            } while (func < 0 || func > 9);
+            System.out.println("-----------------教师管理----------------");
+            System.out.println("1.查询当前存在的所有老师");
+            System.out.println("2.查询某个班级的所有老师");
+            System.out.println("3.查询一个老师的详细信息");
+            System.out.println("4.查询一个老师所教的现存班级");
+            System.out.println("5.查询一个老师所教的历史班级");
+            System.out.println("6.增加一个老师");
+            System.out.println("7.删除一个老师");
+            System.out.println("8.设置一个老师的工资");
+            System.out.println("0.退出");
+            func = get.getInputFunction(8);
             switch (func) {
                 case 1:
                     showAllTeacher();
+                    get.getInputEnter();
                     break;
                 case 2:
                     showCertainClassTeacher();
+                    get.getInputEnter();
                     break;
                 case 3:
                     showCertainTeacher();
-                    ;
+                    get.getInputEnter();
                     break;
                 case 4:
                     showTeacherNowClass();
-                    ;
+                    get.getInputEnter();
                     break;
                 case 5:
                     showTeacherHistoryClass();
+                    get.getInputEnter();
                     break;
                 case 6:
                     addTeacher();
+                    get.getInputEnter();
                     break;
                 case 7:
                     deleteTeacher();
+                    get.getInputEnter();
                     break;
                 case 8:
                     setSalary();
+                    get.getInputEnter();
                     break;
                 default:
                     break;

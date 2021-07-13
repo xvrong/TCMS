@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 21:48:17
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 12:16:47
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 14:47:33
  * @Description: TClassManagerServiceImpl
  * @FilePath: \TCMS\src\serivice\impl\TClassManagerServiceImpl.java
  */
@@ -10,38 +10,23 @@ package serivice.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Scanner;
-
-import SQL.Query;
-import SQL.Update;
-import SQL.Impl.QueryImpl;
-import SQL.Impl.UpdateImpl;
 import Tool.Education;
 import entity.Course.Course;
 import entity.Person.Student;
 import entity.Person.Teacher;
 import entity.TClass.TClass;
 import serivice.TClassManagerService;
-import windows.GetInput;
-import windows.Print;
-import windows.impl.GetInputImpl;
-import windows.impl.PrintImpl;
 
 public class TClassManagerServiceImpl implements TClassManagerService {
 
     @Override
     public void showAllTClass() {
-        Query qy = new QueryImpl();
-        Print pt = new PrintImpl();
         ArrayList<TClass> tClassList = qy.queryTClass(true);
         pt.printTClassBasicInfomation(tClassList);
     }
 
     @Override
     public void showCertainTClassStudent() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Print pt = new PrintImpl();
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
@@ -53,9 +38,6 @@ public class TClassManagerServiceImpl implements TClassManagerService {
 
     @Override
     public void showCertainTClassTeacher() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Print pt = new PrintImpl();
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
@@ -72,10 +54,6 @@ public class TClassManagerServiceImpl implements TClassManagerService {
     public void addTClass() {
         TClass tClass = new TClass();
         Calendar cal = Calendar.getInstance();
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Update up = new UpdateImpl();
-
         Education edu = get.getInputEducation();
         tClass.setEducation(edu);
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
@@ -102,10 +80,6 @@ public class TClassManagerServiceImpl implements TClassManagerService {
 
     @Override
     public void ChangeTeacher() {
-        Print pt = new PrintImpl();
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Update up = new UpdateImpl();
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
@@ -129,9 +103,6 @@ public class TClassManagerServiceImpl implements TClassManagerService {
 
     @Override
     public void deleteStudent() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Update up = new UpdateImpl();
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
@@ -149,9 +120,6 @@ public class TClassManagerServiceImpl implements TClassManagerService {
 
     @Override
     public void addStudent() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Update up = new UpdateImpl();
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
@@ -172,9 +140,6 @@ public class TClassManagerServiceImpl implements TClassManagerService {
 
     @Override
     public void deleteTClass() {
-        GetInput get = new GetInputImpl();
-        Query qy = new QueryImpl();
-        Update up = new UpdateImpl();
         Education edu = get.getInputEducation();
         ArrayList<Course> courseList = qy.queryCourse(edu, true);
         int courseId = get.getInputCourse(courseList);
@@ -200,50 +165,51 @@ public class TClassManagerServiceImpl implements TClassManagerService {
     }
 
     public void run() {
-        System.out.println("-----------------班级管理----------------");
-        System.out.println("1.查询当前存在的所有班级");
-        System.out.println("2.查询某个班级的所有学生");
-        System.out.println("3.查询一个班级的老师");
-        System.out.println("4.增加一个班级");
-        System.out.println("5.删除一个班级");
-        System.out.println("6.更改一个班级的老师");
-        System.out.println("7.在一个班级里删除一个学生");
-        System.out.println("8.在一个班级里增加一个学生");
-        System.out.println("0.退出");
         int func = -1;
-        Scanner input = new Scanner(System.in);
         while (func != 0) {
-            do {
-                System.out.print("请输入选择: ");
-                func = input.nextInt();
-                if (func < 0 || func > 9) {
-                    System.out.print("输入错误!");
-                }
-            } while (func < 0 || func > 9);
+            System.out.println("-----------------班级管理----------------");
+            System.out.println("1.查询当前存在的所有班级");
+            System.out.println("2.查询某个班级的所有学生");
+            System.out.println("3.查询一个班级的老师");
+            System.out.println("4.增加一个班级");
+            System.out.println("5.删除一个班级");
+            System.out.println("6.更改一个班级的老师");
+            System.out.println("7.在一个班级里删除一个学生");
+            System.out.println("8.在一个班级里增加一个学生");
+            System.out.println("0.退出");
+            func = get.getInputFunction(8);
             switch (func) {
                 case 1:
                     showAllTClass();
+                    get.getInputEnter();
                     break;
                 case 2:
                     showCertainTClassStudent();
+                    get.getInputEnter();
                     break;
                 case 3:
                     showCertainTClassTeacher();
+                    get.getInputEnter();
                     break;
                 case 4:
                     addTClass();
+                    get.getInputEnter();
                     break;
                 case 5:
                     deleteTClass();
+                    get.getInputEnter();
                     break;
                 case 6:
                     ChangeTeacher();
+                    get.getInputEnter();
                     break;
                 case 7:
                     addStudent();
+                    get.getInputEnter();
                     break;
                 case 8:
                     deleteStudent();
+                    get.getInputEnter();
                     break;
                 default:
                     break;

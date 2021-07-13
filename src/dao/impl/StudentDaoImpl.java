@@ -25,7 +25,7 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
-    Education[] invert = new Education[]{Education.PRIMARY, Education.JUNIOR, Education.HIGH};
+    Education[] invert = new Education[] { Education.PRIMARY, Education.JUNIOR, Education.HIGH };
 
     @Override
     public int updateStudent(String sql, Object[] param) {
@@ -53,7 +53,6 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
                 // temp.setAge();
                 temp.setBirthday(rs.getString(4));
                 temp.setStudentID(rs.getInt(1));
-                // TODO:int convert to Education
                 temp.setEdu(invert[rs.getInt(3)]);
                 temp.setState(rs.getBoolean(6));
                 temp.setAge(calAge.getAge(temp.getBirthday()));

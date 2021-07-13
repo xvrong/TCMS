@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 20:01:38
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 15:05:11
+ * @LastEditTime: 2021-07-13 14:20:21
  * @Description: 
  * @FilePath: \TCMS\src\dao\impl\TeacherDaoImpl.java
  */
@@ -19,7 +19,6 @@ import Tool.calAge;
 import dao.BaseDao;
 import dao.TeacherDao;
 import entity.Person.Teacher;
-import Tool.calAge;
 
 public class TeacherDaoImpl extends BaseDao implements TeacherDao {
     private Connection conn = null;
@@ -47,7 +46,6 @@ public class TeacherDaoImpl extends BaseDao implements TeacherDao {
                 Teacher temp = new Teacher();
                 temp.setName(rs.getString(2));
                 temp.setSex(rs.getString(5));
-                // TODO: Teacher age
                 temp.setBirthday(rs.getString(6));
                 temp.setTeacherID(rs.getInt(1));
                 temp.setSalary(rs.getDouble(3));

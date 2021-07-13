@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 10:35:48
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 14:24:25
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -139,4 +139,18 @@ public interface GetInput {
      * @return int
      */
     public int getInputStudent(ArrayList<Student> studentList);
+
+    /**
+     * @description: get functionNum else print 0 return
+     * @param {int>} functioNnum
+     * @return int
+     */
+    public int getInputFunction(int functioNnum);
+
+    /**
+     * @description: get Enter to return
+     * @param none
+     * @return none
+     */
+    public void getInputEnter();
 }

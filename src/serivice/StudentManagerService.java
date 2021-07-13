@@ -2,16 +2,30 @@
  * @Author: xv_rong
  * @Date: 2021-07-06 15:10:26
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-10 20:26:59
+ * @LastEditTime: 2021-07-13 14:40:24
  * @Description: Student Manager method
  * @FilePath: \TCMS\src\serivice\StudentManagerService.java
  */
 package serivice;
 
+import SQL.Query;
+import SQL.Update;
+import SQL.Impl.QueryImpl;
+import SQL.Impl.UpdateImpl;
+import windows.GetInput;
+import windows.Print;
+import windows.impl.GetInputImpl;
+import windows.impl.PrintImpl;
+
 /**
  * 管理学生的方法
  */
 public interface StudentManagerService {
+    GetInput get = new GetInputImpl();
+    Query qy = new QueryImpl();
+    Print pt = new PrintImpl();
+    Update up = new UpdateImpl();
+
     /**
      * @description: show all student infomation, ID + name
      * @param none

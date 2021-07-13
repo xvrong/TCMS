@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 10:48:32
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 14:37:34
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -225,7 +225,7 @@ public class GetInputImpl implements GetInput {
         int id = -1;
         while (true) {
             input = new Scanner(System.in);
-            jout.print("请输入学历(0:PRIMARY, 1:JUNIOR, 2:HIGH): ");
+            jout.print("请输入ID");
             String str = input.next();
             if (isNumeric(str) == false) {
                 jout.println(String.format("输入'%s'不是数字, 请重新输入", str));
@@ -359,6 +359,20 @@ public class GetInputImpl implements GetInput {
         return maxNum;
     }
 
+    @Override
+    public int getInputFunction(int functionNum) {
+        int func = -1;
+        input = new Scanner(System.in);
+        do {
+            jout.print("请输入选择: ");
+            func = input.nextInt();
+            if (func < 0 || func > functionNum) {
+                System.out.print("输入错误!");
+            }
+        } while (func < 0 || func > functionNum);
+        return func;
+    }
+
     public static void main(String[] args) {
         // GetInputImpl Test = new GetInputImpl();
         // Education edu = Test.getInputEducation();
@@ -400,4 +414,9 @@ public class GetInputImpl implements GetInput {
         // jout.println("输入的日期为: " + birthday);
     }
 
+    @Override
+    public void getInputEnter() {
+        input = new Scanner(System.in);
+        input.nextLine();
+    }
 }
