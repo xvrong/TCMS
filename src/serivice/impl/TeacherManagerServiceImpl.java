@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 20:12:07
+ * @LastEditTime: 2021-07-13 11:05:16
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
@@ -193,6 +193,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {
+                System.out.print("请输入选择: ");
                 func = input.nextInt();
                 if (func < 0 || func > 9) {
                     System.out.print("输入错误，请重新输入:");

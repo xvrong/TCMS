@@ -214,6 +214,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {
+                System.out.print("请输入选择: ");
                 func = input.nextInt();
                 if (func < 0 || func > 9) {
                     System.out.print("输入错误，请重新输入:");

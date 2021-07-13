@@ -3,7 +3,7 @@
  * @Date: 2021-07-12 16:58:57
  * @Description: 
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 20:11:10
+ * @LastEditTime: 2021-07-13 11:04:58
  * @FilePath: \TCMS\src\serivice\impl\StudentServiceImpl.java
  */
 package serivice.impl;
@@ -118,11 +118,13 @@ public class StudentServiceImpl implements StudentService {
         jout.println("2.查询自己的班级");
         jout.println("3.查询历史班级");
         jout.println("4.进行选课");
+        jout.println("0.退出登录");
 
         int func = -1;
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {
+                jout.print("请输入选择: ");
                 func = input.nextInt();
                 if (func < 0 || func > 4) {
                     System.out.print("输入错误，请重新输入:");
@@ -141,6 +143,8 @@ public class StudentServiceImpl implements StudentService {
                 case 4:
                     selectCourse();
                     break;
+                case 0:
+                    return;
                 default:
                     break;
             }

@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-12 15:26:53
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-13 10:48:32
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -121,7 +121,7 @@ public class GetInputImpl implements GetInput {
         int chos = -1;
         while (true) {
             input = new Scanner(System.in);
-            jout.print("请输入选择班级的序号: ");
+            jout.print("请输入选择学生的序号: ");
             String str = input.next();
             if (isNumeric(str) == false) {
                 jout.println(String.format("输入'%s'不是数字, 请重新输入", str));

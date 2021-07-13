@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-12 20:11:29
+ * @LastEditTime: 2021-07-13 11:05:43
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -197,6 +197,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         Scanner input = new Scanner(System.in);
         while (func != 0) {
             do {
+                System.out.print("请输入选择: ");
                 func = input.nextInt();
                 if (func < 0 || func > 9) {
                     System.out.print("输入错误，请重新输入:");

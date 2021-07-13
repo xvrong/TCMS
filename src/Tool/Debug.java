@@ -3,7 +3,7 @@
  * @Description: 
  * @Date: 2021-07-11 20:22:51
  * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-11 20:48:23
+ * @LastEditTime: 2021-07-13 10:47:10
  * @FilePath: \TCMS\src\Tool\Debug.java
  */
 package Tool;
@@ -47,9 +47,10 @@ public class Debug {
         return cour;
     }
 
-    public static TClass createTClass(int year, Education edu, int courseId, int studentNum) {
+    public static TClass createTClass(int classID, int year, Education edu, int courseId, int studentNum) {
         // 生成调试用的班级
         TClass tcl = new TClass();
+        tcl.setClassID(classID);
         tcl.setStartYear(year);
         tcl.setEducation(edu);
         tcl.setCourseID(courseId);
