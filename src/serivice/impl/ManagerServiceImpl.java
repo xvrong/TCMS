@@ -1,14 +1,12 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-12 16:21:58
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 12:17:05
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-13 14:29:52
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\ManagerServiceImpl.java
  */
 package serivice.impl;
-
-import java.util.Scanner;
 
 import serivice.ManagerService;
 
@@ -25,13 +23,7 @@ public class ManagerServiceImpl implements ManagerService {
             System.out.println("4.课程管理");
             System.out.println("0.退出");
             System.out.print("请输入序号:");
-            Scanner input = new Scanner(System.in);
-            do {
-                model = input.nextInt();
-                if (model < 0 || model > 4) {
-                    System.out.print("输入错误!");
-                }
-            } while (model < 0 || model > 4);
+            model = get.getInputFunction(4);
             switch (model) {
                 case 1:
                     studentManager.run();
