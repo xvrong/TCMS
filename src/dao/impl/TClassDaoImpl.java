@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 20:06:45
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 14:00:45
+ * @LastEditTime: 2021-07-14 09:47:51
  * @Description: 
  * @FilePath: \TCMS\src\dao\impl\TClassDaoImpl.java
  */
@@ -54,6 +54,8 @@ public class TClassDaoImpl extends BaseDao implements TClassDao {
                 temp.setState(rs.getBoolean(8));
                 temp.setOrderNumber(rs.getInt(9));
                 temp.setMaxStudentNum(rs.getInt(10));
+                temp.setTeacherName(rs.getString(11));
+                temp.setCourseName(rs.getString(12));
                 tClassList.add(temp);
             }
         } catch (SQLException | ClassNotFoundException e) {

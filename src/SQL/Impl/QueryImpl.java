@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 09:13:56
+ * @LastEditTime: 2021-07-14 10:08:12
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -25,8 +25,6 @@ import entity.TClass.TClass;
 public class QueryImpl implements Query {
 
     @Override
-
-    // ok
     public ArrayList<Course> queryCourse(Education edu, boolean courseState) {
         String sql = "select * from course where education=? and state=?";
         CourseDaoImpl tmp = new CourseDaoImpl();
@@ -38,7 +36,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryTClass(int courseId, boolean tClassState) {
-        String sql = "select * from class where courseID=? and state=?";
+        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID where class.courseID=? and class.state=?";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[2];
         arr[0] = courseId;
@@ -48,7 +46,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassState) {
-        String sql = "SELECT * FROM class t WHERE t.classID IN (SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking.studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND taking.state=TRUE AND class.state=? AND student.studentID=?)";
+        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID WHERE class.classID IN (SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking.studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND taking.state=TRUE AND class.state=? AND student.studentID=?)";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[2];
         arr[0] = tClassState;
@@ -109,7 +107,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryTClass(boolean tClassState) {
-        String sql = "select * from class where state=?";
+        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID where class.state=?";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[1];
         arr[0] = tClassState;
@@ -239,7 +237,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryTClassByTeacherId(int TeacherId, boolean state) {
-        String sql = "select * from class where teacherID=? and state=?";
+        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID where class.teacherID=? and class.state=?";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[2];
         arr[0] = TeacherId;
@@ -322,7 +320,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryMaxTClassId() {
-        String sql = "select * from class where classID = (select max(classID) from class)";
+        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID  where classID = (select max(classID) from class)";
         TClassDaoImpl tmp = new TClassDaoImpl();
         return tmp.selectTClass(sql, null);
     }

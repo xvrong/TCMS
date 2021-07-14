@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-06 20:35:40
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-11 19:40:56
+ * @LastEditTime: 2021-07-14 09:41:34
  * @Description:  class
  * @FilePath: \TCMS\src\entity\TClass\TClass.java
  */
@@ -13,7 +13,9 @@ import Tool.Education;
 public class TClass {
     private int classID; // 班级ID
     private int courseID; // 课程ID
+    private String CourseName; // 课程名称
     private int teacherID; // 老师ID
+    private String teacherName; // 老师说姓名
     private int studentNum; // 学生数
     private Education education; // 学历 （小学 初中 高中）
     private int grade; // 年级
@@ -21,6 +23,22 @@ public class TClass {
     private int orderNumber; // 班序号
     private int maxStudentNum; // 最大学生数
     private boolean state; // 状态
+
+    public String getCourseName() {
+        return CourseName;
+    }
+
+    public void setCourseName(String courseName) {
+        CourseName = courseName;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
 
     public boolean isState() {
         return state;
