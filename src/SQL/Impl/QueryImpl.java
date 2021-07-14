@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 10:08:12
+ * @LastEditTime: 2021-07-14 16:00:13
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -46,7 +46,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<TClass> queryTClassByStudent(int studentId, boolean tClassState) {
-        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID WHERE class.classID IN (SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking.studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND taking.state=TRUE AND class.state=? AND student.studentID=?)";
+        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID WHERE class.classID IN (SELECT class.classID FROM student LEFT JOIN taking ON student.studentID=taking.studentID LEFT JOIN class ON taking.classID=class.classID WHERE student.state=TRUE AND taking.state=? AND student.studentID=?)";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[2];
         arr[0] = tClassState;
@@ -154,7 +154,6 @@ public class QueryImpl implements Query {
         Object arr[] = new Object[2];
         arr[0] = studentId;
         arr[1] = state;
-        // arr[2] = courseState;
         StudentDaoImpl tmp = new StudentDaoImpl();
         if (tmp.selectStudent(sql, arr).isEmpty())
             return false;
@@ -168,7 +167,6 @@ public class QueryImpl implements Query {
         Object arr[] = new Object[2];
         arr[0] = courseId;
         arr[1] = state;
-        // arr[2] = courseState;
         CourseDaoImpl tmp = new CourseDaoImpl();
         if (tmp.selectCourse(sql, arr).isEmpty())
             return false;
@@ -178,11 +176,10 @@ public class QueryImpl implements Query {
 
     @Override
     public boolean IsExistTClass(int tClassId, boolean state) {
-        String sql = "select * from class where classID=? and state=?";
+        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID where class.classID=? and class.state=?";
         Object arr[] = new Object[2];
         arr[0] = tClassId;
         arr[1] = state;
-        // arr[2] = courseState;
         TClassDaoImpl tmp = new TClassDaoImpl();
         if (tmp.selectTClass(sql, arr).isEmpty())
             return false;
@@ -206,7 +203,7 @@ public class QueryImpl implements Query {
 
     @Override
     public TClass queryTClassByTClassId(int tClassId, boolean state) {
-        String sql = "select * from class where state=? and classID=?";
+        String sql = "select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID where state=? and classID=?";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[2];
         arr[1] = tClassId;
@@ -216,12 +213,12 @@ public class QueryImpl implements Query {
 
     @Override
     public TClass queryTClass(int courseId, int StudentId, boolean state) {
-        String sql = "select * from (select * from class where courseID=? and state=?) as t where t.classID in (select g.classID from student nature join taking as g where g.studentID=?)";
+        String sql = "select * from (select classID, class.courseID, class.teacherID, studentnum, class.education, grade, start_year, class.state, order_number, maxstudentnum, teacher.NAME, course.coursename from class JOIN course ON course.courseID = class.courseID JOIN teacher on teacher.teacherID = class.teacherID  where class.courseID=? and class.state=?) as t where t.classID in (select g.classID from student nature join taking as g where g.studentID=?)";
         TClassDaoImpl tmp = new TClassDaoImpl();
         Object arr[] = new Object[3];
         arr[0] = courseId;
-        arr[2] = StudentId;
         arr[1] = state;
+        arr[2] = StudentId;
         return tmp.selectTClass(sql, arr).get(0);
     }
 
@@ -289,7 +286,7 @@ public class QueryImpl implements Query {
 
     @Override
     public ArrayList<Course> queryCourseByStudentId(int studnetId, boolean courseState) {
-        String sql = "select * from course where courseID in (select courseID from course natural join student where studentID = ?) and state = ?";
+        String sql = "select * from course where courseID in (select courseID from taking join class on studentID = ? where taking.classID = class.classID) and course.state = ?";
         Object arr[] = new Object[2];
         arr[0] = studnetId;
         arr[1] = courseState;

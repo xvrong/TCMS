@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:48:17
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 09:24:02
+ * @LastEditTime: 2021-07-14 15:50:51
  * @Description: TClassManagerServiceImpl
  * @FilePath: \TCMS\src\serivice\impl\TClassManagerServiceImpl.java
  */
@@ -86,12 +86,14 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         }
         int courseId = get.getInputCourse(courseList);
         tClass.setCourseID(courseId);
+        for (Course course : courseList) {
+            if (course.getCourseId() == courseId) {
+                tClass.setCourseName(course.getName());
+            }
+        }
+        tClass.setStudentNum(0);
         tClass.setGrade(1);
         ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
-        if (tClassList.isEmpty()) {
-            System.out.println("本课程暂无班级");
-            return;
-        }
         int num = 1;
         ArrayList<Integer> tmp = new ArrayList<Integer>();
         for (TClass tcl : tClassList) {
@@ -109,7 +111,12 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         tClass.setOrderNumber(num);
         System.out.println("选择对应老师");
         int teacherId = get.getInputInt("请选择ID: ", -1, -1);
+        if (!qy.IsExistTeacher(teacherId, true)) {
+            System.out.println("此ID无对应老师");
+            return;
+        }
         tClass.setTeacherID(teacherId);
+        tClass.setTeacherName(qy.queryTeacherByTeacherId(teacherId, true).getName());
         int maxNum = get.getInputInt("请输入本班最大人数: ", 1, -1);
         tClass.setMaxStudentNum(maxNum);
         int year = cal.get(Calendar.YEAR);
@@ -118,6 +125,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         ArrayList<TClass> tmpTClass = qy.queryMaxTClassId();
         tClass.setClassID(tmpTClass.get(0).getClassID() + 1);
         ArrayList<TClass> showTClassList = new ArrayList<TClass>();
+        showTClassList.add(tClass);
         pt.printTClassInfomation(showTClassList);
         if (get.getInputYN()) {
             if (up.addTClass(tClass)) {
@@ -255,6 +263,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         ArrayList<Student> studentList = qy.queryStudent(tClassId, true);
         if (!studentList.isEmpty()) {
             System.out.println("此班级存在学生，无法删除");
+            return;
         }
         if (up.deleteTClass(tClassId)) {
             System.out.println("删除班级成功");

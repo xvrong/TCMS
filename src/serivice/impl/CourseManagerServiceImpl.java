@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:02
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 09:17:45
+ * @LastEditTime: 2021-07-14 16:04:56
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\CourseManagerServiceImpl.java
  */
@@ -50,7 +50,10 @@ public class CourseManagerServiceImpl implements CourseManagerService {
         course.setName(courseName);
         Education edu = get.getInputEducation();
         course.setEdu(edu);
-        qy.IsExistCourse(edu, courseName, true);
+        if (qy.IsExistCourse(edu, courseName, true)) {
+            System.out.println("此课程已经存在,无需添加");
+            return;
+        }
         double price = get.getInputSalary();
         course.setPrice(price);
         course.setState(true);

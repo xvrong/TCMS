@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 13:50:58
+ * @LastEditTime: 2021-07-14 14:19:31
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -69,18 +69,18 @@ public class PrintImpl implements Print {
         @Override
         public void printTClassInfomation(ArrayList<TClass> tClassList) {
                 jout.println("班级的基本信息：");
-                jout.println("--------------------------------------------------------------------------------------------------------");
+                jout.println("--------------------------------------------------------------------------------------------------------------------------");
                 jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "班级ID", "学历", "年级", "课程名", "班号",
                                 "老师名", "学生人数");
-                jout.println("--------------------------------------------------------------------------------------------------------");
+                jout.println("--------------------------------------------------------------------------------------------------------------------------");
                 int number = 0;
                 for (TClass tcs : tClassList) {
-                        jout.printf("%-8d\t%-8d\t%-8s\t%-8d\t%-8s\t%-8s\t%-8d\n", number, tcs.getClassID(),
-                                        tcs.getEducation(), tcs.getGrade(), tcs.getCourseName(), tcs.getTeacherName(),
-                                        tcs.getStudentNum());
+                        jout.printf("%-8d\t%-8d\t%-8s\t%-8d\t%-8s\t%-8d\t%-8s\t%-8d\n", number, tcs.getClassID(),
+                                        tcs.getEducation(), tcs.getGrade(), tcs.getCourseName(), tcs.getOrderNumber(),
+                                        tcs.getTeacherName(), tcs.getStudentNum());
                         number++;
                 }
-                jout.println("--------------------------------------------------------------------------------------------------------");
+                jout.println("--------------------------------------------------------------------------------------------------------------------------");
 
         }
 
@@ -96,7 +96,7 @@ public class PrintImpl implements Print {
                                         stu.getName(), stu.getSex(), stu.getEdu(), stu.getBirthday(), stu.getAge());
                         number++;
                 }
-                jout.println("--------------------------------------------------------------------------------------------------------------------------");
+                jout.println("--------------------------------------------------------------------------------------------------------------");
         }
 
         @Override
