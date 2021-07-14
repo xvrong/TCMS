@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 23:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 17:43:07
+ * @LastEditTime: 2021-07-14 09:13:56
  * @Description: 
  * @FilePath: \TCMS\src\SQL\Impl\QueryImpl.java
  */
@@ -297,6 +297,34 @@ public class QueryImpl implements Query {
         arr[1] = courseState;
         CourseDaoImpl tmp = new CourseDaoImpl();
         return tmp.selectCourse(sql, arr);
+    }
+
+    @Override
+    public ArrayList<Student> queryMaxStduentId() {
+        String sql = "select * from student where studentID = (select max(studentID) from student)";
+        StudentDaoImpl tmp = new StudentDaoImpl();
+        return tmp.selectStudent(sql, null);
+    }
+
+    @Override
+    public ArrayList<Teacher> queryMaxTeacherId() {
+        String sql = "select * from teacher where teacherID = (select max(teacherID) from teacher)";
+        TeacherDaoImpl tmp = new TeacherDaoImpl();
+        return tmp.selectTeacher(sql, null);
+    }
+
+    @Override
+    public ArrayList<Course> queryMaxCourseId() {
+        String sql = "select * from course where courseID = (select max(courseID) from course)";
+        CourseDaoImpl tmp = new CourseDaoImpl();
+        return tmp.selectCourse(sql, null);
+    }
+
+    @Override
+    public ArrayList<TClass> queryMaxTClassId() {
+        String sql = "select * from class where classID = (select max(classID) from class)";
+        TClassDaoImpl tmp = new TClassDaoImpl();
+        return tmp.selectTClass(sql, null);
     }
 
 }

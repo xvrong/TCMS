@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 20:15:43
+ * @LastEditTime: 2021-07-14 09:24:21
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -69,7 +69,7 @@ public class PrintImpl implements Print {
     }
 
     @Override
-    // TODO 班级老师
+    // TODO 输出班级老师
     public void printTClassInfomation(ArrayList<TClass> tClassList) {
         jout.println("班级的基本信息：");
         jout.println(

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:48:17
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 20:01:48
+ * @LastEditTime: 2021-07-14 09:24:02
  * @Description: TClassManagerServiceImpl
  * @FilePath: \TCMS\src\serivice\impl\TClassManagerServiceImpl.java
  */
@@ -115,11 +115,16 @@ public class TClassManagerServiceImpl implements TClassManagerService {
         int year = cal.get(Calendar.YEAR);
         tClass.setStartYear(year);
         tClass.setState(true);
-        boolean flag = up.addTClass(tClass);
-        if (flag) {
-            System.out.println("增加班级成功");
-        } else {
-            System.out.println("增加班级失败");
+        ArrayList<TClass> tmpTClass = qy.queryMaxTClassId();
+        tClass.setClassID(tmpTClass.get(0).getClassID() + 1);
+        ArrayList<TClass> showTClassList = new ArrayList<TClass>();
+        pt.printTClassInfomation(showTClassList);
+        if (get.getInputYN()) {
+            if (up.addTClass(tClass)) {
+                System.out.println("增加班级成功");
+            } else {
+                System.out.println("增加班级失败");
+            }
         }
     }
 

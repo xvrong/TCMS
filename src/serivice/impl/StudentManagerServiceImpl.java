@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 08:38:13
+ * @LastEditTime: 2021-07-14 09:19:12
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -91,9 +91,11 @@ public class StudentManagerServiceImpl implements StudentManagerService {
         student.setSex(sex);
         student.setState(true);
         String password = get.getInputPassword();
+        ArrayList<Student> tmp = qy.queryMaxStduentId();
+        student.setStudentID(tmp.get(0).getStudentID() + 1);
+
         ArrayList<Student> studentList = new ArrayList<Student>();
         studentList.add(student);
-        // TODO: 无法正确显示ID
         pt.printStudentAllInformation(studentList);
         if (get.getInputYN()) {
             if (up.addStudent(student, password))

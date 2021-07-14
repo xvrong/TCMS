@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-09 21:49:31
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 18:32:53
+ * @LastEditTime: 2021-07-14 09:20:08
  * @Description: TeacherManagerService
  * @FilePath: \TCMS\src\serivice\impl\TeacherManagerServiceImpl.java
  */
@@ -106,7 +106,10 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
         teacher.setSalary(salary);
         teacher.setState(true);
         String password = get.getInputPassword();
-        // TODO:ID不能正确显示
+
+        ArrayList<Teacher> tmp = qy.queryMaxTeacherId();
+        teacher.setTeacherID(tmp.get(0).getTeacherID() + 1);
+
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
         teacherList.add(teacher);
         pt.printTeacherAllInformation(teacherList);

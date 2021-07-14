@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: Thu Jul 08 2021 21:16:12
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 16:43:07
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-14 09:10:20
  * @Description: use Dao method to query datebase
  * @FilePath: \TCMS\src\SQL\Query.java
  */
@@ -197,11 +197,41 @@ public interface Query {
      * @return boolean
      */
     public boolean isExistManager(String managerId, String password);
+
     /**
-     * @description: 
-     * @param {int} studnetId
+     * @description:
+     * @param {int}     studnetId
      * @param {boolean} state
      * @return {*}
-     */    
+     */
     public ArrayList<Course> queryCourseByStudentId(int studnetId, boolean state);
+
+    /**
+     * @description:
+     * @param {*}
+     * @return MaxStduentId
+     */
+    public ArrayList<Student> queryMaxStduentId();
+
+    /**
+     * @description:
+     * @param {*}
+     * @return MaxTeacherId
+     */
+    public ArrayList<Teacher> queryMaxTeacherId();
+
+    /**
+     * @description:
+     * @param {*}
+     * @return MaxCourseId
+     */
+    public ArrayList<Course> queryMaxCourseId();
+
+    /**
+     * @description:
+     * @param {*}
+     * @return MaxTClassId
+     */
+    public ArrayList<TClass> queryMaxTClassId();
+
 }

@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:36:02
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 19:01:35
+ * @LastEditTime: 2021-07-14 09:17:45
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\CourseManagerServiceImpl.java
  */
@@ -54,10 +54,14 @@ public class CourseManagerServiceImpl implements CourseManagerService {
         double price = get.getInputSalary();
         course.setPrice(price);
         course.setState(true);
+
+        ArrayList<Course> tmp = qy.queryMaxCourseId();
+        course.setCourseId(tmp.get(0).getCourseId() + 1);
+
         ArrayList<Course> courseList = new ArrayList<Course>();
         courseList.add(course);
-        // TODO: ID显示不正确
         pt.printCourseInfomation(courseList);
+
         if (get.getInputYN()) {
             if (up.addCourse(course)) {
                 System.out.println("增加课程成功");
