@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 08:44:36
+ * @LastEditTime: 2021-07-14 10:36:25
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -138,4 +138,11 @@ public interface GetInput {
      * @return {*}
      */
     public String getInputString(String message);
+
+    /**
+     * @description: show message then accept a string, string hide
+     * @param {String} message
+     * @return {*}
+     */
+    public String getInputHideString(String message);
 }

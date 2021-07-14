@@ -1,12 +1,13 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-12 10:53:28
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 16:19:59
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-14 10:36:42
  * @Description: 
  * @FilePath: \TCMS\src\test\Main.java
  */
 package test;
+
 import SQL.Query;
 import SQL.Impl.QueryImpl;
 import serivice.ManagerService;
@@ -19,6 +20,7 @@ import windows.impl.GetInputImpl;
 
 public class Main {
     static GetInputImpl gt = new GetInputImpl();
+
     public static void main(String[] args) {
         System.out.println("-----------------课外辅导管理系统启动----------------");
         while (true) {
@@ -49,7 +51,7 @@ public class Main {
         Query qy = new QueryImpl();
         do {
             int studentId = gt.getInputInt("请输入学生Id:", -1, -1);
-            String password = gt.getInputString("请输入密码: ");
+            String password = gt.getInputHideString("请输入密码: ");
             if (qy.isExistStudent(studentId, password, true)) {
                 System.out.println("登录成功");
                 StudentService studentService = new StudentServiceImpl();
@@ -65,7 +67,7 @@ public class Main {
         Query qy = new QueryImpl();
         do {
             int teacherId = gt.getInputInt("请输入老师Id:", -1, -1);
-            String password = gt.getInputString("请输入密码: ");
+            String password = gt.getInputHideString("请输入密码: ");
             if (qy.isExistTeacher(teacherId, password, true)) {
                 System.out.println("登录成功");
                 TeacherService teacherService = new TeacherServiceImpl();
@@ -82,7 +84,7 @@ public class Main {
         Query qy = new QueryImpl();
         do {
             String managerId = gt.getInputString("请输入管理员ID: ");
-            String password = gt.getInputString("请输入密码: ");
+            String password = gt.getInputHideString("请输入密码: ");
             if (qy.isExistManager(managerId, password)) {
                 System.out.println("登录成功");
                 ManagerService managerService = new ManagerServiceImpl();

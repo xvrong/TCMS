@@ -2,12 +2,13 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 08:36:52
+ * @LastEditTime: 2021-07-14 10:35:14
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
 package windows.impl;
 
+import java.io.Console;
 import java.io.PrintStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -259,11 +260,13 @@ public class GetInputImpl implements GetInput {
     @Override
     public String getInputPassword() {
         String password = null;
+        String repeatPassword = null;
         while (true) {
             input = new Scanner(System.in);
+            Console con = System.console();
             try {
                 jout.print("请输入密码: ");
-                password = input.next();
+                password = new String(con.readPassword());
                 if (password.length() < 6) {
                     throw new Exception("密码长度必须大于5!");
                 } else if (password.length() > 12) {
@@ -275,18 +278,22 @@ public class GetInputImpl implements GetInput {
                 boolean result2 = password.matches(regex2); // 包含数字
                 String regex3 = ".*[~!@#$%^&*()-_=+\\|[{}]:'\",<.>/?].*";
                 boolean result3 = password.matches(regex3); // 包含下划线
-                if (result1 && result2 && result3)
-                    break;
-                else {
+                if (result1 && result2 && result3) {
+                    jout.print("请确认密码: ");
+                    repeatPassword = new String(con.readPassword());
+                    if (password.equals(repeatPassword)) {
+                        break;
+                    } else {
+                        jout.println("两次输入不一致, 请重新输入");
+                    }
+                } else {
                     throw new Exception("密码必须同时包含字母,数字和特殊字符(~!@#$%^&*()-_=+\\|[{}]:'\",<.>/?)");
                 }
-
             } catch (Exception e) {
                 jout.println("密码不符合要求, " + e.getMessage());
             }
         }
         return password;
-
     }
 
     @Override
@@ -412,6 +419,21 @@ public class GetInputImpl implements GetInput {
             input = new Scanner(System.in);
             jout.print(message);
             str = input.next();
+            if (str.length() > 12) {
+                jout.println("字符过长,请重新输入!");
+                continue;
+            }
+            break;
+        }
+        return str;
+    }
+
+    public String getInputHideString(String message) {
+        String str = null;
+        while (true) {
+            jout.print(message);
+            Console con = System.console();
+            str = new String(con.readPassword());
             if (str.length() > 12) {
                 jout.println("字符过长,请重新输入!");
                 continue;
