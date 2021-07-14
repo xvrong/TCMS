@@ -43,7 +43,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
             System.out.println("本课程暂无班级");
             return;
         }
-        int tClassId = get.getInputClass(tClassList);
+        int tClassId = get.getInputTClass(tClassList);
         ArrayList<Student> studentList = qy.queryStudent(tClassId, true);
         if (studentList.isEmpty()) {
             System.out.println("本班级暂无学生");
@@ -66,7 +66,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
             System.out.println("本课程暂无班级");
             return;
         }
-        int tClassId = get.getInputClass(tClassList);
+        int tClassId = get.getInputTClass(tClassList);
         Teacher teacher = qy.queryTeacher(tClassId, true);
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
         teacherList.add(teacher);
@@ -137,7 +137,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
             System.out.println("本课程暂无班级");
             return;
         }
-        int tClassId = get.getInputClass(tClassList);
+        int tClassId = get.getInputTClass(tClassList);
         int teacherId = get.getInputInt("请输入老师ID: ", -1, -1);
         if (qy.IsExistTeacher(teacherId, true)) {
             boolean flag = up.setTeahcer(tClassId, teacherId);
@@ -165,7 +165,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
             System.out.println("本课程暂无班级");
             return;
         }
-        int tClassId = get.getInputClass(tClassList);
+        int tClassId = get.getInputTClass(tClassList);
         ArrayList<Student> studentList = qy.queryStudent(tClassId, true);
         if (studentList.isEmpty()) {
             System.out.println("此班级暂无学生");
@@ -193,7 +193,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
             System.out.println("本课程暂无班级");
             return;
         }
-        int tClassId = get.getInputClass(tClassList);
+        int tClassId = get.getInputTClass(tClassList);
         boolean isFull = true;
         for (TClass tcl : tClassList) {
             if (tcl.getClassID() == tClassId) {
@@ -246,7 +246,7 @@ public class TClassManagerServiceImpl implements TClassManagerService {
             System.out.println("本课程暂无班级");
             return;
         }
-        int tClassId = get.getInputClass(tClassList);
+        int tClassId = get.getInputTClass(tClassList);
         ArrayList<Student> studentList = qy.queryStudent(tClassId, true);
         if (!studentList.isEmpty()) {
             System.out.println("此班级存在学生，无法删除");

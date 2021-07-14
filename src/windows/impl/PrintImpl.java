@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 20:03:50
+ * @LastEditTime: 2021-07-13 20:15:43
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -20,6 +20,7 @@ import entity.TClass.TClass;
 import windows.Print;
 
 // TODO:调整输出顺序
+// TODO: 输入密码隐藏
 public class PrintImpl implements Print {
     private static PrintStream jout = System.out; // 全局的输出
 

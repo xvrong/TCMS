@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-10 21:37:29
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 19:58:54
+ * @LastEditTime: 2021-07-14 08:36:52
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\GetInputImpl.java
  */
@@ -104,7 +104,7 @@ public class GetInputImpl implements GetInput {
     }
 
     @Override
-    public int getInputClass(ArrayList<TClass> tClassList) {
+    public int getInputTClass(ArrayList<TClass> tClassList) {
         PT.printTClassInfomation(tClassList);
         int chos = -1;
         while (true) {
@@ -167,22 +167,6 @@ public class GetInputImpl implements GetInput {
             break;
         }
         return teacherList.get(chos).getTeacherID();
-    }
-
-    @Override
-    public String getInputName() {
-        String str = null;
-        while (true) {
-            input = new Scanner(System.in);
-            jout.print("请输入姓名: ");
-            str = input.next();
-            if (str.length() > 12) {
-                jout.println("名称过长,请重新输入!");
-                continue;
-            }
-            break;
-        }
-        return str;
     }
 
     @Override
@@ -325,28 +309,28 @@ public class GetInputImpl implements GetInput {
         return chos;
     }
 
-    @Override
-    public int getInputClassMaxNum() {
-        int maxNum = -1;
-        while (true) {
-            input = new Scanner(System.in);
-            try {
-                String str = input.next();
-                if (isNumeric(str) == false) {
-                    throw new Exception(String.format("输入'%s'不是数字", str));
-                }
-                maxNum = Integer.parseInt(str);
-                if (maxNum < 0) {
-                    maxNum = -1;
-                    throw new Exception("maxNum必须大于0");
-                }
-                break;
-            } catch (Exception e) {
-                jout.println("输入不合法!" + e.getMessage());
-            }
-        }
-        return maxNum;
-    }
+    // @Override
+    // public int getInputClassMaxNum() {
+    // int maxNum = -1;
+    // while (true) {
+    // input = new Scanner(System.in);
+    // try {
+    // String str = input.next();
+    // if (isNumeric(str) == false) {
+    // throw new Exception(String.format("输入'%s'不是数字", str));
+    // }
+    // maxNum = Integer.parseInt(str);
+    // if (maxNum < 0) {
+    // maxNum = -1;
+    // throw new Exception("maxNum必须大于0");
+    // }
+    // break;
+    // } catch (Exception e) {
+    // jout.println("输入不合法!" + e.getMessage());
+    // }
+    // }
+    // return maxNum;
+    // }
 
     public static void main(String[] args) {
         // GetInputImpl Test = new GetInputImpl();
@@ -423,10 +407,17 @@ public class GetInputImpl implements GetInput {
 
     @Override
     public String getInputString(String message) {
-        String rtStr = null;
-        input = new Scanner(System.in);
-        jout.print(message);
-        rtStr = input.next();
-        return rtStr;
+        String str = null;
+        while (true) {
+            input = new Scanner(System.in);
+            jout.print(message);
+            str = input.next();
+            if (str.length() > 12) {
+                jout.println("字符过长,请重新输入!");
+                continue;
+            }
+            break;
+        }
+        return str;
     }
 }

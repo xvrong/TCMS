@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-08 20:45:56
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 18:17:17
+ * @LastEditTime: 2021-07-14 08:44:36
  * @Description: 
  * @FilePath: \TCMS\src\windows\GetInput.java
  */
@@ -44,7 +44,7 @@ public interface GetInput {
      * @return courseId
      */
 
-    public int getInputClass(ArrayList<TClass> classList);
+    public int getInputTClass(ArrayList<TClass> classList);
 
     /**
      * @description: use method printTeacherBasicInformationthen get user input
@@ -57,13 +57,13 @@ public interface GetInput {
     public int getInputTeacher(ArrayList<Teacher> teacherList);
 
     /**
-     * @description: get studentName, check input, until input right name, provid a
-     *               method to input -1 to back to menu without right input(return
+     * @description: get studentId, check input > 0, until input right year, provid
+     *               a method to input -1 to back to menu without right input(return
      *               -1)
-     * @param none
-     * @return id
+     * @param {ArrayList<Student>} studentList
+     * @return int
      */
-    public String getInputName();
+    public int getInputStudent(ArrayList<Student> studentList);
 
     /**
      * @description: get birthday, check input, until input right birthday
@@ -115,22 +115,6 @@ public interface GetInput {
      * @return Boolean
      */
     public boolean getInputYN();
-
-    /**
-     * @description: get a Num > 0
-     * @param none
-     * @return boolean
-     */
-    public int getInputClassMaxNum();
-
-    /**
-     * @description: get studentId, check input > 0, until input right year, provid
-     *               a method to input -1 to back to menu without right input(return
-     *               -1)
-     * @param {ArrayList<Student>} studentList
-     * @return int
-     */
-    public int getInputStudent(ArrayList<Student> studentList);
 
     /**
      * @description: get Enter to return

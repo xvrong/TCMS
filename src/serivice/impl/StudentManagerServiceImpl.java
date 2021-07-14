@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: Fri Jul 09 2021 21:44:53
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 17:54:19
+ * @LastEditTime: 2021-07-14 08:38:13
  * @Description: 
  * @FilePath: \TCMS\src\serivice\impl\StudentManagerServiceImpl.java
  */
@@ -25,7 +25,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
             int courseId = get.getInputCourse(courseList);
             ArrayList<TClass> tClassList = qy.queryTClass(courseId, true);
             if (tClassList.size() != 0) {
-                int tClassId = get.getInputClass(tClassList);
+                int tClassId = get.getInputTClass(tClassList);
                 ArrayList<Student> studentList = qy.queryStudent(tClassId, true);
                 if (studentList.size() != 0) {
                     pt.printStudentBasicInfomation(studentList);
@@ -81,7 +81,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
     @Override
     public void addStudent() {
         Student student = new Student();
-        String name = get.getInputName();
+        String name = get.getInputString("请输入学生姓名: ");
         student.setName(name);
         Education edu = get.getInputEducation();
         student.setEdu(edu);
@@ -139,7 +139,7 @@ public class StudentManagerServiceImpl implements StudentManagerService {
                 if (legalTClassList.size() != 0) {
                     TClass nowTClass = qy.queryTClass(courseId, studentId, true);
                     System.out.println("此学生当前年级为: " + nowTClass.getGrade() + " 班号为: " + nowTClass.getOrderNumber());
-                    int tClassId = get.getInputClass(legalTClassList);
+                    int tClassId = get.getInputTClass(legalTClassList);
                     if (tClassId != nowTClass.getClassID()) {
                         if (up.deleteTaking(studentId, nowTClass.getClassID())) {
                             if (up.addTaking(studentId, tClassId)) {

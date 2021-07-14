@@ -42,7 +42,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
             System.out.println("本课程暂无班级");
             return;
         }
-        int tClassId = get.getInputClass(tClassList);
+        int tClassId = get.getInputTClass(tClassList);
         Teacher teacher = qy.queryTeacher(tClassId, true);
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
         teacherList.add(teacher);
@@ -96,7 +96,7 @@ public class TeacherManagerServiceImpl implements TeacherManagerService {
     @Override
     public void addTeacher() {
         Teacher teacher = new Teacher();
-        String name = get.getInputName();
+        String name = get.getInputString("请输入老师姓名: ");
         teacher.setName(name);
         String birthday = get.getInputBirthday();
         teacher.setBirthday(birthday);
