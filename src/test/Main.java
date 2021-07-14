@@ -2,7 +2,7 @@
  * @Author: xv_rong
  * @Date: 2021-07-12 10:53:28
  * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 13:48:19
+ * @LastEditTime: 2021-07-14 13:57:33
  * @Description: 
  * @FilePath: \TCMS\src\test\Main.java
  */
@@ -42,7 +42,7 @@ public class Main {
             System.out.println("4.模拟增加年份");
             System.out.println("0.退出");
             int model = 0;
-            model = gt.getInputInt("请输入序号: ", 0, 3);
+            model = gt.getInputInt("请输入序号: ", 0, 4);
             switch (model) {
                 case 1:
                     studentLogin();
@@ -126,6 +126,7 @@ public class Main {
                 null);
         tmp[0] = systemYear;
         bd.executeSQL("insert into allyear VALUES(?)", tmp);
+
     }
 
     static void checkYear() {
@@ -136,7 +137,7 @@ public class Main {
         int year = 0;
         try {
             // 数据库上一次更新的时间
-            String sql = "select max(yearId) from allyear where state = true";
+            String sql = "select max(yearId) from allyear";
             conn = bd.getConn();
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -165,7 +166,7 @@ public class Main {
         ResultSet rs = null;
         int year = 0;
         try {
-            String sql = "select max(yearId) from allyear where state = true";
+            String sql = "select max(yearId) from allyear";
             conn = bd.getConn();
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -181,5 +182,6 @@ public class Main {
             bd.closeAll(conn, pstmt, rs);
         }
         updateSystem(year + 1, year);
+        System.out.println("模拟成功,从" + year + "更改到了" + (year + 1));
     }
 }
