@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07 21:36:58
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-14 09:24:21
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-14 12:09:00
  * @Description: 
  * @FilePath: \TCMS\src\windows\impl\PrintImpl.java
  */
@@ -75,13 +75,13 @@ public class PrintImpl implements Print {
         jout.println(
                 "--------------------------------------------------------------------------------------------------------");
         // TODO : 增加数据库查询输出课程名称
-        jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "年级", "班号", "开始时间", "学历", "课程ID", "学生人数");
+        jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "班级ID", "学历", "年级", "课程名", "班号", "老师名", "学生人数");
         jout.println(
                 "--------------------------------------------------------------------------------------------------------");
         int number = 0;
         for (TClass tcs : tClassList) {
-            jout.printf("%-8d\t%-8d\t%-8s\t%-8d\t%-8s\t%-8d\t%-8d\n", number, tcs.getGrade(), tcs.getOrderNumber(),
-                    tcs.getStartYear(), tcs.getEducation(), tcs.getCourseID(), tcs.getStudentNum());
+            jout.printf("%-8d\t%-8d\t%-8s\t%-8d\t%-8s\t%-8s\t%-8d\n", number, tcs.getClassID(), tcs.getEducation() ,tcs.getGrade(),
+                    tcs.getCourseName(), tcs.getTeacherName(), tcs.getStudentNum());
             number++;
         }
         jout.println(
@@ -104,17 +104,17 @@ public class PrintImpl implements Print {
             number++;
         }
         jout.println(
-                "--------------------------------------------------------------------------------------------------------------");
+                "--------------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override
     public void printTeacherAllInformation(ArrayList<Teacher> teacherList) {
         jout.println("老师的详细信息：");
         jout.println(
-                "--------------------------------------------------------------------------------------------------------------");
+                "--------------------------------------------------------------------------------------------------------------------------");
         jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8s\n", "序号", "老师ID", "姓名", "性别", "生日", "年龄", "工资");
         jout.println(
-                "--------------------------------------------------------------------------------------------------------------");
+                "--------------------------------------------------------------------------------------------------------------------------");
         int number = 0;
         for (Teacher tch : teacherList) {
             jout.printf("%-8s\t%-8s\t%-8s\t%-8s\t%-8s\t%-8d\t%-8.2f\n", number, tch.getTeacherID(), tch.getName(),
@@ -122,7 +122,7 @@ public class PrintImpl implements Print {
             number++;
         }
         jout.println(
-                "--------------------------------------------------------------------------------------------------------------");
+                "--------------------------------------------------------------------------------------------------------------------------");
 
     }
 
