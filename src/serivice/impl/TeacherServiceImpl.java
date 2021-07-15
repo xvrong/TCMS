@@ -2,8 +2,8 @@
  * @Author: LinXuan
  * @Date: 2021-07-12 16:58:57
  * @Description: 
- * @LastEditors: xv_rong
- * @LastEditTime: 2021-07-13 14:50:14
+ * @LastEditors: LinXuan
+ * @LastEditTime: 2021-07-15 09:20:24
  * @FilePath: \TCMS\src\serivice\impl\TeacherServiceImpl.java
  */
 package serivice.impl;
@@ -65,7 +65,7 @@ public class TeacherServiceImpl implements TeacherService {
         int func = -1;
         while (func != 0) {
             // 界面部分
-            jout.println("-----------------学生界面----------------");
+            jout.println("-----------------老师界面----------------");
             jout.println("1.查看个人信息");
             jout.println("2.查询自己所教的班级");
             jout.println("3.查询历史所教班级");
