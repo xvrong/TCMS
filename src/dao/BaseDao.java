@@ -1,13 +1,15 @@
 package dao;
 
+import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
  * 
@@ -19,12 +21,18 @@ public class BaseDao {
     public static String URL;
     public static String DBNAME;
     public static String DBPASSWROD;
+    public static ComboPooledDataSource ds = null;
     static {
-        init();
+        try {
+            init();
+        } catch (PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void init() {
+    public static void init() throws PropertyVetoException {
         Properties params = new Properties();
+        ds = new ComboPooledDataSource(); // 建立连接池
         String config = "datebase.properties";
         InputStream is = BaseDao.class.getClassLoader().getResourceAsStream(config);
         try {
@@ -36,17 +44,23 @@ public class BaseDao {
         URL = params.getProperty("url");
         DBNAME = params.getProperty("user");
         DBPASSWROD = params.getProperty("password");
+
+        ds.setDriverClass(DRIVER);
+        ds.setJdbcUrl(URL);
+        ds.setUser(DBNAME);
+        ds.setPassword(DBPASSWROD);
+        ds.setMaxPoolSize(40);
+        ds.setMinPoolSize(2);
+        ds.setInitialPoolSize(2); // 初始连接池内连接数
+        ds.setMaxStatements(50); // 设置连接池内最大的statement
     }
 
     public Connection getConn() throws ClassNotFoundException, SQLException {
         Connection conn = null;
         try {
-            Class.forName(DRIVER);
-            conn = DriverManager.getConnection(URL, DBNAME, DBPASSWROD);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            conn = ds.getConnection();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         return conn;
     }
@@ -98,7 +112,7 @@ public class BaseDao {
             pstmt = conn.prepareStatement(preparedSql);
             if (param != null) {
                 for (int i = 0; i < param.length; i++) {
-                    pstmt.setObject(i + 1, param[i]);
+                    pstmt.setObject(i + 1, param[1]);
                 }
             }
             num = pstmt.executeUpdate();
