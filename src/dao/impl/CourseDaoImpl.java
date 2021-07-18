@@ -1,8 +1,8 @@
 /*
  * @Author: xv_rong
  * @Date: 2021-07-09 20:08:50
- * @LastEditors: LinXuan
- * @LastEditTime: 2021-07-13 09:26:54
+ * @LastEditors: xv_rong
+ * @LastEditTime: 2021-07-18 09:56:09
  * @Description: 
  * @FilePath: \TCMS\src\dao\impl\CourseDaoImpl.java
  */
@@ -23,7 +23,7 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
-    static Education[] invert = new Education[]{Education.PRIMARY, Education.JUNIOR, Education.HIGH};
+    static Education[] invert = new Education[] { Education.PRIMARY, Education.JUNIOR, Education.HIGH };
 
     @Override
     public int updateCourse(String sql, Object[] param) {

@@ -87,13 +87,6 @@ public class BaseDao {
                 e.printStackTrace();
             }
         }
-        if (conn != null) {
-            try {
-                pstmt.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     /**
