@@ -112,7 +112,7 @@ public class BaseDao {
             pstmt = conn.prepareStatement(preparedSql);
             if (param != null) {
                 for (int i = 0; i < param.length; i++) {
-                    pstmt.setObject(i + 1, param[1]);
+                    pstmt.setObject(i + 1, param[i]);
                 }
             }
             num = pstmt.executeUpdate();
